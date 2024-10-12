@@ -8,14 +8,12 @@ body{
 	padding: 0;
     height: 100vh;
 	width: 100%;
-    background: rgb(0, 0, 0) url(playstation-2-collage-video-games-playstation-wallpaper-thumb.jpg);
+    background: rgb(0, 0, 0) url(kepek/playstation-2-collage-video-games-playstation-wallpaper-thumb.jpg);
     background-position: center left;
     animation: backgroundslide_right 40s infinite;
     animation-direction: alternate;
     
 }
-
-
   
 .text{
     font-weight: 100;
@@ -35,9 +33,6 @@ body{
     animation: pislakol 2s ease-in-out infinite alternate;
 
 }
-
-
-
 
 /* Animációk  */
 
@@ -98,7 +93,7 @@ body{
         transform: translateY(-10%);
         width: 250px; 
         height: 250px;
-        background-image: url('letöltés-removebg-preview.png');
+        background-image: url(kepek/letöltés-removebg-preview.png);
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
@@ -116,10 +111,9 @@ body{
         padding: 7vw;
         color: #fff;
         background: rgba(255, 255, 255, 0);
-        border-radius: 16px;
+        border: 2px outset rgba(60, 60, 60, 0.384);
         backdrop-filter: blur(1.9px);
         -webkit-backdrop-filter: blur(1.9px);
-        border: 1px solid rgba(255, 255, 255, 0.35);
         overflow: hidden;
     }
     
@@ -163,9 +157,11 @@ body{
     }
 
 
-    .panel a {
+    .panel input[type=checkbox], a {
         text-decoration: none;
         color:#d9fdff;
+        width: 20px;
+        
     }
     
     .panel button {
@@ -184,7 +180,7 @@ body{
         transform: translateY(-10%);
         width: 250px; 
         height: 250px;
-        background-image: url('letöltés-removebg-preview.png');
+        background-image: url(kepek/letöltés-removebg-preview.png);
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
@@ -203,10 +199,9 @@ body{
         padding: 7vw;
         color: #fff;
         background: rgba(255, 255, 255, 0);
-        border-radius: 16px;
+        border: 2px outset rgba(60, 60, 60, 0.384);
         backdrop-filter: blur(1.9px);
         -webkit-backdrop-filter: blur(1.9px);
-        border: 1px solid rgba(255, 255, 255, 0.35);
     }
     
     h2 {
@@ -244,9 +239,11 @@ body{
     
     
     
-    .panel a {
+    .panel input[type=checkbox], a {
         text-decoration: none;
-        color: #d9fdff;;
+        color:#d9fdff;
+        width: 20px;
+        
     }
     
     .panel button {
@@ -264,7 +261,7 @@ body{
         transform: translateY(-10%);
         width: 250px; 
         height: 250px;
-        background-image: url('letöltés-removebg-preview.png');
+        background-image: url(kepek/letöltés-removebg-preview.png);
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
@@ -283,10 +280,9 @@ body{
         padding: 7vw;
         color: #fff;
         background: rgba(255, 255, 255, 0);
-        border-radius: 16px;
         backdrop-filter: blur(1.9px);
         -webkit-backdrop-filter: blur(1.9px);
-        border: 1px solid rgba(255, 255, 255, 0.35);
+        border: 2px outset rgba(60, 60, 60, 0.384);
     }
     
     h2 {
@@ -324,9 +320,11 @@ body{
     }
     
     
-    .panel a {
+    .panel input[type=checkbox], a {
         text-decoration: none;
-        color: #d9fdff;
+        color:#d9fdff;
+        width: 20px;
+        
     }
     
     .panel button {

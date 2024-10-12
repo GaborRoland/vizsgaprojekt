@@ -1,0 +1,402 @@
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body{
+    margin: 0;
+	  padding: 0;
+    height: 100vh;
+	  width: 100%;
+    background: rgb(0, 0, 0) url(kepek/playstation-2-collage-video-games-playstation-wallpaper-thumb.jpg);
+    background-position: center left;
+    animation: backgroundslide_right 40s infinite;
+    animation-direction: alternate;
+    
+}
+
+/* Animációk */
+@keyframes backgroundslide_right {
+    100%{background-position: center right;}
+    
+ }
+
+
+/*Reszponzív viselkedés*/
+@media only screen and (min-width: 1200px) 
+{
+.centered {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.panel {
+    width: 38vw;
+    height: auto;
+    padding: 7vw;
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+    border: 2px outset rgba(60, 60, 60, 0.384);
+    backdrop-filter: blur(1.9px);
+    -webkit-backdrop-filter: blur(1.9px);
+    overflow: hidden;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 4vh;
+    color: #d9fdff;
+    text-shadow: 0 0 2rem #00f0ff;
+    
+}
+
+.info{
+    position: relative;
+}
+
+
+.input{
+    border: 1px solid #bababa;
+    background: transparent;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.332);
+}
+  
+  .input:focus {
+    color: #ffffff;
+    background-color: transparent;
+    outline-color: #d9fdff;
+    box-shadow: -3px -3px 15px #00f0ff;
+    transition: .1s;
+    transition-property: box-shadow;
+  }
+
+  .input:focus::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+
+  
+  input[type="date"] { 
+      background: transparent;
+      color: white;
+      
+  }
+
+    ::-webkit-datetime-edit {
+       padding: 1em;
+  }
+    
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+  }
+
+  .felhivas{
+    position: absolute;
+    background-color: #777777d1;
+    height: 200px;
+    width: 380px;
+    padding: 4px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+
+  .felhivas-content-balra{
+    max-width: 45%;
+    text-align: left;
+    float: left;
+    /* background-color: #00f0ff; */
+    height: 190px;
+    color: #fff;
+  }
+
+  .felhivas-content-jobbra{
+    max-width: 55%;
+    text-align: left;
+    float: right;
+    /* background-color: #3300ff; */
+    height: 190px;
+    padding: 0;
+  }
+
+  #felhivas-img{
+    height: 100%;
+    width:100%
+  }
+
+  #register{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    font-weight: bold;
+    margin-left:32%;
+    margin-top:5%;
+  }
+
+  #register:hover{
+    background-color: #00f0ff;
+    color: white;
+    box-shadow: -3px -3px 15px #d9fdff;
+  }
+  
+}
+
+@media only screen and (min-width: 600px)
+{
+  .centered {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.panel {
+    width: 48vw;
+    height: auto;
+    padding: 7vw;
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+    border: 2px outset rgba(60, 60, 60, 0.384);
+    backdrop-filter: blur(1.9px);
+    -webkit-backdrop-filter: blur(1.9px);
+    overflow: hidden;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 4vh;
+    color: #d9fdff;
+    text-shadow: 0 0 2rem #00f0ff;
+    
+}
+
+.info{
+    position: relative;
+}
+
+
+.input{
+    border: 1px solid #bababa;
+    background: transparent;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.332);
+}
+  
+  .input:focus {
+    color: #ffffff;
+    background-color: transparent;
+    outline-color: #d9fdff;
+    box-shadow: -3px -3px 15px #00f0ff;
+    transition: .1s;
+    transition-property: box-shadow;
+  }
+
+  .input:focus::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+
+  
+  input[type="date"] { 
+      background: transparent;
+      color: white;
+      
+  }
+
+    ::-webkit-datetime-edit {
+       padding: 1em;
+  }
+    
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+  }
+
+  .felhivas{
+    position: absolute;
+    background-color: #777777d1;
+    height: 200px;
+    width: 380px;
+    padding: 4px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+
+  .felhivas-content-balra{
+    max-width: 45%;
+    text-align: left;
+    float: left;
+    /* background-color: #00f0ff; */
+    height: 190px;
+    color: #fff;
+  }
+
+  .felhivas-content-jobbra{
+    max-width: 55%;
+    text-align: left;
+    float: right;
+    /* background-color: #3300ff; */
+    height: 190px;
+    padding: 0;
+  }
+
+  #felhivas-img{
+    height: 100%;
+    width:100%
+  }
+
+  #register{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    font-weight: bold;
+    margin-left:32%;
+    margin-top:5%;
+  }
+
+  #register:hover{
+    background-color: #00f0ff;
+    color: white;
+    box-shadow: -3px -3px 15px #d9fdff;
+  }
+  
+}
+
+@media only screen and (max-width: 600px) 
+{
+  .centered {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.panel {
+    width: 60vw;
+    height: auto;
+    padding: 7vw;
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+    border: 2px outset rgba(60, 60, 60, 0.384);
+    backdrop-filter: blur(1.9px);
+    -webkit-backdrop-filter: blur(1.9px);
+    overflow: hidden;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 4vh;
+    color: #d9fdff;
+    text-shadow: 0 0 2rem #00f0ff;
+    
+}
+
+.info{
+    position: relative;
+}
+
+
+.input{
+    border: 1px solid #bababa;
+    background: transparent;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.332);
+}
+  
+  .input:focus {
+    color: #ffffff;
+    background-color: transparent;
+    outline-color: #d9fdff;
+    box-shadow: -3px -3px 15px #00f0ff;
+    transition: .1s;
+    transition-property: box-shadow;
+  }
+
+  .input:focus::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+
+  
+  input[type="date"] { 
+      background: transparent;
+      color: white;
+      
+  }
+
+    ::-webkit-datetime-edit {
+       padding: 1em;
+  }
+    
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+  }
+
+  .felhivas{
+    position: absolute;
+    background-color: #777777d1;
+    height: 200px;
+    width: 380px;
+    padding: 4px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+
+  .felhivas-content-balra{
+    max-width: 45%;
+    text-align: left;
+    float: left;
+    /* background-color: #00f0ff; */
+    height: 190px;
+    color: #fff;
+  }
+
+  .felhivas-content-jobbra{
+    max-width: 55%;
+    text-align: left;
+    float: right;
+    /* background-color: #3300ff; */
+    height: 190px;
+    padding: 0;
+  }
+
+  #felhivas-img{
+    height: 100%;
+    width:100%
+  }
+
+  #register{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    font-weight: bold;
+    margin-left:32%;
+    margin-top:5%;
+  }
+
+  #register:hover{
+    background-color: #00f0ff;
+    color: white;
+    box-shadow: -3px -3px 15px #d9fdff;
+  }
+  
+}

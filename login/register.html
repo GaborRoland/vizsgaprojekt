@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reg_style.css">
     <title>Regisztráció</title>
 </head>
 <body>
-    <p>Szia!</p>
+    <div class="centered">
+        <div class="panel">
+            <h2>Register</h2>
+            <form action="">
+
+                <div class="info">
+                    <input placeholder="Felhasználónév" class="input" id="felhasznalonev" type="text" required>
+                </div>
+
+                <div class="info">
+                    <input type="password" placeholder="Jelszó" id="jelszo" class="input" required>
+                </div>
+
+                <div class="info">
+                    <input type="password" placeholder="Jelszó újra" id="jelszoujra" class="input" required> <!-- Itt egy JavaScript függvénnyel leellnőrizni, hogy a két inputban ugyanaz a karakterlánc szerepel-e (Tavalyi Facebookos) -->
+                </div>
+
+                <div class="info">
+                    <label for="" style="padding: 0.63em;">Születési dátumod:</label><input type="date" required class="">
+                </div>
+
+                <button type="submit" id="register">Regisztrálok!</button> <!-- Gombnyomáskor visszadob bejelentkezve az oldalra! -->
+            </form>
+
+        </div>
+    </div>
 </body>
 </html>
