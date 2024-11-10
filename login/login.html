@@ -13,7 +13,7 @@
         <div class="image"></div>
         <div class="panel">
             
-
+            
             <h2>
                 <span class="letter letter-1">L</span>
                 <span class="letter letter-2">O</span>
@@ -21,27 +21,28 @@
                 <span class="letter letter-4">I</span>
                 <span class="letter letter-5">N</span>
             </h2>
-            <form>  
-
+            <form action="javascript:;" onsubmit="ellenorzes()">
+                
                 <div class="info">
-                    <input type="text" placeholder="Felhasználónév">
+                    <input type="text" placeholder="Felhasználónév" id="felhasznalonev">
                 </div>
-
+                
                 <div class="info">
-                    <input type="password" placeholder="Jelszó">
+                    <input type="password" placeholder="Jelszó" id="jelszo">
                 </div>
-
+                
                 <div class="jelszo">
-                    <a style="color: white;">Jelszó megjelenítése</a>  <!-- Javascript függvény ide! -->
+                    <input type="checkbox" onclick="Megjelenites()" style="color: white;">Jelszó megjelenítése <!-- Javascript függvény ide! -->
                     <a href="#">Elfelejtette jelszavát?</a>
                 </div>
-
+                
                 <button type="submit" id="">Bejelentkezés</button> <!-- Gombnyomáskor visszadob bejelentkezve az oldalra! -->
             </form>
-
-            <p>Nincs még fiókod? <a href="/register/register.html">Regisztrálok</a></p>
-
+            
+            <p>Nincs még fiókod? <a href="register.html">Regisztrálok</a></p>
+            
         </div>
     </div>
+    <script src="java.js"></script>
 </body>
 </html>

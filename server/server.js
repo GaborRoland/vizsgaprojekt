@@ -15,19 +15,20 @@ let felhasznalok = [
   {id: 2, username: "Pista", password: "alamfa"}
 ];
 
-app.get('/users', (req, res) => {
-  res.json(felhasznalok);
-});
+//Kind of felesleges már, de mintának itt maradhat későbbre, ha valami használható belőle
+// app.get('/users', (req, res) => {
+//   res.json(felhasznalok);
+// });
 
-app.post('/users', (req, res) => {
-  const újFelhasz = {
-    id: felhasznalok.length + 1,
-    name: req.body.felhasznalonev,
-    pw: req.body.pw
-  };
-  felhasznalok.push(újFelhasz);
-  res.status(201).json(újFelhasz);
-});
+// app.post('/users', (req, res) => {
+//   const újFelhasz = {
+//     id: felhasznalok.length + 1,
+//     name: req.body.felhasznalonev,
+//     pw: req.body.pw
+//   };
+//   felhasznalok.push(újFelhasz);
+//   res.status(201).json(újFelhasz);
+// });
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

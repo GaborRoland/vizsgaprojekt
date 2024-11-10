@@ -21,6 +21,7 @@
                 </div>
 
                 <div class="info">
+                    <!-- Kész -->
                     <input type="password" placeholder="Jelszó újra" id="jelszoujra" class="input" required> <!-- Itt egy JavaScript függvénnyel leellnőrizni, hogy a két inputban ugyanaz a karakterlánc szerepel-e (Tavalyi Facebookos) -->
                 </div>
 
@@ -28,10 +29,11 @@
                     <label for="" style="padding: 0.63em;">Születési dátumod:</label><input type="date" required class="">
                 </div>
 
-                <button type="submit" id="register">Regisztrálok!</button> <!-- Gombnyomáskor visszadob bejelentkezve az oldalra! -->
+                <button type="submit" id="register" onclick="Ugyanaze()">Regisztrálok!</button> <!-- Gombnyomáskor visszadob bejelentkezve az oldalra! -->
             </form>
 
         </div>
     </div>
+    <script src="register.js"></script>
 </body>
 </html>
