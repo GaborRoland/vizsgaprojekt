@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.21.1",
-    "nodemon": "^2.0.22"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.5",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.37.5"
   }
 }

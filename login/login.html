@@ -1,3 +1,4 @@
+<!-- Bejelentkezés  -->
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -5,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <script src=""></script> -->
     <title>Bejelentkezés</title>
 </head>
 <body>
@@ -21,14 +21,14 @@
                 <span class="letter letter-4">I</span>
                 <span class="letter letter-5">N</span>
             </h2>
-            <form action="javascript:;" onsubmit="ellenorzes()">
+            <form action="/belepes" method="POST">
                 
                 <div class="info">
-                    <input type="text" placeholder="Felhasználónév" id="felhasznalonev">
+                    <input type="text" name="nev" placeholder="Felhasználónév" id="felhasznalonev">
                 </div>
                 
                 <div class="info">
-                    <input type="password" placeholder="Jelszó" id="jelszo">
+                    <input type="password" name="jelszo1" placeholder="Jelszó" id="jelszo">
                 </div>
                 
                 <div class="jelszo">

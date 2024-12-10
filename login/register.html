@@ -10,19 +10,19 @@
     <div class="centered">
         <div class="panel">
             <h2>Register</h2>
-            <form action="">
+            <form action="/users" method="POST">
 
                 <div class="info">
-                    <input placeholder="Felhasználónév" class="input" id="felhasznalonev" type="text" required>
+                    <input placeholder="Felhasználónév" name="nev" class="input" id="felhasznalonev" type="text" required>
                 </div>
 
                 <div class="info">
-                    <input type="password" placeholder="Jelszó" id="jelszo" class="input" required>
+                    <input type="password" name="jelszo1" placeholder="Jelszó" id="jelszo" class="input" required>
                 </div>
 
                 <div class="info">
                     <!-- Kész -->
-                    <input type="password" placeholder="Jelszó újra" id="jelszoujra" class="input" required> <!-- Itt egy JavaScript függvénnyel leellnőrizni, hogy a két inputban ugyanaz a karakterlánc szerepel-e (Tavalyi Facebookos) -->
+                    <input type="password" name="jelszo2" placeholder="Jelszó újra" id="jelszoujra" class="input" required> <!-- Itt egy JavaScript függvénnyel leellnőrizni, hogy a két inputban ugyanaz a karakterlánc szerepel-e (Tavalyi Facebookos) -->
                 </div>
 
                 <div class="info">

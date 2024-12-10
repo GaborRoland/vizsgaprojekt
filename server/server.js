@@ -2,35 +2,22 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
+const FelhasznalokRoutes = require('../Routes/felhasznalokRoutes'); // Importálás a route-ot
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../login')));
+app.use(express.json()); // JSON adatokat tud fogadni
+app.use(express.static(path.join(__dirname, '../login'))); // statikus fájlok (pl. HTML, CSS, JS)
 
+app.use(express.urlencoded({ extended: true })); // Az űrlapadatokat URL-kódolva tudja kezelni
+
+// Kezdő oldal, amely a login/index.html fájlt szolgáltatja
 app.get('/', (req, res) => {
-  res.send('Szia! :)');
+    res.sendFile(path.join(__dirname, 'login', 'index.html')); 
 });
 
-let felhasznalok = [
-  {id: 1, username: "SkibidiUwU", password: "12345"},
-  {id: 2, username: "Pista", password: "alamfa"}
-];
-
-//Kind of felesleges már, de mintának itt maradhat későbbre, ha valami használható belőle
-// app.get('/users', (req, res) => {
-//   res.json(felhasznalok);
-// });
-
-// app.post('/users', (req, res) => {
-//   const újFelhasz = {
-//     id: felhasznalok.length + 1,
-//     name: req.body.felhasznalonev,
-//     pw: req.body.pw
-//   };
-//   felhasznalok.push(újFelhasz);
-//   res.status(201).json(újFelhasz);
-// });
+// Felhasználói route-ok
+app.use('/users', FelhasznalokRoutes); // /users route kezelés
+app.use('/', FelhasznalokRoutes); // Az alap URL-hez is rendeljük a felhasználói route-okat
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`); // Szerver elindítása
 });
-
