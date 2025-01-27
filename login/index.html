@@ -1,14 +1,710 @@
 <!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Főoldal</title>
-</head>
-<body>
-    <a href="register.html"> <button>Regiszt</button></a> 
+<html class="scroll-smooth" lang="hu">
 
-    <a href="login.html"> <button>Belépés</button></a>
-    
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./src/output.css" rel="stylesheet">
+  <title>Főoldal</title>
+
+  <style>
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .animate-marquee {
+      animation: marquee 70s linear infinite;
+    }
+
+    /* Carousel animáció */
+    @keyframes carousel_slide {
+      0% {
+        transform: translateX(0%);
+      }
+
+      25% {
+        transform: translateX(-100%);
+      }
+
+      50% {
+        transform: translateX(-200%);
+      }
+
+      75% {
+        transform: translateX(-300%);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    .animate-carousel_slide {
+      animation: carousel_slide 45s infinite;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+    }
+  </style>
+
+</head>
+
+
+<body class="bg-slate-950">
+  <!-- npx tailwindcss -i ./src/input.css -o ./src/output.css --watch -->
+  <!-- Oldal tetejére gomb -->
+  <button id="to-top-button" onclick="goToTop()" title="Go To Top"
+    class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-gradient-to-br from-yellow-600 via-red-400 to-pink-700 text-white text-lg font-semibold transition-colors duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
+    </svg>
+  </button>
+
+
+  <nav>
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="pics/fooldal_logo_2-removebg-preview.png" class="h-8" alt="Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">ByteShop</span>
+      </a>
+
+
+      <!-- Kereső menü -->
+      <div class="flex invisible md:visible items-center md:order-2 space-x-3 md:space-x-2 rtl:space-x-reverse">
+
+        <div class="relative">
+          <input placeholder="Keresés..."
+            class="input shadow-lg focus:border-2 border-gray-300 focus:border-orange-300  px-3 py-3 rounded-xl w-25 transition-all focus:w-58 outline-none"
+            name="search" />
+
+          <svg class="size-6 absolute top-3 right-3 text-gray-500" stroke="currentColor" stroke-width="1.5"
+            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+        </div>
+
+
+        <!-- Bevásárlókosár gomb -->
+        <a href="#" class="flex visible items-center text-white hover:text-orange-300">
+          <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
+          </svg>
+        </a>
+
+        <!-- Felhasználó gomb-->
+        <button type="button" class="flex visible text-sm rounded-full md:me-0 focus:ring-3 focus:ring-gray-300"
+          id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+          data-dropdown-placement="bottom">
+          <img class="w-8 h-8 rounded-full" src="pics/65476-200.png" alt="felhasználó ikon">
+        </button>
+
+        <!-- Felhasználó legördülő menü -->
+        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
+          id="user-dropdown">
+          <div class="px-4 py-3">
+            <span class="block text-sm text-gray-900">Jane Doe</span>
+          </div>
+          <ul class="py-2" aria-labelledby="user-menu-button">
+            <li>
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Kívánságlista</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Beállítások</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Kijelentkezés</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Menüpontok -->
+      <div class="md:visible items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-user">
+        <!-- Legördülő menü gombja, ha a képernyőméret eléri az sm méretet -->
+        <button class="md:hidden text-white px-4 py-2 rounded hover:bg-gray-700" onclick="toggleMenu()">
+          Menü
+        </button>
+      
+        <!-- Legördülő menü, ha a képernyőméret eléri az sm méretet -->
+        <div class="hidden md:block" id="dropdown-menu">
+          <ul class="flex flex-col font-medium p-4 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+            <li>
+              <a href="#rolunk" class="block py-2 px-3 rounded text-white hover:text-orange-300 md:p-0">Rólunk</a>
+            </li>
+            <li>
+              <a href="#hirek" class="block py-2 px-3 rounded text-white hover:text-orange-300 md:p-0">Hírek</a>
+            </li>
+            <li>
+              <a href="#termekek" class="block py-2 px-3 rounded text-white hover:text-orange-300 md:p-0">Termékek</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero szekció -->
+  <div class="h-screen w-screen">
+    <div class="mx-auto max-w-7xl pt-8 sm:pt-12">
+      <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8">
+        <div class="px-6 sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:flex lg:items-center lg:text-left">
+          <div class="space-y-8">
+            <div class="space-y-4">
+              <div class="space-y-2">
+                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+                  <span class="sm:text-6xl"></span> Üdvözlünk a
+                  <span
+                    class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-600">ByteShop</span>
+                  <br>
+                  oldalán.
+                </h1>
+              </div>
+
+              <p class="text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                Merülj el a gaming univerzumában! Weboldalunkon megtalálsz mindent, amire egy gamer vágyhat: a legújabb
+                videojátékok, izgalmas hírek és friss tartalmak várnak rád. Fedezd fel, vásárolj, és maradj naprakész a
+                játékvilág legfontosabb eseményeivel!
+              </p>
+            </div>
+
+            <div class="border-t border-gray-700"></div>
+
+            <!-- Kezdjünk bele gomb -->
+            <div class="flex space-x-4 items-center text-white">
+              <button
+                class="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95"
+                onclick="window.location.href='index.html#termekek'">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-yellow-600 via-red-400 to-pink-700 rounded-full transition-all duration-300 group-hover:scale-110 animate-gradient">
+                </div>
+
+                <div
+                  class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-300 bg-white blur-xl">
+                </div>
+
+
+                <div
+                  class="absolute inset-0 rounded-full border-2 border-white opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-300">
+                </div>
+
+                <div class="absolute inset-0 rounded-full overflow-hidden">
+                  <div class="wave"></div>
+                </div>
+
+                <span class="relative z-10 flex items-center gap-2">
+                  <span class="tracking-wider">Kezdjünk bele!</span>
+                  <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                    class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1">
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                    </path>
+                  </svg>
+                  <span
+                    class="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </span>
+              </button>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero szekció fénykép -->
+        <div class="invisible lg:visible flex items-center w-full col-span-6">
+          <div class="px-6 h-96 lg:h-100% w-full max-w-2xl flex items-center mx-auto">
+            <div style="width: 100%; height: 100%;">
+              <img src="pics/hero_section_img.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legújabb termékek -->
+  <div class="bg-cover py-10" id="termekek"
+    style="background-image: url('pics/sci-fi-modern-elegant-futuristic-600nw-1306222522.jpg');">
+    <div class="container mx-auto px-20">
+      <h2 class="text-3xl text-white mb-8">Újonnan érkezett játékaink</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-orange-600 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-orange-600 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Szponzorok menü -->
+  <div class="invisible md:visible">
+    <h1 class="text-white font-semibold mx-auto w-1/5 text-center md:mt-5 md:text-lg lg:text-2xl">Támogatóink</h1>
+    <div class="relative overflow-hidden w-full pt-4 mt-0">
+      <div class="flex animate-marquee flex-wrap justify-around gap-8 py-8 px-4">
+        <img src="pics/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen-1024x376-removebg-preview.png"
+          class="md:w-25 md:h-10 md:mx-2 lg:w-50 lg:h-20 lg:mx-4" />
+        <img src="pics/Acer-Logo.png" class="md:w-25 md:h-10 md:mx-2 lg:w-50 lg:h-20 lg:mx-4" />
+        <img src="pics/b24cec6f803f389c39ec99328885b80d.png" class="md:w-25 md:h-10 md:mx-2 lg:w-50 lg:h-20 lg:mx-4" />
+        <img src="pics/Electronic-Arts-Logo.svg.png" class="md:w-25 md:h-10 md:mx-2 lg:w-50 lg:h-20 lg:mx-4" />
+        <img src="pics/gameloft-logo-vector-removebg-preview.png"
+          class="md:w-25 md:h-10 md:mx-2 lg:w-50 lg:h-20 lg:mx-4" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Hírek carousel -->
+  <div class="max-w-7xl mx-auto p-4" id="hirek">
+
+    <div class="overflow-hidden rounded-sm shadow-lg">
+      <!-- Carousel -->
+      <div class="animate-carousel_slide flex">
+
+        <!-- Első hír -->
+        <div class="carousel-item bg-slate-950 p-6">
+          <img src="" alt="Első hír" class="w-full h-64 object-cover rounded-sm">
+          <h2 class="text-white text-xl font-semibold mt-4">Hír címe</h2>
+          <p class="text-gray-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quidem rem laborum
+            natus recusandae id delectus ea, quod hic velit veniam perspiciatis! Earum necessitatibus adipisci,
+            accusamus maiores vero aut inventore.</p>
+        </div>
+
+        <!-- Második hír -->
+        <div class="carousel-item bg-slate-950 p-6">
+          <img src="" alt=" Második hír" class="w-full h-64 object-cover rounded-sm">
+          <h2 class="text-white text-xl font-semibold mt-4">Hír címe</h2>
+          <p class="text-gray-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quidem rem laborum
+            natus recusandae id delectus ea, quod hic velit veniam perspiciatis! Earum necessitatibus adipisci,
+            accusamus maiores vero aut inventore.</p>
+        </div>
+
+        <!--Harmadik hír -->
+        <div class="carousel-item bg-slate-950 p-6">
+          <img src="" alt="Harmadik hír" class="w-full h-64 object-cover rounded-sm">
+          <h2 class="text-white text-xl font-semibold mt-4">Hír címe</h2>
+          <p class="text-gray-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quidem rem laborum
+            natus recusandae id delectus ea, quod hic velit veniam perspiciatis! Earum necessitatibus adipisci,
+            accusamus maiores vero aut inventore.</p>
+        </div>
+
+        <!-- Negyedik hír -->
+        <div class="carousel-item bg-slate-950 p-6">
+          <img src="" alt="Negyedik hír" class="w-full h-64 object-cover rounded-sm">
+          <h2 class="text-white text-xl font-semibold mt-4">Hír címe</h2>
+          <p class="text-gray-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quidem rem laborum
+            natus recusandae id delectus ea, quod hic velit veniam perspiciatis! Earum necessitatibus adipisci,
+            accusamus maiores vero aut inventore.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Felkapott játékok -->
+  <div class="py-10">
+    <div class="container mx-auto px-20">
+      <h2 class="text-3xl text-white mb-8">Most felkapottak</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-orange-600 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-orange-600 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg p-8 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <div class="relative overflow-hidden">
+            <img class="object-cover w-full h-full" src="pics/game-49.png" alt="termek">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mt-4">Játék neve</h3>
+          <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+            ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-gray-900 font-bold text-lg">HUF3,200</span>
+
+
+            <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                class="stroke-orange-400 fill-none group-hover:fill-orange-800 group-active:stroke-orange-200 group-active:fill-red-700 group-active:duration-0 duration-300">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                  stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Kategóriák mashup -->
+  <div class="bg-cover" style="background-image: url('pics/futuristic-gaming-background-product-showcase-neon-striped-lights-geometric-pattern_887552-40349.jpg');">
+    <div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6">
+      <h2 class="text-3xl text-white">Kategóriák</h2>
+      <p class="hidden max-w-screen-sm text-gray-300 md:block mt-3 mb-8">Nem tudod milyen játékot szeretnél? Böngéssz kategóriánk között és találd meg a számodra tökéletes játékot!</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 h-full">
+        <div class="col-span-2 sm:col-span-1 md:col-span-2 h-auto md:h-full flex flex-col">
+          <a href="#shooting_games" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 flex-grow">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/049/462/670/small_2x/ultra-realistic-military-game-scene-with-soldier-in-full-gear-and-intense-combat-atmosphere-photo.jpeg" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"> 
+            <h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">Shooting</h3>
+          </a>
+        </div>
+
+        <div class="col-span-2 sm:col-span-1 md:col-span-2">
+          <a href="#action_games" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 mb-4">
+            <img src="https://wallpapers.com/images/hd/action-games-1374-x-710-wallpaper-be9n5155e8om6y2z.jpg" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+            <h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">Action</h3>
+          </a>
+
+          <div class="grid gap-4 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2">
+            <a href="#horror_games" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40">
+              <img src="https://c4.wallpaperflare.com/wallpaper/170/868/859/friday-the-13th-the-game-best-game-horror-ps4-wallpaper-preview.jpg" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+              <h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">Horror</h3>
+            </a>
+
+            <a href="#sport_games" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40">
+              <img src="https://image.api.playstation.com/vulcan/ap/rnd/202409/1317/99b58b9ef1ac213e3d6de3860615f403276d537c6c36f12e.png" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+              <h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">Sport</h3>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-span-2 sm:col-span-1 md:col-span-1 h-auto md:h-full flex flex-col">
+          <a href="#rpg_games" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 flex-grow">
+            <img src="https://www.gamewallpapers.com/img_script/mobile_dir2/img.php?src=wallpaper_ioi_online_fantasy_rpg_01_1440x2560.jpg&width=253&height=450&crop-to-fit&sharpen" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out">
+            <h3 class="z-10 text-2xl font-medium text-white absolute top-0 left-0 p-4 xs:text-xl md:text-3xl">RPG</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center pt-4">
+    <a href="#" class="inline-block flex items-center justify-center mb-5 text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-600">
+      <img src="pics/fooldal_logo_2-removebg-preview.png" class="h-12 mr-3 sm:h-9" alt="logo">
+      ByteShop
+    </a>
+  
+    <span class="block text-sm text-center text-gray-500">© 2024-2025 ByteShop™. Minden jog fenttartva.</span>
+  
+    <ul class="flex justify-center mt-5 space-x-5">
+      <li>
+        <a href="#" class="text-gray-500 hover:text-gray-900">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-gray-500 hover:text-gray-900">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-gray-500 hover:text-gray-900">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-gray-500 hover:text-gray-900">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-gray-500 hover:text-gray-900">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <script>
+    // Get the 'to top' button element by ID
+    var toTopButton = document.getElementById("to-top-button");
+
+    // Check if the button exists
+    if (toTopButton) {
+
+      // On scroll event, toggle button visibility based on scroll position
+      window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+          toTopButton.classList.remove("hidden");
+        } else {
+          toTopButton.classList.add("hidden");
+        }
+      };
+
+      // Function to scroll to the top of the page smoothly
+      window.goToTop = function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      };
+    }
+
+    function toggleMenu() {
+    const menu = document.getElementById('dropdown-menu');
+    menu.classList.toggle('hidden');
+  }
+  </script>
 </body>
+
 </html>

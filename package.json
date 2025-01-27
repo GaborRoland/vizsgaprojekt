@@ -17,5 +17,8 @@
     "mysql2": "^3.11.5",
     "nodemon": "^2.0.22",
     "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }
