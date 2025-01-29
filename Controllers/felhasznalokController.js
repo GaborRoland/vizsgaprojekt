@@ -46,7 +46,7 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
         const isPasswordValid = await bcrypt.compare(jelszo1, felhasznalo.jelszo);
 
         if (isPasswordValid) {
-            return res.send('Sikeres bejelentkezés!');
+            return  res.redirect('/');
         } else {
             return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
         }

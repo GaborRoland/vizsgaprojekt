@@ -11,5 +11,3 @@ function Megjelenites(){
         password.type = "password"
     }
 }
-
-//Adatbázissal szórakozás

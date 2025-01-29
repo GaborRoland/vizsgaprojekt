@@ -9,6 +9,8 @@
 </head>
 
 <body>
+  <button> <a href="register.html">Ide</a> </button>
+  <button> <a href="login.html">Ide</a> </button>
   <!-- Oldal tetejére gomb -->
   <button id="to-top-button" onclick="goToTop()" title="Go To Top" class="to-top-button">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
@@ -28,7 +30,7 @@
       <!-- Kereső menü -->
       <div class="search-menu">
         <div class="search-input-container">
-          <input placeholder="Keresés..." class="search-input" name="search" />
+          <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/>
           <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linejoin="round" stroke-linecap="round"></path>
           </svg>
@@ -76,56 +78,54 @@
       </div>
     </section>
 
-    <section id="termekek" class="products">
+    <section class="products">
       <h2 class="section-title">Újonnan érkezett játékaink</h2>
       <div class="product-list">
         <div class="product-card">
           <img src="pics/game-49.png" alt="termek">
-          <h3>Játék neve</h3>
+          <h3>Supermarket Simulator</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <span class="price">HUF6,400</span>
+        </div>
+
+        <div class="product-card">
+          <img src="pics/game-49.png" alt="termek">
+          <h3>Callisto Protocol</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           <span class="price">HUF3,200</span>
         </div>
 
         <div class="product-card">
           <img src="pics/game-49.png" alt="termek">
-          <h3>Játék neve</h3>
+          <h3>Stray</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <span class="price">HUF3,200</span>
-        </div>
-
-        <div class="product-card">
-          <img src="pics/game-49.png" alt="termek">
-          <h3>Játék neve</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <span class="price">HUF3,200</span>
+          <span class="price">HUF1,000</span>
         </div>
       </div>
     </section>
+
+
+    <!-- Keresett játékok megjelenítése -->
+    <h2 class="section-title" id="keresescim" style="visibility: hidden;">Kiböngészett játékok</h2>
+    <section class="products">
+      <div class="product-list" id="kereses" style="visibility: hidden;">
+
+        </div>
+    </section>
+
+
   </main>
 
-  <footer class="footer">
+  <!-- <footer class="footer">
     <a href="#" class="footer-logo">
       <img src="pics/fooldal_logo_2-removebg-preview.png" alt="logo">
       ByteShop
     </a>
     <span class="footer-copy">&copy; 2024-2025 ByteShop™. Minden jog fenttartva.</span>
-  </footer>
+  </footer> -->
 
-  <script>
-    const toTopButton = document.getElementById("to-top-button");
-
-    window.onscroll = function () {
-      if (document.documentElement.scrollTop > 500) {
-        toTopButton.classList.add("visible");
-      } else {
-        toTopButton.classList.remove("visible");
-      }
-    };
-
-    function goToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+  
+  <script src="fooldal.js"></script>
 </body>
 
 </html>

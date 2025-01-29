@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 
 // mysql adatbázis kapcsolat létrehozása
-const sequelize = new Sequelize('proba', 'root', '',{
+const sequelize = new Sequelize('jatekbusiness', 'root', '',{
   dialect: 'mysql',
 });
 
