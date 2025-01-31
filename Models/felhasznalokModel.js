@@ -1,7 +1,6 @@
 // models/felhasznalok.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../server/database');
-const bcrypt = require('bcrypt'); //npm install bcrypt (a jelszó titkosítására)
 
 // felhasznalok modell definiálása
 const Felhasznalok = sequelize.define('felhasznalok', {
