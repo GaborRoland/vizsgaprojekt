@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./src/output.css" rel="stylesheet">
+  <title>Főoldal</title>
+</head>
+
+<body>
+  <button> <a href="./login/register.html">Ide</a> </button>
+  <button> <a href="./login/login.html">Ide</a> </button>
+  <!-- Oldal tetejére gomb -->
+  <button id="to-top-button" onclick="goToTop()" title="Go To Top" class="to-top-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
+      <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
+    </svg>
+  </button>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo">
+        <img src="pics/fooldal_logo_2-removebg-preview.png" alt="Logo" />
+        <span>ByteShop</span>
+      </a>
+
+      <!-- Kereső menü -->
+      <div class="search-menu">
+        <div class="search-input-container">
+          <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/>
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+        </div>
+
+        <!-- Bevásárlókosár gomb -->
+        <a href="#" class="cart-button">
+          <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
+          </svg>
+        </a>
+
+        <!-- Felhasználó gomb -->
+        <button type="button" class="user-menu-button">
+          <img class="user-icon" src="pics/65476-200.png" alt="felhasználó ikon">
+        </button>
+      </div>
+
+      <!-- Menüpontok -->
+      <div class="navbar-menu">
+        <ul class="menu-list">
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#hirek">Hírek</a></li>
+          <li><a href="#termekek">Termékek</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Üdvözlünk a <span class="highlight">ByteShop</span> oldalán.
+          </h1>
+          <p class="hero-description">
+            Merülj el a gaming univerzumában! Weboldalunkon megtalálsz mindent, amire egy gamer vágyhat: a legújabb videojátékok, izgalmas hírek és friss tartalmak várnak rád.
+          </p>
+          <button class="cta-button" onclick="window.location.href='index.html#termekek'">Kezdjünk bele!</button>
+        </div>
+        <div class="hero-image">
+          <img src="pics/hero_section_img.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="products">
+      <h2 class="section-title">Újonnan érkezett játékaink</h2>
+      <div class="product-list">
+        <div class="product-card">
+          <img src="pics/game-49.png" alt="termek">
+          <h3>Supermarket Simulator</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <span class="price">HUF6,400</span>
+        </div>
+
+        <div class="product-card">
+          <img src="pics/game-49.png" alt="termek">
+          <h3>Callisto Protocol</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <span class="price">HUF3,200</span>
+        </div>
+
+        <div class="product-card">
+          <img src="pics/game-49.png" alt="termek">
+          <h3>Stray</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <span class="price">HUF1,000</span>
+        </div>
+      </div>
+
+      <% jatekok.forEach(game => { %>
+        <div class="product-card">
+          <h3><%= game.jatek_nev %></h3>
+          <img class="cover" src="pics/game-49.png">
+          <p><%= game.leiras %></p>
+          <span class="price">Ár: <%= game.kategoria_id%> Ft</span>
+        </div>
+      <% }) %>
+    </section>
+
+
+
+    <!-- Keresett játékok megjelenítése -->
+    <h2 class="section-title" id="keresescim" style="visibility: hidden;">Kiböngészett játékok</h2>
+    <section class="products">
+      <div class="product-list" id="kereses" style="visibility: hidden;">
+
+        </div>
+    </section>
+
+
+  </main>
+
+  <!-- <footer class="footer">
+    <a href="#" class="footer-logo">
+      <img src="pics/fooldal_logo_2-removebg-preview.png" alt="logo">
+      ByteShop
+    </a>
+    <span class="footer-copy">&copy; 2024-2025 ByteShop™. Minden jog fenttartva.</span>
+  </footer> -->
+
+  
+  <script src="fooldal.js"></script>
+</body>
+
+</html>

@@ -37,6 +37,9 @@ const Jatekok = sequelize.define('jatekok', {
   freezeTableName: true,// Ez biztosítja, hogy a tábla neve 'felhasznalok' maradjon, és ne változzon többes számúvá
 });
 
-Jatekok.belongsTo(Kategoriak, { foreignKey: 'kategoria_id' });
+Jatekok.associate = (models) => {
+  Jatekok.belongsTo(models.Kategoriak, {foreignKey: 'kategoria_id'})
+}
+// Jatekok.belongsTo(Kategoriak, { foreignKey: 'kategoria_id' });
 
 module.exports = Jatekok;

@@ -1,6 +1,7 @@
 // models/jatekok.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../server/database');
+const Jatekok = require('./jatekokModel');
 
 // kategoriak modell definiálása
 const Kategoriak = sequelize.define('kategoriak', {
@@ -26,6 +27,10 @@ const Kategoriak = sequelize.define('kategoriak', {
   freezeTableName: true,// Ez biztosítja, hogy a tábla neve 'felhasznalok' maradjon, és ne változzon többes számúvá
 });
 
-Kategoriak.hasMany(require('./jatekokModel'), { foreignKey: 'kategoria_id' });
+Kategoriak.associate = (models) => {
+  Kategoriak.hasMany(models.Jatekok, {foreignKey: 'kategoria_id'})
+}
+
+// Kategoriak.hasMany(Jatekok, { foreignKey: 'kategoria_id' });
 
 module.exports = Kategoriak;
