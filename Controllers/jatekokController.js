@@ -1,12 +1,20 @@
+//jatekokController.js
 const bcrypt = require('bcrypt');
 const Jatekok = require('../Models/jatekokModel'); 
+const Kategoria = require('../Models/kategoriakModel');
 
 exports.OsszesJatekok = async function JatekKereses(req, res) {
     try {
         let jatekok = await Jatekok.findAll({
-            attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id']
+            attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id'],
+            include: [{
+                model: Kategoria,
+                as: 'kategoria',
+                attributes: ['kategoriak_ar']
+            }]
         });
-        res.render('index',{jatekok}); 
+        // console.log(jatekok);
+        res.render('index', { jatekok: jatekok });
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
     }

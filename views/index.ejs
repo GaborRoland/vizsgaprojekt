@@ -4,13 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/output.css" rel="stylesheet">
+  <link href="output.css" rel="stylesheet">
   <title>Főoldal</title>
 </head>
 
 <body>
-  <button> <a href="./login/register.html">Ide</a> </button>
-  <button> <a href="./login/login.html">Ide</a> </button>
+  <a href="/login/register.html">
+    <button>Regisztráció</button>
+  </a>  
+  <a href="/login/login.html">
+    <button>Bejelentkezés</button>
+  </a>
   <!-- Oldal tetejére gomb -->
   <button id="to-top-button" onclick="goToTop()" title="Go To Top" class="to-top-button">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
@@ -108,7 +112,7 @@
           <h3><%= game.jatek_nev %></h3>
           <img class="cover" src="pics/game-49.png">
           <p><%= game.leiras %></p>
-          <span class="price">Ár: <%= game.kategoria_id%> Ft</span>
+          <span class="price">Ár: <%= game.kategoria.kategoriak_ar %> Ft</span>
         </div>
       <% }) %>
     </section>

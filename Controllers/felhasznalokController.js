@@ -22,7 +22,7 @@ exports.felhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
                 felhasznalo_nev: nev,
                 jelszo: hashedPassword,
             });
-            res.redirect('/'); 
+            res.redirect('/jatekok'); 
         } catch (error) {
             console.error('Hiba történt a felhasználó létrehozása közben:', error);
             res.status(500).send('Hiba történt a felhasználó létrehozása során.');
@@ -46,7 +46,7 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
         const isPasswordValid = await bcrypt.compare(jelszo1, felhasznalo.jelszo);
 
         if (isPasswordValid) {
-            return  res.redirect('/');
+            return  res.redirect('/jatekok');
         } else {
             return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
         }
