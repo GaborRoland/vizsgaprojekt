@@ -33,12 +33,11 @@
 
       <!-- Kereső menü -->
       <div class="search-menu">
-        <div class="search-input-container">
-          <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/>
-          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linejoin="round" stroke-linecap="round"></path>
-          </svg>
-        </div>
+       <form action="/kereses" method="POST">
+         <div class="search-input-container">
+           <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit">Keresés</button>
+         </div>
+       </form>
 
         <!-- Bevásárlókosár gomb -->
         <a href="#" class="cart-button">
@@ -83,48 +82,42 @@
     </section>
 
     <section class="products">
-      <h2 class="section-title">Újonnan érkezett játékaink</h2>
+      <%if(jatekok && jatekok.length > 0){ %>
+      <h2 class="section-title">Játékaink</h2>
       <div class="product-list">
-        <div class="product-card">
-          <img src="pics/game-49.png" alt="termek">
-          <h3>Supermarket Simulator</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <span class="price">HUF6,400</span>
+        <% jatekok.forEach(game => { %>
+        
+          <div class="product-card">
+            <img class="cover" src="pics/game-49.png">
+            <h3><%= game.jatek_nev %></h3>
+            <p><%= game.leiras %></p>
+            <span class="price">Ár: <%= game.kategoria.kategoriak_ar %> Ft</span>
+          </div>
+          <% }) %>
+          <% } %>
         </div>
-
-        <div class="product-card">
-          <img src="pics/game-49.png" alt="termek">
-          <h3>Callisto Protocol</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <span class="price">HUF3,200</span>
-        </div>
-
-        <div class="product-card">
-          <img src="pics/game-49.png" alt="termek">
-          <h3>Stray</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <span class="price">HUF1,000</span>
-        </div>
-      </div>
-
-      <% jatekok.forEach(game => { %>
-        <div class="product-card">
-          <h3><%= game.jatek_nev %></h3>
-          <img class="cover" src="pics/game-49.png">
-          <p><%= game.leiras %></p>
-          <span class="price">Ár: <%= game.kategoria.kategoriak_ar %> Ft</span>
-        </div>
-      <% }) %>
     </section>
 
 
 
-    <!-- Keresett játékok megjelenítése -->
-    <h2 class="section-title" id="keresescim" style="visibility: hidden;">Kiböngészett játékok</h2>
-    <section class="products">
-      <div class="product-list" id="kereses" style="visibility: hidden;">
 
-        </div>
+    <!-- Keresett játékok megjelenítése -->
+    <section class="products">
+      <%if(keresett && keresett.length > 0){ %>
+        <h2 class="section-title" id="keresescim">Kiböngészett játékok</h2>
+      <div class="product-list" id="kereses">     
+        <% keresett.forEach(talalat => { %>
+          <div class="product-card">
+            <img class="cover" src="pics/game-49.png">
+            <h3><%= talalat.jatek_nev %></h3>
+            <p><%= talalat.leiras %></p>
+            <span class="price">Ár: <%= talalat.kategoria.kategoriak_ar %> Ft</span>
+          </div>
+          <% }) %>
+          <% } else if(keresett.length == 0) { %>
+            <h2 class="section-title">Nincs találat a keresésre.</h2>
+          <% } %>
+      </div>
     </section>
 
 

@@ -20,16 +20,20 @@ app.use(express.urlencoded({ extended: true })); // Az űrlapadatokat URL-kódol
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
+/*
 // Kezdő oldal, amely a login/index.html fájlt szolgáltatja
 app.get('/', (req, res) => {
     res.render(path.join(__dirname, '../views', 'index'));
 });
+*/
+
 
 // Felhasználói route-ok
 app.use('/users', FelhasznalokRoutes); // /users route kezelés
 //app.use('/', FelhasznalokRoutes); // Az alap URL-hez is rendeljük a felhasználói route-okat
-app.use('/jatekok', JatekokRoutes);
+app.use('/', JatekokRoutes);
 app.use('/kategoriak', kategoriakRoutes);
+
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/jatekok`); // Szerver elindítása
