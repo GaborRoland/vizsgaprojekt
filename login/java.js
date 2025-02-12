@@ -11,3 +11,12 @@ function Megjelenites(){
         password.type = "password"
     }
 }
+
+function Login() {
+    const username = document.getElementById("felhasznalonev").value;
+    
+    if (username) {
+        sessionStorage.setItem("loggedInUser", username);
+        window.location.replace = "index.ejs"; // Átirányítás a főoldalra
+    }
+}

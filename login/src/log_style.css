@@ -86,6 +86,19 @@ body{
 /* PC */
 @media only screen and (min-width: 1200px) 
 {
+    .back-to-main {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: fit-content;
+        height: 56px;
+        background: linear-gradient(to bottom right, #facc15, #ea580c, #db2777);
+        color: white;
+        /* border-radius: 50%; */
+        /* display: none; */
+        align-items: center;
+        justify-content: center;
+      }
     
     .image {
         position: absolute;
@@ -339,5 +352,4 @@ body{
         color: #262626;
     }
 }
-
 

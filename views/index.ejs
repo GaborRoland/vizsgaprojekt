@@ -9,12 +9,7 @@
 </head>
 
 <body>
-  <a href="../login/register.html">
-    <button>Regisztráció</button>
-  </a>  
-  <a href="../login/login.html">
-    <button>Bejelentkezés</button>
-  </a>
+ 
   <!-- Oldal tetejére gomb -->
   <button id="to-top-button" onclick="goToTop()" title="Go To Top" class="to-top-button">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
@@ -26,7 +21,7 @@
     <div class="navbar-container">
 
       <!-- Logo -->
-      <a href="index.ejs" class="navbar-logo">
+      <a href="#" class="navbar-logo">
         <img src="pics/fooldal_logo_2-removebg-preview.png" alt="Logo" />
         <span>ByteShop</span>
       </a>
@@ -35,7 +30,7 @@
       <div class="search-menu">
        <form action="/kereses" method="POST">
          <div class="search-input-container">
-           <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit">Keresés</button>
+           <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit" id="searchbutton">Keresés</button>
          </div>
        </form>
        
@@ -51,10 +46,16 @@
       <!-- Menüpontok -->
       <div class="navbar-menu">
         <ul class="menu-list">
-          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a onclick="goToFooter()">Rólunk</a></li>
           <li><a href="#hirek">Hírek</a></li>
           <li><a href="#termekek">Termékek</a></li>
-          <li><a href="#felhasznalo">Felhasználó</a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn" id="felhasz"></a>
+            <div class="dropdown-content">
+              <a href="../login/login.html" id="log">Bejelentkezés</a>
+              <a href="../login/register.html" id="reg">Regisztráció</a>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -70,7 +71,7 @@
           <p class="hero-description">
             Merülj el a gaming univerzumában! Weboldalunkon megtalálsz mindent, amire egy gamer vágyhat: a legújabb videojátékok, izgalmas hírek és friss tartalmak várnak rád.
           </p>
-          <button class="cta-button"><a href="#products">Kezdjünk bele!</a></button>
+          <button class="cta-button" onclick="goToGames()">Kezdjünk bele!</button>
         </div>
         <div class="hero-image">
           <img src="pics/hero_section_img.png" alt="">
@@ -80,7 +81,7 @@
 
     <section class="products">
       <%if(jatekok && jatekok.length > 0){ %>
-      <h2 class="section-title">Játékaink</h2>
+      <h2 class="section-title" id="section-title">Játékaink</h2>
       <div class="product-list">
         <% jatekok.forEach(game => { %>
         
@@ -121,13 +122,13 @@
 
   </main>
 
-  <!-- <footer class="footer">
+  <footer class="footer" id="footer">
     <a href="#" class="footer-logo">
       <img src="pics/fooldal_logo_2-removebg-preview.png" alt="logo">
       ByteShop
     </a>
     <span class="footer-copy">&copy; 2024-2025 ByteShop™. Minden jog fenttartva.</span>
-  </footer> -->
+  </footer>
 
   
   <script src="fooldal.js"></script>
