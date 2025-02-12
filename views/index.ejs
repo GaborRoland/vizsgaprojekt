@@ -9,10 +9,10 @@
 </head>
 
 <body>
-  <a href="/login/register.html">
+  <a href="../login/register.html">
     <button>Regisztráció</button>
   </a>  
-  <a href="/login/login.html">
+  <a href="../login/login.html">
     <button>Bejelentkezés</button>
   </a>
   <!-- Oldal tetejére gomb -->
@@ -26,7 +26,7 @@
     <div class="navbar-container">
 
       <!-- Logo -->
-      <a href="index.html" class="navbar-logo">
+      <a href="index.ejs" class="navbar-logo">
         <img src="pics/fooldal_logo_2-removebg-preview.png" alt="Logo" />
         <span>ByteShop</span>
       </a>
@@ -38,19 +38,15 @@
            <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit">Keresés</button>
          </div>
        </form>
-
-        <!-- Bevásárlókosár gomb -->
-        <a href="#" class="cart-button">
-          <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
-          </svg>
-        </a>
-
-        <!-- Felhasználó gomb -->
-        <button type="button" class="user-menu-button">
-          <img class="user-icon" src="pics/65476-200.png" alt="felhasználó ikon">
-        </button>
+       
       </div>
+      
+      <!-- Bevásárlókosár gomb --> 
+      <a href="#" class="cart-button">
+        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
+        </svg>
+      </a>
 
       <!-- Menüpontok -->
       <div class="navbar-menu">
@@ -58,6 +54,7 @@
           <li><a href="#rolunk">Rólunk</a></li>
           <li><a href="#hirek">Hírek</a></li>
           <li><a href="#termekek">Termékek</a></li>
+          <li><a href="#felhasznalo">Felhasználó</a></li>
         </ul>
       </div>
     </div>
@@ -73,7 +70,7 @@
           <p class="hero-description">
             Merülj el a gaming univerzumában! Weboldalunkon megtalálsz mindent, amire egy gamer vágyhat: a legújabb videojátékok, izgalmas hírek és friss tartalmak várnak rád.
           </p>
-          <button class="cta-button" onclick="window.location.href='index.html#termekek'">Kezdjünk bele!</button>
+          <button class="cta-button"><a href="#products">Kezdjünk bele!</a></button>
         </div>
         <div class="hero-image">
           <img src="pics/hero_section_img.png" alt="">
@@ -103,6 +100,7 @@
 
     <!-- Keresett játékok megjelenítése -->
     <section class="products">
+      <a href="#products"></a>
       <%if(keresett && keresett.length > 0){ %>
         <h2 class="section-title" id="keresescim">Kiböngészett játékok</h2>
       <div class="product-list" id="kereses">     
