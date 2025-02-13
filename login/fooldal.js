@@ -7,6 +7,7 @@ let log = document.getElementById("log");
 let loggedin = false;
 const jatekaink = document.getElementById("section-title");
 const footer = document.getElementById("footer");
+const keresoinput = document.querySelector('search-input');
 
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 500) {
@@ -58,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
   sessionStorage.removeItem("loggedInUser");
   window.location.replace("login.html");
 }
+
+
 
 
 

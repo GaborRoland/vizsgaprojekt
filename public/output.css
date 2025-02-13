@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,7 +7,7 @@ body {
   color: white;
 }
 
-/* Responsive Utilities */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -23,7 +23,6 @@ body {
 }
 
 
-/* Button Styles */
 .to-top-button {
   position: fixed;
   bottom: 10px;
@@ -48,7 +47,7 @@ body {
   height: 24px;
 }
 
-/* Navbar */
+
 .navbar {
   background-color: #0f172a;
   padding: 15px 20px;
@@ -102,7 +101,7 @@ body {
   color: #f97316;
 }
 
-/* Responsive Navbar */
+
 @media (max-width: 768px) {
   .navbar-container {
     flex-wrap: wrap;
@@ -158,7 +157,7 @@ body {
   transform: scale(1.1);
 }
 
-/* Hero Image */
+
 .hero-image {
   margin-top: 20px;
   text-align: center;
@@ -169,7 +168,7 @@ body {
   height: auto;
 }
 
-/* Responsive Hero */
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 28px;
@@ -236,14 +235,14 @@ body {
   font-weight: bold;
 }
 
-/* Responsive Products */
+
 @media (max-width: 768px) {
   .product-list {
     grid-template-columns: 1fr;
   }
 }
 
-/* Footer */
+
 .footer {
   text-align: center;
   padding: 20px;
@@ -269,8 +268,8 @@ body {
   font-size: 14px;
 }
 
-/* General Responsive Styles */
-@media (max-width: 480px) {
+
+@media (min-width: 480px) {
   .section-title {
     font-size: 24px;
   }
@@ -327,6 +326,7 @@ body {
   transition: color 0.3s;
   
 }
+
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -361,3 +361,55 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
+@media only screen and (min-width: 365px) and (max-width: 874px) {
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+  .search-input-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .search-input {
+    width: 70%;
+    padding: 8px; 
+  }
+
+  #searchbutton {
+    display: inline-block;
+    padding: 8px;
+    background-color: transparent;
+    color: white;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+  
+  }
+  
+  #searchbutton:hover{
+    color: #ea580c;
+    transition: color 0.3s;
+    
+  }
+  
+
+  .cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }
+}
+
+
+

@@ -12,6 +12,7 @@ body{
     background-position: center left;
     animation: backgroundslide_right 40s infinite;
     animation-direction: alternate;
+    color: white;
     
 }
   
@@ -116,10 +117,13 @@ body{
         display: grid;
         place-items: center;
         height: 100vh;
+        margin-bottom: 80px; /* Adj helyet a gombnak */
+
     }
     
     .panel {
-        width: 38vw;
+        width: 60%;
+        max-width: 600px;
         height: auto;
         padding: 7vw;
         color: #fff;
@@ -175,7 +179,7 @@ body{
     .panel input[type=checkbox], a {
         text-decoration: none;
         color:#d9fdff;
-        width: 20px;
+        width: 40px;
         
     }
     
@@ -205,6 +209,7 @@ body{
         display: grid;
         place-items: center;
         height: 100vh;
+        margin-bottom: 80px; /* Adj helyet a gombnak */
     }
     
     .panel {
@@ -250,8 +255,9 @@ body{
     
     .jelszo {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         margin-bottom: 20px;
+        max-width: 100%;
     }
     
     
@@ -259,14 +265,27 @@ body{
     .panel input[type=checkbox], a {
         text-decoration: none;
         color:#d9fdff;
-        width: 20px;
-        
+        width: 20px;   
     }
     
     .panel button {
         background: #fff;
         color: #262626;
     }
+
+    .back-to-main {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: fit-content;
+        height: 40px;
+        background: linear-gradient(to bottom right, #facc15, #ea580c, #db2777);
+        color: white;
+        /* border-radius: 50%; */
+        /* display: none; */
+        align-items: center;
+        justify-content: center;
+      }
 }
 
 /* Telefon */
@@ -288,6 +307,7 @@ body{
         display: grid;
         place-items: center;
         height: 100vh;
+        margin-bottom: 80px; /* Adj helyet a gombnak */
     }
     
     .panel {
@@ -334,8 +354,7 @@ body{
     
     .jelszo {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: space-around;
         margin-bottom: 20px;
     }
     
@@ -351,5 +370,12 @@ body{
         background: #fff;
         color: #262626;
     }
+
+    .back-to-main {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        visibility: hidden;
+      }
 }
 
