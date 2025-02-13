@@ -208,6 +208,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
 .product-card:hover {
@@ -300,6 +301,15 @@ body {
   height: 24px;
 }
 
+.termek{
+  color: white;
+  cursor: pointer;
+}
+
+.termek:hover{
+  color: #ea580c;
+}
+
 .search-input{
   border-radius: 15px;
   padding: 5px;
@@ -328,6 +338,7 @@ body {
 }
 
 li a, .dropbtn {
+  cursor: pointer;
   display: inline-block;
   color: white;
   text-align: center;
@@ -349,7 +360,7 @@ li.dropdown {
 }
 
 .dropdown-content a {
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
