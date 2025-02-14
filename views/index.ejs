@@ -28,7 +28,7 @@
 
       <!-- Kereső menü -->
       <div class="search-menu">
-       <form action="/kereses" method="POST">
+       <form action="/" method="POST">
          <div class="search-input-container">
            <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit" id="searchbutton">Keresés</button>
          </div>
@@ -43,8 +43,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
           </svg>
 
-          <div class="dropdown-content" id="ossztermek">
-            <a href="javascript:void(0)" class="dropbtn termek" id="ures">A kosár még üres.</a>
+          <div class="dropdown-content" id="ossztermek" style="visibility: hidden;">
+            <!-- <a href="javascript:void(0)" class="dropbtn termek" id="ures">A kosár még üres.</a> -->
           </div>
     </div>
 
@@ -95,6 +95,8 @@
             <h3 class="title"><%= game.jatek_nev %></h3>
             <p><%= game.leiras %></p>
             <span class="price">Ár: <span class="price2"><%= game.kategoria.kategoriak_ar %></span> Ft</span>
+            <input type="number" name="db" class="db" min="1" placeholder="db">
+            <input type="button" value="Kosárba" class="gomb">
           </div>
           <% }) %>
           <% } %>
@@ -113,9 +115,11 @@
         <% keresett.forEach(talalat => { %>
           <div class="product-card">
             <img class="cover" src="pics/game-49.png">
-            <h3><%= talalat.jatek_nev %></h3>
+            <h3 class="title"><%= talalat.jatek_nev %></h3>
             <p><%= talalat.leiras %></p>
-            <span class="price">Ár: <%= talalat.kategoria.kategoriak_ar %> Ft</span>
+            <span class="price">Ár: <span class="price2"><%= talalat.kategoria.kategoriak_ar %></span>  Ft</span>
+            <input type="number" name="db" class="db" min="1" placeholder="db">
+            <input type="button" value="Kosárba" class="gomb">
           </div>
           <% }) %>
           <% } else if(keresett.length == 0) { %>

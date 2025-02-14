@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', OsszesJatekok);
 router.post('/hozzaadas', JatekLetrehozas);
-router.post('/kereses', KeresoMezo);
+router.post('/', KeresoMezo);
 
 
 module.exports = router;

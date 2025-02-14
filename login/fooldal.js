@@ -15,6 +15,8 @@ const AllPrice = document.querySelectorAll(".price2");
 const AllProducts = document.querySelectorAll(".product-card");
 const ossztermek = document.getElementById("ossztermek");
 const ures = document.getElementById("ures");
+const user = sessionStorage.getItem("loggedInUser");
+let osszegar = 0;
 
 //Oldal tetejére visszamenő gomb megjelenítése egy bizonyos méret után
 window.onscroll = function () {
@@ -40,7 +42,7 @@ function goToFooter() {
 
 //Felhasználó bejelentkeztetése
 document.addEventListener("DOMContentLoaded", function() {
-  const user = sessionStorage.getItem("loggedInUser");
+  
 
   console.log("Bejelentkezett felhasználó:", user); // Debugging üzenet
 
@@ -53,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
         loggedin = true;
         document.getElementById("reg").innerHTML = "Beállítások";
         cart.style.display = "block";
+        ossztermek.style.visibility = "visible";
 
       }
 
@@ -72,41 +75,71 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 //Kosár feltöltése
-document.addEventListener("DOMContentLoaded", () => {
-  let storedItems = JSON.parse(localStorage.getItem("kosar")) || [];
-  storedItems.forEach(item => addToCart(item.title, item.price));
-});
-
-let osszegar = 0;
 let a2 = document.createElement("a");
-ossztermek.appendChild(a2);
+if(user)
+  {
+    document.addEventListener("DOMContentLoaded", () => {
+      osszegar = parseInt(localStorage.getItem("osszegar")) || 0;
+      a2.innerHTML = `Összegár: ${osszegar} Ft`;
 
-AllProducts.forEach(button => {
-  button.addEventListener("click", event => {
-      let clickedCard = event.currentTarget;
-      let cim = clickedCard.querySelector('.title').innerHTML;
-      let ar = clickedCard.querySelector('.price2').innerHTML;
-
-      let vegcim = `${cim} ${ar} Ft`;
-      osszegar += parseInt(ar);
-      console.log(osszegar);
-      a2.innerHTML = "Összeg ár: " + osszegar + " Ft"; 
-
-      addToCart(cim, ar);
-
-      // Elmentjük a terméket a LocalStorage-ba
       let storedItems = JSON.parse(localStorage.getItem("kosar")) || [];
-      storedItems.push({ title: cim, price: ar });
-      localStorage.setItem("kosar", JSON.stringify(storedItems));
+      
+      storedItems.forEach(item => {
+        addToCart(item.title, item.price, item.summa); 
+      });
     });
-  });
+    
+    ossztermek.appendChild(a2);
+    
+    document.querySelectorAll(".product-card .gomb").forEach(button => {
+      button.addEventListener("click", event => {
+        let clickedCard = event.currentTarget.closest(".product-card");
+        let cim = clickedCard.querySelector('.title').innerHTML;
+        let ar = clickedCard.querySelector('.price2').innerHTML;
+        let db = clickedCard.querySelector('.db').value || 1;
+        
+        
+        // Elmentjük a terméket a LocalStorage-ba
+        let teljesAr = parseInt(ar) * parseInt(db);
+        osszegar += teljesAr;
 
-// Új elem hozzáadása a DOM-hoz
-function addToCart(title, price) {
-  ures.style.display = "none";
-  let a = document.createElement("a");
-  a.innerHTML = `${title} ${price} Ft`;
-  a.classList.add("dropbtn", "termek");
-  ossztermek.appendChild(a);
+        console.log(osszegar);
+
+        localStorage.setItem("osszegar", osszegar);
+        a2.innerHTML = `Összegár: ${osszegar} Ft`
+
+        let storedItems = JSON.parse(localStorage.getItem("kosar")) || [];
+        storedItems.push({summa: teljesAr, title: cim, price: ar, quantity: db });
+        localStorage.setItem("kosar", JSON.stringify(storedItems));
+        addToCart(cim, ar, teljesAr);
+        });
+
+      });
+    }
+    
+    // Új elem hozzáadása a DOM-hoz
+    function addToCart(title, price, summa) {
+      const input = document.createElement("input");
+      input.type = "button";
+      input.value = "🗑";
+      input.id = "trash";
+      input.setAttribute('onclick', 'Torles()');
+      input.classList.add("torles");
+      let a = document.createElement("a");
+      a.innerHTML = `${title} ${price} Ft `;
+      a.classList.add("dropbtn", "termek");
+      //a2.innerHTML = `Összegár: ${summa} Ft`
+    ossztermek.appendChild(a);
+    a.appendChild(input);
+
 }
 
+function Torles(){
+  document.querySelectorAll(".termek .torles").forEach(button => {
+    button.addEventListener("click", event => {
+      let clickedCard = event.currentTarget.closest(".termek");
+      clickedCard.remove();
+    });
+
+  });
+}

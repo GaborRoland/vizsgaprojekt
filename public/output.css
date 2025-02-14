@@ -307,7 +307,7 @@ body {
 }
 
 .termek:hover{
-  color: #ea580c;
+  color: white;
 }
 
 .search-input{
@@ -350,6 +350,18 @@ li.dropdown {
   display: inline-block;
 }
 
+#trash{
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#trash:hover{
+  color: #8fa6dd;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -367,7 +379,7 @@ li.dropdown {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {background-color: #1a2b53;}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -421,6 +433,5 @@ li.dropdown {
     padding: 8px;
   }
 }
-
 
 
