@@ -1,11 +1,15 @@
 # vizsgaprojekt
  
-#Tailwind CSS telepítése és futtatása:
-Terminal ablakot nyitsz
-Bemásolod a következő kódot: npm install -D tailwindcss@3.4.17
-Beírod a következő kódot: npm update
-Belépsz abba az almappába, amelyben az index.html fájl található
-Bemásolod a következő kódot: npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
-Innentől kezdve amíg be nem zárod az ablakot, ez a kód figyelni fogja a html fájlod, s bármely class név változtatáskor egyenes arányosan a css fájl is változik.
+# Jonapot :)
+Szili Nóra - Frontend és dokumentáció
+Jelen pillanatban a regisztrációs, belejentkezési és főoldal dizájnja kész, teljesen reszponzív, dinamikus elemekkel, működő gombokkal és űrlapokkal.
+A jövőben egy admin felület létrehozása a cél, amely szintén teljesen reszponzív, illetve a dokumentáció befejetése és finomítása.
 
-#Új gépen a próba adatbázist létre kell hozni !!
+Kunsági Virág - interaktivitás az oldalon/backend
+Jelenleg:kosár fejlesztése, majdnem kész
+Jövőbe:admin felületen UPDATE, DELETE, ADD parancsok összekötése az adatbázissal és működőképessé tenni.
+
+Gábor László Roland - Backend
+Jelenleg a kosár tökéletes működésén dolgozunk.
+A jövőben az admin felületünk API hvásain dolgozni, játék létrehozás (CREATE), játék módosítása (UPDATE) és jázék törlése (DELETE).
+
