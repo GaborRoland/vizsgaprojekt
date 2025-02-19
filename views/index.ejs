@@ -9,7 +9,7 @@
 </head>
 
 <body>
- 
+  <a href="admin.ejs">Admin</a>
   <!-- Oldal tetejére gomb -->
   <button id="to-top-button" onclick="goToTop()" title="Go To Top" class="to-top-button">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
@@ -30,7 +30,7 @@
       <div class="search-menu">
        <form action="/" method="POST">
          <div class="search-input-container">
-           <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit" id="searchbutton">Keresés</button>
+           <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit" class="searchbutton">Keresés</button>
          </div>
        </form>
        
@@ -95,7 +95,7 @@
             <h3 class="title"><%= game.jatek_nev %></h3>
             <p><%= game.leiras %></p>
             <span class="price">Ár: <span class="price2"><%= game.kategoria.kategoriak_ar %></span> Ft</span>
-            <input type="number" name="db" class="db" min="1" placeholder="db">
+            <input type="number" name="db" class="db" min="1" placeholder="db" value="1">
             <input type="button" value="Kosárba" class="gomb">
           </div>
           <% }) %>
@@ -118,7 +118,7 @@
             <h3 class="title"><%= talalat.jatek_nev %></h3>
             <p><%= talalat.leiras %></p>
             <span class="price">Ár: <span class="price2"><%= talalat.kategoria.kategoriak_ar %></span>  Ft</span>
-            <input type="number" name="db" class="db" min="1" placeholder="db">
+            <input type="number" name="db" class="db" min="1" placeholder="db" value="1">
             <input type="button" value="Kosárba" class="gomb">
           </div>
           <% }) %>

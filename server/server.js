@@ -20,12 +20,12 @@ app.use(express.urlencoded({ extended: true })); // Az űrlapadatokat URL-kódol
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
-/*
+
 // Kezdő oldal, amely a login/index.html fájlt szolgáltatja
-app.get('/', (req, res) => {
-    res.render(path.join(__dirname, '../views', 'index'));
-});
-*/
+app.get('/admin', (req, res) => {
+     res.render(path.join(__dirname, '../views', 'admin'));
+ });
+
 
 
 // Felhasználói route-ok

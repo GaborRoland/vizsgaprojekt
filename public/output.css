@@ -323,7 +323,7 @@ body {
   padding-left: 3px;
 }
 
-#searchbutton{
+.searchbutton{
   background-color: transparent;
   border: none;
   color: white;
@@ -331,7 +331,7 @@ body {
   font-size: 14px;
 }
 
-#searchbutton:hover{
+.searchbutton:hover{
   color: #ea580c;
   transition: color 0.3s;
   
@@ -406,7 +406,7 @@ li.dropdown {
     padding: 8px; 
   }
 
-  #searchbutton {
+  .searchbutton {
     display: inline-block;
     padding: 8px;
     background-color: transparent;
@@ -419,7 +419,7 @@ li.dropdown {
   
   }
   
-  #searchbutton:hover{
+  .searchbutton:hover{
     color: #ea580c;
     transition: color 0.3s;
     

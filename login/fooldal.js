@@ -73,8 +73,20 @@ document.addEventListener("DOMContentLoaded", function() {
   localStorage.clear();
 }
 
+
+//Rendelés gomb
+let rendelesGomb = document.createElement("input");
+rendelesGomb.type = "button";
+rendelesGomb.value = "Rendelés";
+rendelesGomb.setAttribute("id", "rendel");
+rendelesGomb.style.paddingBottom = "10px";
+rendelesGomb.style.margin = "10px";
+rendelesGomb.classList.add("searchbutton");
+rendelesGomb.setAttribute("onclick", "Megrendeles()");
+
 //Kosár feltöltése  
 let a2 = document.createElement("a");
+
 if(user)
   {
     document.addEventListener("DOMContentLoaded", () => {
@@ -84,13 +96,20 @@ if(user)
       let storedItems = JSON.parse(localStorage.getItem("kosar")) || [];
       
       storedItems.forEach(item => {
-        addToCart(item.title, item.price, item.summa); 
+        addToCart(item.title, item.price, item.summa);
       });
+
+      if(osszegar > 0)
+      {
+        ossztermek.appendChild(rendelesGomb);
+      }
+
+      
     });
     
     ossztermek.appendChild(a2);
     
-  
+    
     document.querySelectorAll(".product-card .gomb").forEach(button => {
       button.addEventListener("click", event => {
         let clickedCard = event.currentTarget.closest(".product-card");
@@ -103,15 +122,16 @@ if(user)
         osszegar += teljesAr;
         
         console.log(osszegar);
-
+        
         localStorage.setItem("osszegar", osszegar);
         a2.innerHTML = `Összegár: ${osszegar} Ft`
-
+        
         let storedItems = JSON.parse(localStorage.getItem("kosar")) || [];
         storedItems.push({summa: teljesAr, title: cim, price: ar, quantity: db });
         localStorage.setItem("kosar", JSON.stringify(storedItems));
         addToCart(cim, ar, teljesAr);
-        });
+        ossztermek.appendChild(rendelesGomb);
+      });
 
       });
     }
@@ -159,3 +179,12 @@ document.addEventListener("click", function(event) {
       Torles(event);
   }
 });
+
+
+//Rendelés gomb
+function Megrendeles(){
+  document.getElementById("rendel");
+  localStorage.clear();
+  location.reload();
+  alert("A vásárlás sikeres volt!");
+}
