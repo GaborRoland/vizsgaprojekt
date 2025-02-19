@@ -17,7 +17,6 @@ const ossztermek = document.getElementById("ossztermek");
 const ures = document.getElementById("ures");
 const user = sessionStorage.getItem("loggedInUser");
 let osszegar = 0;
-
 //Oldal tetejére visszamenő gomb megjelenítése egy bizonyos méret után
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 500) {
@@ -74,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
   localStorage.clear();
 }
 
-//Kosár feltöltése
+//Kosár feltöltése  
 let a2 = document.createElement("a");
 if(user)
   {
@@ -91,6 +90,7 @@ if(user)
     
     ossztermek.appendChild(a2);
     
+  
     document.querySelectorAll(".product-card .gomb").forEach(button => {
       button.addEventListener("click", event => {
         let clickedCard = event.currentTarget.closest(".product-card");
@@ -98,11 +98,10 @@ if(user)
         let ar = clickedCard.querySelector('.price2').innerHTML;
         let db = clickedCard.querySelector('.db').value || 1;
         
-        
         // Elmentjük a terméket a LocalStorage-ba
-        let teljesAr = parseInt(ar) * parseInt(db);
+        teljesAr = parseInt(ar) * parseInt(db);
         osszegar += teljesAr;
-
+        
         console.log(osszegar);
 
         localStorage.setItem("osszegar", osszegar);
@@ -121,25 +120,42 @@ if(user)
     function addToCart(title, price, summa) {
       const input = document.createElement("input");
       input.type = "button";
-      input.value = "🗑";
+      input.value = " 🗑";
       input.id = "trash";
       input.setAttribute('onclick', 'Torles()');
       input.classList.add("torles");
       let a = document.createElement("a");
-      a.innerHTML = `${title} ${price} Ft `;
+      a.innerHTML = `${title} ${summa} Ft`;
       a.classList.add("dropbtn", "termek");
-      //a2.innerHTML = `Összegár: ${summa} Ft`
     ossztermek.appendChild(a);
     a.appendChild(input);
 
 }
 
-function Torles(){
-  document.querySelectorAll(".termek .torles").forEach(button => {
-    button.addEventListener("click", event => {
-      let clickedCard = event.currentTarget.closest(".termek");
-      clickedCard.remove();
-    });
+function Torles(event) {
+  let clickedButton = event.target; 
+  let clickedItem = clickedButton.closest(".termek"); 
 
-  });
+  if (clickedItem) {
+      let priceText = clickedItem.innerHTML.match(/(\d+)\s*Ft/); // A \d egy vagy több számot keres. \s az a szóközöket figyeli. A *Ft pedig azt figyeli, hogy Ft-ra végződjön
+      if (priceText) {
+          let price = parseInt(priceText[1]);
+
+          osszegar -= price;
+          localStorage.setItem("osszegar", osszegar);
+          a2.innerHTML = `Összegár: ${osszegar} Ft`;
+
+          let storedItems = JSON.parse(localStorage.getItem("kosar")) || [];
+          storedItems = storedItems.filter(item => item.summa !== price);
+          localStorage.setItem("kosar", JSON.stringify(storedItems));
+      }
+
+      clickedItem.remove();
+  }
 }
+
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("torles")) {
+      Torles(event);
+  }
+});
