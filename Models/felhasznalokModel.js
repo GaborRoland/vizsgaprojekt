@@ -19,6 +19,10 @@ const Felhasznalok = sequelize.define('felhasznalok', {
   jelszo: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  adminisztrator: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   }
 },
 {

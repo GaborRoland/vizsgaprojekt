@@ -46,6 +46,7 @@ exports.KeresoMezo = async function (req, res) {
                     jatek_nev:{
                         [Op.like]: `%${search}%`
                     }
+
                 },
                 include: [{
                     model: Kategoria,

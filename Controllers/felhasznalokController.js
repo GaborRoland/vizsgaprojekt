@@ -21,6 +21,7 @@ exports.felhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
             await Felhasznalok.create({
                 felhasznalo_nev: nev,
                 jelszo: hashedPassword,
+                adminisztrator: 0
             });
             res.redirect('/login.html'); 
         } catch (error) {
@@ -45,11 +46,16 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
 
         const isPasswordValid = await bcrypt.compare(jelszo1, felhasznalo.jelszo);
 
-        if (isPasswordValid) {
-            return  res.redirect('/');
+        if (isPasswordValid && felhasznalo.adminisztrator === 0) {
+             return  res.redirect('/');
+        }
+        
+        if(felhasznalo.adminisztrator === 1 && isPasswordValid){
+            return res.redirect('/dashboard-xyz123');
         } else {
             return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
         }
+        
     } catch (error) {
         console.error('Hiba történt a bejelentkezés során:', error);
         res.status(500).send('Hiba történt a bejelentkezés során.');

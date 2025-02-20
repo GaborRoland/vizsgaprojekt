@@ -20,3 +20,7 @@ function Login() {
         window.location.replace = "index.ejs"; // Átirányítás a főoldalra
     }
 }
+
+function NincsFelhasz(){
+    sessionStorage.clear();
+}

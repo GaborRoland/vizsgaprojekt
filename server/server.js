@@ -22,11 +22,9 @@ app.set('views', path.join(__dirname, '../views'));
 
 
 // Kezdő oldal, amely a login/index.html fájlt szolgáltatja
-app.get('/admin', (req, res) => {
+app.get('/dashboard-xyz123', (req, res) => {
      res.render(path.join(__dirname, '../views', 'admin'));
  });
-
-
 
 // Felhasználói route-ok
 app.use('/users', FelhasznalokRoutes); // /users route kezelés
@@ -36,5 +34,5 @@ app.use('/kategoriak', kategoriakRoutes);
 
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}/jatekok`); // Szerver elindítása
+    console.log(`Server is running at http://localhost:${port}`); // Szerver elindítása
 });
