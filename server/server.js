@@ -21,16 +21,19 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
 
-// Kezdő oldal, amely a login/index.html fájlt szolgáltatja
 app.get('/dashboard-xyz123', (req, res) => {
      res.render(path.join(__dirname, '../views', 'admin'));
  });
 
-// Felhasználói route-ok
-app.use('/users', FelhasznalokRoutes); // /users route kezelés
-//app.use('/', FelhasznalokRoutes); // Az alap URL-hez is rendeljük a felhasználói route-okat
+//Routes
+app.use('/users', FelhasznalokRoutes);
 app.use('/', JatekokRoutes);
 app.use('/kategoriak', kategoriakRoutes);
+
+//Admin routes
+app.use("/admin/hozzaadas", JatekokRoutes);
+app.use("/admin/torles", JatekokRoutes);
+
 
 
 app.listen(port, () => {

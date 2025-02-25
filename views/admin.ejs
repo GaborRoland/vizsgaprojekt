@@ -1,15 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/output.css">
-    
-    <title>Admin felület</title>
+    <title>Admin Felület</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; }
+        form { margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <h1>Szia Admin :)</h1>
 
-    <script src="../login/admin.js"></script>
+    <h1>Játék Admin Felület</h1>
+
+    <h2>Játékok</h2>
+    <table>
+        <tr>
+            <th>Cím</th>
+            <th>Leírás</th>
+            <th>Ár</th>
+            <th>Művelet</th>
+        </tr>
+        <% Jatekok.forEach(game => { %>
+            <tr>
+                <td><%= game.jatek_nev %></td>
+                <td><%= game.leiras %></td>
+                <td><%= game.kategoria.kategoriak_ar %> Ft</td>
+                <td>
+                    <form action="/admin/torles" method="POST">
+                        <button type="submit">Törlés</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+    <h2>Új játék hozzáadása</h2>
+    <form action="/admin/hozzaadas" method="POST">
+        <input type="text" name="jatek_nev" placeholder="Név" required>
+        <input type="text" name="leiras" placeholder="Leírás" required>
+        <input type="number" name="kategoria" placeholder="Kategória" required>
+        <button type="submit">Hozzáadás</button>
+    </form>
+
 </body>
 </html>
