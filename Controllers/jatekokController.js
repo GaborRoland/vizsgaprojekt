@@ -21,7 +21,7 @@ exports.OsszesJatekok = async function JatekKereses(req, res) {
 };
 
 //Admin felületen játékok megjelenítése
-exports.OsszesJatekokAdmin = async function JatekKereses(req, res) {
+exports.OsszesJatekokAdmin = async function JatekKereses2(req, res) {
     try {
         let jatekok = await Jatekok.findAll({
             attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id'],
@@ -31,7 +31,8 @@ exports.OsszesJatekokAdmin = async function JatekKereses(req, res) {
                 attributes: ['kategoriak_ar']
             }]
         });
-        res.render('admin', { jatekok: jatekok, keresett : "" });
+        console.log(jatekok);
+        res.render('admin', {jatekok: jatekok});
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
     }
@@ -46,7 +47,7 @@ exports.JatekLetrehozasAdmin = async function JatekKereses(req, res) {
                 leiras: leiras,
                 kategoria_id: kategoria
             });
-            res.redirect('/admin'); 
+            res.redirect('dashboard-xyz123'); 
         } catch (error) {
             console.error('Hiba történt a játék létrehozása közben:', error);
             res.status(500).send('Hiba történt a játék létrehozása során.');
@@ -58,7 +59,7 @@ exports.JatekLetrehozasAdmin = async function JatekKereses(req, res) {
 exports.JatekTorlesAdmin = async function(req, res) {
     try {
       await Jatekok.destroy({ where: { id: req.params.id } });
-      res.redirect("/admin");
+      res.render('admin', jatekok);
     } catch (err) {
       res.status(500).send("Hiba a játék törlésekor");
     }

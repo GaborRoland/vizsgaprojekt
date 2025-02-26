@@ -7,6 +7,7 @@ require('../Models/associations'); //Itt állítjuk be a kapcsolatokat
 
 const FelhasznalokRoutes = require('../Routes/felhasznalokRoutes'); // Importálás a route-ot
 const JatekokRoutes = require('../Routes/jatekokRoutes');
+const AdminRoutes = require('../Routes/adminRoutes');
 const kategoriakRoutes = require('../Routes/kategoriakRoutes');
 
 app.use(express.json()); // JSON adatokat tud fogadni
@@ -21,9 +22,11 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
 
-app.get('/dashboard-xyz123', (req, res) => {
-     res.render(path.join(__dirname, '../views', 'admin'));
- });
+// app.get('/dashboard-xyz123', (req, res) => {
+//     res.render(path.join(__dirname, '../views', 'admin'));
+// });
+
+app.use("/dashboard-xyz123", AdminRoutes);
 
 //Routes
 app.use('/users', FelhasznalokRoutes);
@@ -31,8 +34,8 @@ app.use('/', JatekokRoutes);
 app.use('/kategoriak', kategoriakRoutes);
 
 //Admin routes
-app.use("/admin/hozzaadas", JatekokRoutes);
-app.use("/admin/torles", JatekokRoutes);
+// app.use("/dashboard-xyz123/hozzaadas", JatekokRoutes);
+// app.use("/dashboard-xyz123/torles", JatekokRoutes);
 
 
 
