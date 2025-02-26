@@ -16,32 +16,47 @@
     <h1>Játék Admin Felület</h1>
 
     <h2>Játékok</h2>
+
     <table>
         <tr>
             <th>Cím</th>
             <th>Leírás</th>
             <th>Ár</th>
-            <th>Művelet</th>
         </tr>
-        <% jatekok.forEach(game => { %>
-            <tr>
+        
+            <% jatekok.forEach(game => { %>
+                <tr>
                 <td><%= game.jatek_nev %></td>
                 <td><%= game.leiras %></td>
                 <td><%= game.kategoria.kategoriak_ar %> Ft</td>
-                <td>
-                    <form action="/admin/torles" method="POST">
-                        <button type="submit">Törlés</button>
-                    </form>
-                </td>
-            </tr>
-        <% }) %>
-    </table>
+                </tr>
+                <% }) %>
+            </table>
+
+        <form action="/dashboard-xyz123/torles" method="POST">
+            <div id="keszites2">
+                <label id="ummm">Játék törlése:</label>
+                <select id="torolnivalo" name="torolni">
+                    <option value="semmi" selected>-- Válaszd ki, amit törölni szeretnél --</option>
+                    <% jatekok.forEach(jatek => { %>
+                        <option value="<%= jatek.id %>" ><%= jatek.jatek_nev %></option>
+                    <% }) %>
+                </select>
+                <!-- <input type="text" name="torolni"value='Alma'> -->
+                <button type="submit">Játék törlése</button>
+            </div>
+        </form>
 
     <h2>Új játék hozzáadása</h2>
-    <form action="/admin/hozzaadas" method="POST">
+    <form action="/dashboard-xyz123/hozzaadas" method="POST">
         <input type="text" name="jatek_nev" placeholder="Név" required>
         <input type="text" name="leiras" placeholder="Leírás" required>
-        <input type="number" name="kategoria" placeholder="Kategória" required>
+        <select name="kategoria">
+            <option selected>-- Válaszd ki a kategóriát --</option>
+            <% jatekok.forEach(kateg => {%>
+                <option value="<%= kateg.kategoria_id %>"> <%= kateg.kategoria.kategoria %> (<%= kateg.kategoria.kategoriak_ar %> Ft) </option>
+                <% }) %>
+        </select>
         <button type="submit">Hozzáadás</button>
     </form>
 

@@ -3,8 +3,8 @@ const {JatekLetrehozasAdmin, OsszesJatekokAdmin, JatekTorlesAdmin} = require('..
 const router = express.Router();
 
 router.get('/', OsszesJatekokAdmin);
-// router.post('/admin', JatekTorlesAdmin)
-// router.post('/admin', JatekLetrehozasAdmin);
+router.post('/torles', JatekTorlesAdmin)
+router.post('/hozzaadas', JatekLetrehozasAdmin);
 
 
 module.exports = router;
