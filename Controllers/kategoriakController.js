@@ -43,3 +43,17 @@ exports.KategoriaTorles = async (req, res) => {
       res.status(500).send("Hiba a játék törlésekor");
     }
   };
+
+//Kategória frissítése
+exports.KategoriaFrissites = async (req, res) => {
+    const { kateg_nev2, ar2, frissiteni } = req.body;
+    console.log(req.body,frissiteni);
+    try {
+      let megtalalt = await Kategoriak.findOne({ where: { id: frissiteni } });
+      await megtalalt.update({kategoria: kateg_nev2, kategoriak_ar: ar2 });
+      res.redirect('/dashboard-xyz123/kategoria');
+      
+    } catch (err) {
+      res.status(500).send("Hiba a játék törlésekor");
+    }
+  };

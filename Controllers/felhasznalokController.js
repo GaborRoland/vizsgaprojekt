@@ -90,3 +90,23 @@ exports.FelhasznaloTorles = async (req, res) => {
       res.status(500).send("Hiba a játék törlésekor");
     }
   };
+
+exports.FelhasznaloFrissites = async (req, res) => {
+    const { felhasz_nev2, jelszomeg, admin2, frissiteni } = req.body;
+    try {
+        if(jelszomeg)
+        {
+            const hashedPassword2 = await bcrypt.hash(jelszomeg, 10); 
+            let megtalalt = await Felhasznalok.findOne({ where: { id: frissiteni } });
+            await megtalalt.update({felhasznalo_nev: felhasz_nev2, jelszo: hashedPassword2, adminisztrator: admin2 });
+        }
+        else{ 
+            let megtalalt = await Felhasznalok.findOne({ where: { id: frissiteni } });
+            await megtalalt.update({felhasznalo_nev: felhasz_nev2, adminisztrator: admin2 });
+        }
+      res.redirect('/dashboard-xyz123/felhasznalo');
+      
+    } catch (err) {
+      res.status(500).send("Hiba a játék törlésekor");
+    }
+  };

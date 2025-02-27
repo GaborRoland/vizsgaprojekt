@@ -21,7 +21,7 @@
             <div id="keszites2">
                 <label id="ummm">Játék törlése:</label>
                 <select id="torolnivalo" name="torolni">
-                    <option value="semmi" selected>-- Válaszd ki, amit törölni szeretnél --</option>
+                    <option value="semmi" selected disabled>-- Válaszd ki, amit törölni szeretnél --</option>
                     <% jatekok.forEach(jatek => { %>
                         <option value="<%= jatek.id %>" ><%= jatek.jatek_nev %></option>
                     <% }) %>
@@ -36,10 +36,38 @@
         <input type="text" name="jatek_nev" placeholder="Név" required>
         <input type="text" name="leiras" placeholder="Leírás" required>
         <select name="kategoria">
-            <option selected>-- Válaszd ki a kategóriát --</option>
+            <option selected  disabled>-- Válaszd ki a kategóriát --</option>
             <% kategoriak.forEach(kateg => {%>
                 <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%= kateg.kategoriak_ar %> Ft) </option>
                 <% }) %>
         </select>
         <button type="submit">Hozzáadás</button>
     </form>
+
+    <h2>Játék Módosítása</h2>
+<form action="/dashboard-xyz123/jatekfrissites" method="POST">
+    <select id="jatekSelect" name="frissiteni">
+        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél --</option>
+        <% jatekok.forEach(jatek => { %>
+            <option value="<%= jatek.id %>" 
+                data-jateknev="<%= jatek.jatek_nev %>" 
+                data-leiras="<%= jatek.leiras %>"
+                data-kategoria="<%= jatek.kategoria_id %>">
+                
+                <%= jatek.id %> <%= jatek.jatek_nev %>
+            </option>
+            <% }) %>
+        </select>
+
+        <input type="text" id="jatek_nev2" name="jatek_nev2" placeholder="Név" required>
+        <input type="text" id="leiras2" name="leiras2" placeholder="Ár" required>
+        <select name="kategoria2">
+            <option selected  disabled>-- Válaszd ki a kategóriát --</option>
+            <% kategoriak.forEach(kateg => {%>
+                <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%= kateg.kategoriak_ar %> Ft) </option>
+                <% }) %>
+        </select>
+    <button type="submit">Módosítás végrehajtása</button>
+</form>
+
+<script src="../login/jatek.js"></script>

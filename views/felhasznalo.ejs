@@ -24,7 +24,7 @@
     <div>
         <label>Felhasználó törlése:</label>
         <select name="torolni">
-            <option selected>-- Válaszd ki, amit törölni szeretnél --</option>
+            <option selected  disabled>-- Válaszd ki, amit törölni szeretnél --</option>
             <% felhasznalok.forEach(felhasz => { %>
                 <option value="<%= felhasz.id %>" ><%= felhasz.felhasznalo_nev %></option>
             <% }) %>
@@ -40,3 +40,26 @@
 <input type="number" name="admin" value="0" min="0" max="1">
 <button type="submit">Hozzáadás</button>
 </form>
+
+<h2>Felhasználó adatainak módosítása</h2>
+<form action="/dashboard-xyz123/felhaszfrissites" method="POST">
+    <select id="felhasznaloSelect" name="frissiteni">
+        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél --</option>
+        <% felhasznalok.forEach(felhasz => { %>
+            <option value="<%= felhasz.id %>" 
+                data-felhasznev="<%= felhasz.felhasznalo_nev %>" 
+                data-admin="<%= felhasz.adminisztrator%>"
+                data-jelszava="<%= felhasz.jelszo%>">
+                
+                <%= felhasz.id %> <%= felhasz.felhasznalo_nev %> <%= felhasz.adminisztrator %> Ft 
+            </option>
+            <% }) %>
+        </select>
+
+        <input type="text" id="felhasz_nev2" name="felhasz_nev2" placeholder="Név" required>
+        <input type="text" name="jelszomeg" id="jelszomeg" placeholder="Új jelszó">
+        <input type="number" id="admin2" name="admin2" required min="0" max="1">
+    <button type="submit">Módosítás végrehajtása</button>
+</form>
+
+<script src="../login/felhasznalo.js"></script>

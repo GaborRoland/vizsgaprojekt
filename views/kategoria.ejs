@@ -20,7 +20,7 @@
     <div>
         <label>Kategória törlése:</label>
         <select name="torolni">
-            <option selected>-- Válaszd ki, amit törölni szeretnél --</option>
+            <option selected  disabled>-- Válaszd ki, amit törölni szeretnél --</option>
             <% kategoriak.forEach(kateg => { %>
                 <option value="<%= kateg.id %>" ><%= kateg.kategoria %></option>
             <% }) %>
@@ -35,3 +35,24 @@
 <input type="number" name="ar" placeholder="Ár" required min="200" value="200"> <label>Ft</label>
 <button type="submit">Hozzáadás</button>
 </form>
+
+<h2>Kategória frissítése</h2>
+<form action="/dashboard-xyz123/kategfrissites" method="POST">
+    <select id="kategoriaSelect" name="frissiteni">
+        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél --</option>
+        <% kategoriak.forEach(kateg => { %>
+            <option value="<%= kateg.id %>" 
+                data-katnev="<%= kateg.kategoria %>" 
+                data-ar="<%= kateg.kategoriak_ar %>">
+                <%= kateg.id %> <%= kateg.kategoria %> <%= kateg.kategoriak_ar %> Ft 
+            </option>
+            <% }) %>
+        </select>
+
+        <input type="text" id="kateg_nev2" name="kateg_nev2" placeholder="Név" required>
+        <input type="number" id="ar2" name="ar2" placeholder="Ár" required min="200"> <label>Ft</label>
+    <button type="submit">Kategória törlése</button>
+</form>
+
+<script src="../login/kategoria.js"></script>
+
