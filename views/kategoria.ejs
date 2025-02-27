@@ -1,0 +1,37 @@
+<%- include('admin') %>
+
+<h1>Kategória</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Kategória neve</th>
+        <th>Meghatározott ár</th>
+    </tr>
+    <% kategoriak.forEach(kateg => { %>
+        <tr>
+        <td><%= kateg.id %></td>
+        <td><%= kateg.kategoria %></td>
+        <td><%= kateg.kategoriak_ar %> Ft</td>
+        </tr>
+        <% }) %>
+    </table>
+
+<form action="/dashboard-xyz123/kategtorles" method="POST">
+    <div>
+        <label>Kategória törlése:</label>
+        <select name="torolni">
+            <option selected>-- Válaszd ki, amit törölni szeretnél --</option>
+            <% kategoriak.forEach(kateg => { %>
+                <option value="<%= kateg.id %>" ><%= kateg.kategoria %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Kategória törlése</button>
+    </div>
+</form>
+
+<h2>Új kategória hozzáadása</h2>
+<form action="/dashboard-xyz123/kateghozzaadas" method="POST">
+<input type="text" name="kateg_nev" placeholder="Név" required>
+<input type="number" name="ar" placeholder="Ár" required min="200" value="200"> <label>Ft</label>
+<button type="submit">Hozzáadás</button>
+</form>

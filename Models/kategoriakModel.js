@@ -20,6 +20,7 @@ const Kategoriak = sequelize.define('kategoriak', {
   }
 }, {
   freezeTableName: true,
+  timestamps: false
 });
 
 module.exports = Kategoriak;

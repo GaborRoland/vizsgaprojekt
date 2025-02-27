@@ -1,0 +1,42 @@
+<%- include('admin') %>
+
+<h1>Felhasználók</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Felhasználó</th>
+        <th>Szerepkör</th>
+    </tr>
+    <% felhasznalok.forEach(felhasz => { %>
+        <tr>
+        <td><%= felhasz.id %></td>
+        <td><%= felhasz.felhasznalo_nev %></td>
+        <% if(felhasz.adminisztrator === 0){%> 
+            <td> Vásárló (0)</td> 
+            <%} else { %>
+            <td> Adminisztrátor (1)</td>
+            <% }%>
+        </tr>
+        <% }) %>
+    </table>
+
+<form action="/dashboard-xyz123/felhasztorles" method="POST">
+    <div>
+        <label>Felhasználó törlése:</label>
+        <select name="torolni">
+            <option selected>-- Válaszd ki, amit törölni szeretnél --</option>
+            <% felhasznalok.forEach(felhasz => { %>
+                <option value="<%= felhasz.id %>" ><%= felhasz.felhasznalo_nev %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Felhasználó törlése</button>
+    </div>
+</form>
+
+<h2>Új felhasználó hozzáadása manuálisan</h2>
+<form action="/dashboard-xyz123/felhaszhozzaadas" method="POST">
+<input type="text" name="felhasz_nev" placeholder="Felhasználó neve" required>
+<input type="text" name="jelszo" placeholder="Jelszó" required>
+<input type="number" name="admin" value="0" min="0" max="1">
+<button type="submit">Hozzáadás</button>
+</form>

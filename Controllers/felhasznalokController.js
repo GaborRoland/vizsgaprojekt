@@ -4,9 +4,9 @@ const Felhasznalok = require('../Models/felhasznalokModel');
 exports.Felhasznalok = async function felhasznalokLekeres(req, res) {
     try {
         let felhasznalok = await Felhasznalok.findAll({
-            attributes: ['id', 'felhasznalo_nev', 'jelszo']
+            attributes: ['id', 'felhasznalo_nev', 'jelszo', 'adminisztrator']
         });
-        res.json(felhasznalok); 
+        res.render('felhasznalo', {felhasznalok: felhasznalok}); 
     } catch (err) {
         res.status(500).send('Hiba történt a felhasználók lekérésekor.');
     }
@@ -31,6 +31,22 @@ exports.felhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
     } else {
         res.status(400).send('A két jelszó nem egyezik meg!');
     }
+};
+
+exports.AdminfelhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
+    const { felhasz_nev, jelszo, admin } = req.body;
+        try {
+            const hashedPassword = await bcrypt.hash(jelszo, 10); 
+            await Felhasznalok.create({
+                felhasznalo_nev: felhasz_nev,
+                jelszo: hashedPassword,
+                adminisztrator: admin
+            });
+            res.redirect('/dashboard-xyz123/felhasznalo'); 
+        } catch (error) {
+            console.error('Hiba történt a felhasználó létrehozása közben:', error);
+            res.status(500).send('Hiba történt a felhasználó létrehozása során.');
+        }
 };
 
 exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
@@ -61,3 +77,16 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
         res.status(500).send('Hiba történt a bejelentkezés során.');
     }
 };
+
+//Kategória törlés
+exports.FelhasznaloTorles = async (req, res) => {
+    const { torolni } = req.body;
+    console.log(req.body,torolni);
+    try {
+      await Felhasznalok.destroy({ where: { id: torolni } });
+      res.redirect('/dashboard-xyz123/felhasznalo');
+      
+    } catch (err) {
+      res.status(500).send("Hiba a játék törlésekor");
+    }
+  };

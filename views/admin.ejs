@@ -13,52 +13,18 @@
 </head>
 <body>
 
-    <h1>Játék Admin Felület</h1>
+    <nav>
+            <a href="/dashboard-xyz123">Játékok kezelése</a>
+            <a href="/dashboard-xyz123/kategoria">Kategória kezelése</a>
+            <a href="/dashboard-xyz123/felhasznalo">Felhasználók kezelése</a>
+            <a href="/">Kijelentkezés</a>
+    </nav>
 
-    <h2>Játékok</h2>
+    <h1>Admin Felület</h1>
 
-    <table>
-        <tr>
-            <th>Cím</th>
-            <th>Leírás</th>
-            <th>Ár</th>
-        </tr>
+    <div class="container">
         
-            <% jatekok.forEach(game => { %>
-                <tr>
-                <td><%= game.jatek_nev %></td>
-                <td><%= game.leiras %></td>
-                <td><%= game.kategoria.kategoriak_ar %> Ft</td>
-                </tr>
-                <% }) %>
-            </table>
-
-        <form action="/dashboard-xyz123/torles" method="POST">
-            <div id="keszites2">
-                <label id="ummm">Játék törlése:</label>
-                <select id="torolnivalo" name="torolni">
-                    <option value="semmi" selected>-- Válaszd ki, amit törölni szeretnél --</option>
-                    <% jatekok.forEach(jatek => { %>
-                        <option value="<%= jatek.id %>" ><%= jatek.jatek_nev %></option>
-                    <% }) %>
-                </select>
-                <!-- <input type="text" name="torolni"value='Alma'> -->
-                <button type="submit">Játék törlése</button>
-            </div>
-        </form>
-
-    <h2>Új játék hozzáadása</h2>
-    <form action="/dashboard-xyz123/hozzaadas" method="POST">
-        <input type="text" name="jatek_nev" placeholder="Név" required>
-        <input type="text" name="leiras" placeholder="Leírás" required>
-        <select name="kategoria">
-            <option selected>-- Válaszd ki a kategóriát --</option>
-            <% jatekok.forEach(kateg => {%>
-                <option value="<%= kateg.kategoria_id %>"> <%= kateg.kategoria.kategoria %> (<%= kateg.kategoria.kategoriak_ar %> Ft) </option>
-                <% }) %>
-        </select>
-        <button type="submit">Hozzáadás</button>
-    </form>
+    </div>
 
 </body>
 </html>

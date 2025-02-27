@@ -31,8 +31,11 @@ exports.OsszesJatekokAdmin = async function JatekKereses2(req, res) {
                 attributes: ['kategoriak_ar', 'kategoria']
             }]
         });
+        const kategoriak = await Kategoria.findAll({
+            attributes: ['id', 'kategoria', 'kategoriak_ar']
+        });
         //console.log(jatekok);
-        res.render('admin', {jatekok: jatekok});
+        res.render('jatek', {jatekok: jatekok, kategoriak: kategoriak});
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
     }
