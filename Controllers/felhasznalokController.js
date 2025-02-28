@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const Felhasznalok = require('../Models/felhasznalokModel'); 
 
+//Összes felhasználó
 exports.Felhasznalok = async function felhasznalokLekeres(req, res) {
     try {
         let felhasznalok = await Felhasznalok.findAll({
@@ -12,6 +13,7 @@ exports.Felhasznalok = async function felhasznalokLekeres(req, res) {
     }
 };
 
+//Regisztráció
 exports.felhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
     const { nev, jelszo1, jelszo2 } = req.body;
 
@@ -33,6 +35,7 @@ exports.felhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
     }
 };
 
+//Az Admin felületen felhasználó létrehozása
 exports.AdminfelhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
     const { felhasz_nev, jelszo, admin } = req.body;
         try {
@@ -49,6 +52,7 @@ exports.AdminfelhasznaloLetrehozas = async function felhasznaloLekeres(req, res)
         }
 };
 
+//Bejelentkeztetés
 exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
     const { nev, jelszo1 } = req.body;
     try {
@@ -78,7 +82,7 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
     }
 };
 
-//Kategória törlés
+//Felhasználó törlés
 exports.FelhasznaloTorles = async (req, res) => {
     const { torolni } = req.body;
     console.log(req.body,torolni);
@@ -91,6 +95,8 @@ exports.FelhasznaloTorles = async (req, res) => {
     }
   };
 
+
+//Felhasználó módosítása
 exports.FelhasznaloFrissites = async (req, res) => {
     const { felhasz_nev2, jelszomeg, admin2, frissiteni } = req.body;
     try {

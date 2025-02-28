@@ -1,4 +1,4 @@
-
+//Kategória frissítéséhez szükséges
     document.getElementById("kategoriaSelect").addEventListener("change", function() {
         let selectedOption = this.options[this.selectedIndex];
     

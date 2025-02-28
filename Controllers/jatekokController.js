@@ -13,7 +13,6 @@ exports.OsszesJatekok = async function JatekKereses(req, res) {
                 attributes: ['kategoriak_ar']
             }]
         });
-        // console.log(jatekok);
         res.render('index', { jatekok: jatekok, keresett : "" });
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
@@ -34,7 +33,6 @@ exports.OsszesJatekokAdmin = async function JatekKereses2(req, res) {
         const kategoriak = await Kategoria.findAll({
             attributes: ['id', 'kategoria', 'kategoriak_ar']
         });
-        //console.log(jatekok);
         res.render('jatek', {jatekok: jatekok, kategoriak: kategoriak});
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
@@ -71,7 +69,7 @@ exports.JatekTorlesAdmin = async (req, res) => {
     }
   };
 
-
+//Kereső mező 
 exports.KeresoMezo = async function (req, res) {
     const { search } = req.body;
     let jatekok = [];
@@ -97,3 +95,17 @@ exports.KeresoMezo = async function (req, res) {
         }
     
 };
+
+//Játékok frissítése
+exports.JatekFrissites = async (req, res) => {
+    const { jatek_nev2, leiras2, kategoria2, frissiteni } = req.body;
+    console.log(req.body,frissiteni);
+    try {
+      let megtalalt = await Jatekok.findOne({ where: { id: frissiteni } });
+      await megtalalt.update({jatek_nev: jatek_nev2, leiras: leiras2, kategoria_id: kategoria2});
+      res.redirect('/dashboard-xyz123');
+      
+    } catch (err) {
+      res.status(500).send("Hiba a játék törlésekor");
+    }
+  };

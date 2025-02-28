@@ -21,22 +21,12 @@ app.use(express.urlencoded({ extended: true })); // Az űrlapadatokat URL-kódol
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
-
-// app.get('/dashboard-xyz123', (req, res) => {
-//     res.render(path.join(__dirname, '../views', 'admin'));
-// });
-
 app.use("/dashboard-xyz123", AdminRoutes);
 
 //Routes
 app.use('/users', FelhasznalokRoutes);
 app.use('/', JatekokRoutes);
 app.use('/kategoriak', kategoriakRoutes);
-
-//Admin routes
-// app.use("/dashboard-xyz123/hozzaadas", JatekokRoutes);
-// app.use("/dashboard-xyz123/torles", JatekokRoutes);
-
 
 
 app.listen(port, () => {

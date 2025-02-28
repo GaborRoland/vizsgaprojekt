@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="kepek/fooldal_logo_2-removebg-preview.png" type="image/x-icon">
   <link href="output.css" rel="stylesheet">
   <title>Főoldal</title>
 </head>
@@ -21,7 +22,7 @@
 
       <!-- Logo -->
       <a href="#" class="navbar-logo">
-        <img src="pics/fooldal_logo_2-removebg-preview.png" alt="Logo" />
+        <img src="kepek/fooldal_logo_2-removebg-preview.png" alt="Logo" />
         <span>ByteShop</span>
       </a>
 
@@ -78,7 +79,7 @@
           <button class="cta-button" onclick="goToGames()">Kezdjünk bele!</button>
         </div>
         <div class="hero-image">
-          <img src="pics/hero_section_img.png" alt="">
+          <img src="kepek/hero_section_img.png" alt="">
         </div>
       </div>
     </section>
@@ -90,7 +91,7 @@
         <% jatekok.forEach(game => { %>
         
           <div class="product-card">
-            <img class="cover" src="pics/game-49.png">
+            <img class="cover" src="kepek/game-49.png">
             <h3 class="title"><%= game.jatek_nev %></h3>
             <p><%= game.leiras %></p>
             <span class="price">Ár: <span class="price2"><%= game.kategoria.kategoriak_ar %></span> Ft</span>
@@ -113,7 +114,7 @@
       <div class="product-list" id="kereses">     
         <% keresett.forEach(talalat => { %>
           <div class="product-card">
-            <img class="cover" src="pics/game-49.png">
+            <img class="cover" src="kepek/game-49.png">
             <h3 class="title"><%= talalat.jatek_nev %></h3>
             <p><%= talalat.leiras %></p>
             <span class="price">Ár: <span class="price2"><%= talalat.kategoria.kategoriak_ar %></span>  Ft</span>
@@ -132,14 +133,14 @@
 
   <footer class="footer" id="footer">
     <a href="#" class="footer-logo">
-      <img src="pics/fooldal_logo_2-removebg-preview.png" alt="logo">
+      <img src="kepek/fooldal_logo_2-removebg-preview.png" alt="logo">
       ByteShop
     </a>
     <span class="footer-copy">&copy; 2024-2025 ByteShop™. Minden jog fenttartva.</span>
   </footer>
 
   
-  <script src="fooldal.js"></script>
+  <script src="../login/src/js/fooldal.js"></script>
 </body>
 
 </html>

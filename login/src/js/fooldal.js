@@ -17,6 +17,7 @@ const ossztermek = document.getElementById("ossztermek");
 const ures = document.getElementById("ures");
 const user = sessionStorage.getItem("loggedInUser");
 let osszegar = 0;
+
 //Oldal tetejére visszamenő gomb megjelenítése egy bizonyos méret után
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 500) {
