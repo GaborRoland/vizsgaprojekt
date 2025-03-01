@@ -3,16 +3,18 @@
 <h2>Játékok</h2>
     <table>
         <tr>
+            <th>ID</th>
             <th>Cím</th>
             <th>Leírás</th>
-            <th>Ár</th>
+            <th>Kategória - Ár</th>
         </tr>
         
             <% jatekok.forEach(game => { %>
                 <tr>
+                <td><%= game.id %></td>
                 <td><%= game.jatek_nev %></td>
                 <td><%= game.leiras %></td>
-                <td><%= game.kategoria.kategoriak_ar %> Ft</td>
+                <td><%= game.kategoria.kategoria %> - <%= game.kategoria.kategoriak_ar %> Ft</td>
                 </tr>
                 <% }) %>
             </table>
@@ -33,7 +35,7 @@
     <h2>Új játék hozzáadása</h2>
     <form action="/dashboard-xyz123/hozzaadas" method="POST">
         <input type="text" name="jatek_nev" placeholder="Név" required>
-        <input type="text" name="leiras" placeholder="Leírás" required>
+        <textarea type="text" name="leiras" placeholder="Leírás" required></textarea>
         <select name="kategoria">
             <option selected  disabled>-- Válaszd ki a kategóriát --</option>
             <% kategoriak.forEach(kateg => {%>
@@ -59,7 +61,7 @@
         </select>
 
         <input type="text" id="jatek_nev2" name="jatek_nev2" placeholder="Név" required>
-        <input type="text" id="leiras2" name="leiras2" placeholder="Ár" required>
+        <textarea type="text" id="leiras2" name="leiras2" placeholder="Leírás" required></textarea>
         <select name="kategoria2">
             <option selected  disabled>-- Válaszd ki a kategóriát --</option>
             <% kategoriak.forEach(kateg => {%>

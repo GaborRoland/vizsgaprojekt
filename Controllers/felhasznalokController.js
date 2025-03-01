@@ -61,9 +61,9 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
         });
 
         if (!felhasznalo) {
-            return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
+           // return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
+           return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
         }
-
         const isPasswordValid = await bcrypt.compare(jelszo1, felhasznalo.jelszo);
 
         if (isPasswordValid && felhasznalo.adminisztrator === 0) {
