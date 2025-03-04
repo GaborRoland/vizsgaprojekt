@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="kepek/fooldal_logo_2-removebg-preview.png" type="image/x-icon">
   <link href="output.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&display=swap" rel="stylesheet">
   <title>Főoldal</title>
 </head>
 
@@ -28,31 +31,32 @@
 
       <!-- Kereső menü -->
       <div class="search-menu">
-       <form action="/" method="POST">
-         <div class="search-input-container">
-           <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo"/> <button type="submit" class="searchbutton">Keresés</button>
-         </div>
-       </form>
-       
-      </div>
-      
-      <!-- Bevásárlókosár gomb --> 
-
-      <div class="dropdown cart-button">
-          <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;" id="cart">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
-          </svg>
-
-          <div class="dropdown-content" id="ossztermek" style="visibility: hidden;">
-            <!-- <a href="javascript:void(0)" class="dropbtn termek" id="ures">A kosár még üres.</a> -->
+        <form action="/" method="POST">
+          <div class="search-input-container">
+            <input placeholder="Keresés..." class="search-input" name="search" id="keresomezo" /> <button type="submit"
+              class="searchbutton">Keresés</button>
           </div>
-    </div>
+        </form>
+
+      </div>
+
+      <!-- Bevásárlókosár gomb -->
+      <div class="dropdown cart-button">
+        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          style="display: none;" id="cart">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 3h2l.4 2M7 13h10l1.38-6H6.62l-.92-4H3m4 6h11l1.38-6H6.62m0 0L7 13m2 6h8m-8 0a2 2 0 11-4 0m12 0a2 2 0 11-4 0" />
+        </svg>
+
+        <div class="dropdown-content" id="ossztermek" style="visibility: hidden;">
+        </div>
+      </div>
 
       <!-- Menüpontok -->
       <div class="navbar-menu">
         <ul class="menu-list">
-          <li><a onclick="goToFooter()">Rólunk</a></li>
-          <li><a href="#hirek">Hírek</a></li>
+          <li><a onclick="goToAboutUs()">Rólunk</a></li>
+          <li><a onclick="goToNews()">Hírek</a></li>
           <li><a onclick="goToGames()">Termékek</a></li>
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn" id="felhasz"></a>
@@ -67,6 +71,7 @@
   </nav>
 
   <main>
+    <!-- Hero szekció -->
     <section class="hero">
       <div class="hero-container">
         <div class="hero-content">
@@ -74,7 +79,8 @@
             Üdvözlünk a <span class="highlight">ByteShop</span> oldalán.
           </h1>
           <p class="hero-description">
-            Merülj el a gaming univerzumában! Weboldalunkon megtalálsz mindent, amire egy gamer vágyhat: a legújabb videojátékok, izgalmas hírek és friss tartalmak várnak rád.
+            Merülj el a gaming univerzumában! Weboldalunkon megtalálsz mindent, amire egy gamer vágyhat: a legújabb
+            videojátékok, izgalmas hírek és friss tartalmak várnak rád.
           </p>
           <button class="cta-button" onclick="goToGames()">Kezdjünk bele!</button>
         </div>
@@ -84,22 +90,29 @@
       </div>
     </section>
 
+    <!-- Termékek szekció -->
     <section class="products">
-      <%if(jatekok && jatekok.length > 0){ %>
-      <h2 class="section-title" id="section-title">Játékaink</h2>
-      <div class="product-list">
-        <% jatekok.forEach(game => { %>
-        
-          <div class="product-card">
-            <img class="cover" src="kepek/game-49.png">
-            <h3 class="title"><%= game.jatek_nev %></h3>
-            <p><%= game.leiras %></p>
-            <span class="price">Ár: <span class="price2"><%= game.kategoria.kategoriak_ar %></span> Ft</span>
-            <input type="number" name="db" class="db" min="1" placeholder="db" value="1">
-            <input type="button" value="Kosárba" class="gomb">
-          </div>
-          <% }) %>
-          <% } %>
+      <%if(jatekok && jatekok.length> 0){ %>
+        <h2 class="section-title" id="section-title">Játékaink</h2>
+        <div class="product-list">
+          <% jatekok.forEach(game=> { %>
+
+            <div class="product-card">
+              <img class="cover" src="kepek/game-49.png">
+              <h3 class="title">
+                <%= game.jatek_nev %>
+              </h3>
+              <p>
+                <%= game.leiras %>
+              </p>
+              <span class="price">Ár: <span class="price2">
+                  <%= game.kategoria.kategoriak_ar %>
+                </span> Ft</span>
+              <input type="number" name="db" class="db" min="1" placeholder="db" value="1">
+              <input type="button" value="Kosárba" class="gomb">
+            </div>
+            <% }) %>
+              <% } %>
         </div>
     </section>
 
@@ -109,37 +122,117 @@
     <!-- Keresett játékok megjelenítése -->
     <section class="products">
       <a href="#products"></a>
-      <%if(keresett && keresett.length > 0){ %>
+      <%if(keresett && keresett.length> 0){ %>
         <h2 class="section-title" id="keresescim">Kiböngészett játékok</h2>
-      <div class="product-list" id="kereses">     
-        <% keresett.forEach(talalat => { %>
-          <div class="product-card">
-            <img class="cover" src="kepek/game-49.png">
-            <h3 class="title"><%= talalat.jatek_nev %></h3>
-            <p><%= talalat.leiras %></p>
-            <span class="price">Ár: <span class="price2"><%= talalat.kategoria.kategoriak_ar %></span>  Ft</span>
-            <input type="number" name="db" class="db" min="1" placeholder="db" value="1">
-            <input type="button" value="Kosárba" class="gomb">
-          </div>
-          <% }) %>
-          <% } else if(keresett.length == 0) { %>
-            <h2 class="section-title">Nincs találat a keresésre.</h2>
-          <% } %>
+        <div class="product-list" id="kereses">
+          <% keresett.forEach(talalat=> { %>
+            <div class="product-card">
+              <img class="cover" src="kepek/game-49.png">
+              <h3 class="title">
+                <%= talalat.jatek_nev %>
+              </h3>
+              <p>
+                <%= talalat.leiras %>
+              </p>
+              <span class="price">Ár: <span class="price2">
+                  <%= talalat.kategoria.kategoriak_ar %>
+                </span> Ft</span>
+              <input type="number" name="db" class="db" min="1" placeholder="db" value="1">
+              <input type="button" value="Kosárba" class="gomb">
+            </div>
+            <% }) %>
+              <% } else if(keresett.length==0) { %>
+                <h2 class="section-title">Nincs találat a keresésre.</h2>
+                <% } %>
+        </div>
+    </section>
+
+    <!-- Hírek slideshow -->
+    <section id="hirek">
+      <h2 class="section-title" id="section-title">Hírek</h2>
+      <div class="slideshow-container">
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides ">
+          <img
+            src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/03/assassins-creed-shadows-how-long-to-beat-confirmation.jpg?q=49&fit=crop&w=360&h=240&dpr=2"
+            style="width:100%">
+          <div class="text">Assassin's Creed Shadows Dev Reveals How Long It Takes to Beat</div>
+        </div>
+
+        <div class="mySlides ">
+          <img
+            src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/03/path-of-exile-2-new-ascendancy-class.jpg?q=49&fit=crop&w=360&h=240&dpr=2"
+            style="width:100%">
+          <div class="text">Path of Exile 2 Teases New Ascendancy Classes In Next Update</div>
+        </div>
+
+        <div class="mySlides ">
+          <img
+            src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2025/03/assassins-creed-shadows-naoe-red-bull-promo.jpg?q=49&fit=crop&w=360&h=240&dpr=2"
+            style="width:100%">
+          <div class="text">
+            Assassin's Creed Shadows Giving Away Free In-Game Items Through Red Bull Collaboration</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
       </div>
     </section>
 
+    <section id="about-us">
+      <h2 class="section-title" id="section-title">Rólunk</h2>
+      <div class="we-are-block">
+        <div id="about-us-section">
+          <div class="about-us-image">
+            <img src="https://www.itsd.com/wp-content/uploads/2023/08/it-security-header.jpg" width="808" height="458" alt="Secure gaming">
+          </div>
 
+          <div class="about-us-info">
+            <h2 class="about-us-title">Dönts mellettünk</h2>
+            <p>Gyors, megbízható és egyszerű vásárlás 
+              – ezt garantáljuk! Nálunk nincsenek rejtett költségek vagy hosszadalmas várakozás. 
+              Nincs rejtett költség, nincs várakozás –
+               csak azonnali kulcsok és szuper árak.
+               <br>
+               Vásárolj könnyedén, és élvezd a játékot gond nélkül!
+            </p>
+          </div>
+        </div>
+
+        <div id="history-section">
+          <div class="history-image">
+            <img src="https://blog.bimm.co.uk/wp-content/uploads/2024/06/7-_PIC1569-scaled.jpg" width="951" height="471" alt="History">
+          </div>
+          
+          <div class="history-info">
+            <h2 class="history-title">A Mi történetünk</h2>
+            <p>Mindig is imádtuk a videojátékokat, 
+              de tudtuk, hogy nem mindenki engedheti meg magának a drága árakat. 
+              Ezért hoztuk létre ezt az oldalt – hogy minden gamer könnyedén és olcsón hozzájuthasson kedvenc játékaihoz. 
+              Azóta is azon dolgozunk, hogy a lehető legjobb ajánlatokat kínáljuk nektek!</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer" id="footer">
-    <a href="#" class="footer-logo">
+    <a onclick="goToTop()" class="footer-logo">
       <img src="kepek/fooldal_logo_2-removebg-preview.png" alt="logo">
       ByteShop
     </a>
     <span class="footer-copy">&copy; 2024-2025 ByteShop™. Minden jog fenttartva.</span>
   </footer>
 
-  
+
   <script src="../login/src/js/fooldal.js"></script>
 </body>
 

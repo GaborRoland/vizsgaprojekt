@@ -8,6 +8,8 @@ let log = document.getElementById("log");
 let loggedin = false;
 const jatekaink = document.getElementById("section-title");
 const footer = document.getElementById("footer");
+const hirek = document.getElementById("hirek");
+const aboutus = document.getElementById("about-us");
 const keresoinput = document.querySelector('search-input');
 const cart = document.getElementById("cart");
 const AllTitle = document.querySelectorAll(".title");
@@ -36,8 +38,12 @@ function goToGames() {
   jatekaink.scrollIntoView({ block:"start", behavior: 'smooth' });
 };
 
-function goToFooter() {
-  footer.scrollIntoView({ block:"start", behavior: 'smooth' });
+function goToAboutUs() {
+  aboutus.scrollIntoView({ block:"start", behavior: 'smooth' });
+};
+
+function goToNews() {
+  hirek.scrollIntoView({ block:"start", behavior: 'smooth' });
 };
 
 //Felhasználó bejelentkeztetése
@@ -185,4 +191,34 @@ function Megrendeles(){
   localStorage.clear();
   location.reload();
   alert("A vásárlás sikeres volt!");
+}
+
+//Hírek sliderhez
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
 }
