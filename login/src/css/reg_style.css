@@ -15,6 +15,10 @@ body{
     
 }
 
+.back-to-main{
+  border-radius: 20px;
+  border: 1px solid white;
+}
 /* Animációk */
 @keyframes backgroundslide_right {
     100%{background-position: center right;}
@@ -25,6 +29,20 @@ body{
 /*Reszponzív viselkedés*/
 @media only screen and (min-width: 1200px) 
 {
+  .back-to-main {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: fit-content;
+    height: 56px;
+    background: linear-gradient(to bottom right, #facc15, #ea580c, #db2777);
+    color: white;
+    /* border-radius: 50%; */
+    /* display: none; */
+    align-items: center;
+    justify-content: center;
+  }
+
 .centered {
     display: grid;
     place-items: center;
@@ -153,6 +171,18 @@ h2{
 
 @media only screen and (min-width: 600px)
 {
+  .back-to-main {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: fit-content;
+    height: 40px;
+    background: linear-gradient(to bottom right, #facc15, #ea580c, #db2777);
+    color: white;
+    align-items: center;
+    justify-content: center;
+  }
+
   .centered {
     display: grid;
     place-items: center;
@@ -281,6 +311,14 @@ h2{
 
 @media only screen and (max-width: 600px) 
 {
+
+  .back-to-main {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    visibility: hidden;
+  }
+
   .centered {
     display: grid;
     place-items: center;

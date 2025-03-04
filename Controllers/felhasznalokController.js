@@ -31,7 +31,7 @@ exports.felhasznaloLetrehozas = async function felhasznaloLekeres(req, res) {
             res.status(500).send('Hiba történt a felhasználó létrehozása során.');
         }
     } else {
-        res.status(400).send('A két jelszó nem egyezik meg!');
+        res.status(400).send('<script>alert("A két jelszó nem egyezik meg."); window.location.href="../login/register.html";</script>');
     }
 };
 

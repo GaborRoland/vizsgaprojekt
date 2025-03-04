@@ -64,15 +64,12 @@ document.addEventListener("DOMContentLoaded", function() {
   log.addEventListener("click", function(){
     if(loggedin)
     {
-      logout();
+      sessionStorage.removeItem("loggedInUser");
+      window.location.replace("login.html");
+      localStorage.clear();
     }
   });
   
-  function logout() {
-  sessionStorage.removeItem("loggedInUser");
-  window.location.replace("login.html");
-  localStorage.clear();
-}
 
 
 //Rendelés gomb
