@@ -13,3 +13,6 @@ textarea {
     padding: 10px;
     margin-bottom: -7px;
 }
+#log:hover{
+    cursor: pointer;
+}

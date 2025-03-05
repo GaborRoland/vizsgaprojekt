@@ -10,6 +10,15 @@ const JatekokRoutes = require('../Routes/jatekokRoutes');
 const AdminRoutes = require('../Routes/adminRoutes');
 const kategoriakRoutes = require('../Routes/kategoriakRoutes');
 
+//Session
+// app.use(session({
+//     secret: "mysecret", // Erős titkos kulcs
+//     resave: false,
+//     saveUninitialized: false,
+//     store: sessionStore,
+//     cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 1 nap
+//   }));
+
 app.use(express.json()); // JSON adatokat tud fogadni
 app.use('/login', express.static(path.join(__dirname, '../login')));
 app.use('/src', express.static(path.join(__dirname, '../login/src')));

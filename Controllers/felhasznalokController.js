@@ -61,21 +61,26 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
         });
 
         if (!felhasznalo) {
-           // return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
            return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
         }
         const isPasswordValid = await bcrypt.compare(jelszo1, felhasznalo.jelszo);
 
-        if (isPasswordValid && felhasznalo.adminisztrator === 0) {
-             return  res.redirect('/');
+        if (!isPasswordValid) {
+            return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
         }
         
-        if(felhasznalo.adminisztrator === 1 && isPasswordValid){
+         // Ha a jelszó helyes, és nem adminisztrátor, akkor a főoldalra irányítjuk
+         if (felhasznalo.adminisztrator === 0) {
+            req.session.userId = felhasznalo.felhasznalo_nev;  // Session tárolása
+            return res.redirect('/');
+        }
+
+        // Ha adminisztrátor, akkor az admin dashboardra irányítjuk
+        if (felhasznalo.adminisztrator === 1) {
+            req.session.userId = felhasznalo.felhasznalo_nev;  // Session tárolása
             return res.redirect('/dashboard-xyz123');
-        } else {
-            return res.status(401).send('Helytelen felhasználónév vagy jelszó.');
         }
-        
+        return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
     } catch (error) {
         console.error('Hiba történt a bejelentkezés során:', error);
         res.status(500).send('Hiba történt a bejelentkezés során.');
