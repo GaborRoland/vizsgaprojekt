@@ -17,7 +17,7 @@ const AllPrice = document.querySelectorAll(".price2");
 const AllProducts = document.querySelectorAll(".product-card");
 const ossztermek = document.getElementById("ossztermek");
 const ures = document.getElementById("ures");
-const user = sessionStorage.getItem("loggedInUser");
+let user = window.usernameFromBackend;
 let osszegar = 0;
 
 //Oldal tetejére visszamenő gomb megjelenítése egy bizonyos méret után
@@ -48,21 +48,20 @@ function goToNews() {
 
 //Felhasználó bejelentkeztetése
 document.addEventListener("DOMContentLoaded", function() {
-  
 
   console.log("Bejelentkezett felhasználó:", user); // Debugging üzenet
+  document.getElementById("felhasz").innerHTML = user;
 
-  if (!user) {
-      console.log("Nincs bejelentkezett felhasználó, átirányítás...");
-      document.getElementById("felhasz").innerHTML = "Felhasználó";
-  } else {
-        document.getElementById("felhasz").innerHTML = user;
+  if(user == "Felhasználó"){
+    console.log("Nincs bejelentkezett felhasználó, átirányítás...");
+  }
+  else{
+        // document.getElementById("felhasz").innerHTML = user;
         log.innerHTML = "Kijelentkezés";
         loggedin = true;
         document.getElementById("reg").innerHTML = "Beállítások";
         cart.style.display = "block";
         ossztermek.style.visibility = "visible";
-
       }
 
 //Kijelentkeztetés
@@ -70,9 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
   log.addEventListener("click", function(){
     if(loggedin)
     {
-      sessionStorage.removeItem("loggedInUser");
-      window.location.replace("login.html");
       localStorage.clear();
+      window.location.href = '/users/logout';
     }
   });
   

@@ -7,15 +7,18 @@
         <th>ID</th>
         <th>Kategória neve</th>
         <th>Meghatározott ár</th>
+        <th>Játékok száma</th>
     </tr>
     <% kategoriak.forEach(kateg => { %>
         <tr>
-        <td><%= kateg.id %></td>
-        <td><%= kateg.kategoria %></td>
-        <td><%= kateg.kategoriak_ar %> Ft</td>
+            <td><%= kateg.id %></td>
+            <td><%= kateg.kategoria %></td>
+            <td><%= kateg.kategoriak_ar %> Ft</td>
+            <td><%= kateg.jatekokSzama %> db</td>
         </tr>
-        <% }) %>
-    </table>
+    <% }) %>
+</table>
+
 
 <form action="/dashboard-xyz123/kategtorles" method="POST">
     <div>

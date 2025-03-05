@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
+const session = require('express-session')
 require('../Models/associations'); //Itt állítjuk be a kapcsolatokat
 
 
@@ -11,13 +12,12 @@ const AdminRoutes = require('../Routes/adminRoutes');
 const kategoriakRoutes = require('../Routes/kategoriakRoutes');
 
 //Session
-// app.use(session({
-//     secret: "mysecret", // Erős titkos kulcs
-//     resave: false,
-//     saveUninitialized: false,
-//     store: sessionStore,
-//     cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 1 nap
-//   }));
+app.use(session({
+    secret: "mysecret", // Erős titkos kulcs
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 1 nap
+  }));
 
 app.use(express.json()); // JSON adatokat tud fogadni
 app.use('/login', express.static(path.join(__dirname, '../login')));

@@ -59,7 +59,7 @@
           <li><a onclick="goToNews()">Hírek</a></li>
           <li><a onclick="goToGames()">Termékek</a></li>
           <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn" id="felhasz"></a>
+            <a href="javascript:void(0)" class="dropbtn" id="felhasz"><%= username %></a>
             <div class="dropdown-content">
               <a href="../login/login.html" id="log">Bejelentkezés</a>
               <a href="../login/register.html" id="reg">Regisztráció</a>
@@ -233,7 +233,11 @@
   </footer>
 
 
-  <script src="../login/src/js/fooldal.js"></script>
+  <script>
+    // Az EJS-ben lévő változót átadjuk a frontend JavaScript fájlnak
+    window.usernameFromBackend = "<%= username %>";
+  </script>
+    <script src="../login/src/js/fooldal.js"></script>
 </body>
 
 </html>

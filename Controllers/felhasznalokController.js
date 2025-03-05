@@ -71,13 +71,13 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
         
          // Ha a jelszó helyes, és nem adminisztrátor, akkor a főoldalra irányítjuk
          if (felhasznalo.adminisztrator === 0) {
-            req.session.userId = felhasznalo.felhasznalo_nev;  // Session tárolása
+            req.session.username = felhasznalo.felhasznalo_nev;  // Session tárolása
             return res.redirect('/');
         }
 
         // Ha adminisztrátor, akkor az admin dashboardra irányítjuk
         if (felhasznalo.adminisztrator === 1) {
-            req.session.userId = felhasznalo.felhasznalo_nev;  // Session tárolása
+            req.session.username = felhasznalo.felhasznalo_nev;  // Session tárolása
             return res.redirect('/dashboard-xyz123');
         }
         return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
@@ -121,3 +121,21 @@ exports.FelhasznaloFrissites = async (req, res) => {
       res.status(500).send("Hiba a játék törlésekor");
     }
   };
+
+exports.Logout = async (req, res) =>{
+    req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).send('Failed to log out');
+        }
+        res.redirect('login.html'); 
+      });
+}
+
+exports.BackToMain = async (req, res) =>{
+    req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).send('Failed to log out');
+        }
+        res.redirect('/'); 
+      });
+}

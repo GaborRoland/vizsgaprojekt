@@ -12,16 +12,8 @@ function Megjelenites(){
     }
 }
 
-function Login() {
-    const username = document.getElementById("felhasznalonev").value;
-    
-    if (username) {
-        sessionStorage.setItem("loggedInUser", username);
-        window.location.replace = "index.ejs"; // Átirányítás a főoldalra
-    }
-}
-
-
 function NincsFelhasz(){
     sessionStorage.clear();
+    window.location.href = '/users/backtomain';
 }
+

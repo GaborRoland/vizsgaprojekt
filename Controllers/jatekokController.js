@@ -13,7 +13,7 @@ exports.OsszesJatekok = async function JatekKereses(req, res) {
                 attributes: ['kategoriak_ar']
             }]
         });
-        res.render('index', { jatekok: jatekok, keresett : "" });
+        res.render('index', { jatekok: jatekok, keresett : "", username: req.session.username || 'Felhasználó'});
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
     }
@@ -88,7 +88,7 @@ exports.KeresoMezo = async function (req, res) {
                     attributes: ['kategoriak_ar']
                 }]
             });
-            res.render('index', {jatekok, keresett}) 
+            res.render('index', {jatekok: jatekok, keresett: keresett, username: req.session.username || 'Felhasználó'}) 
         } catch (error) {
             console.error('Hiba történt a játék keresése közben:', error);
             res.status(500).send('Hiba történt a játék keresése során.');
