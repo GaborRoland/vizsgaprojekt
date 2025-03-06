@@ -13,7 +13,7 @@ exports.OsszesJatekok = async function JatekKereses(req, res) {
                 attributes: ['kategoriak_ar']
             }]
         });
-        res.render('index', { jatekok: jatekok, keresett : "", username: req.session.username || 'Felhasználó'});
+        res.render('index', { jatekok: jatekok, keresett : 0, username: req.session.username || 'Felhasználó'});
     } catch (err) {
         res.status(500).send('Hiba történt a játékok lekérésekor.');
     }

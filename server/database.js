@@ -1,10 +1,16 @@
 // database.js
 const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
 // mysql adatbázis kapcsolat létrehozása
-const sequelize = new Sequelize('jatekbusiness', 'root', '',{
-  dialect: 'mysql',
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    dialect: process.env.DB_DIALECT,
+  }
+);
 
 // Adatbázis és tábla szinkronizálása
 async function syncDatabase() {

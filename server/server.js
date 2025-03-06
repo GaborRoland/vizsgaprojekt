@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const path = require('path');
 const session = require('express-session')
 require('../Models/associations'); //Itt állítjuk be a kapcsolatokat
+require('dotenv').config();
 
 
 const FelhasznalokRoutes = require('../Routes/felhasznalokRoutes'); // Importálás a route-ot
@@ -13,7 +13,7 @@ const kategoriakRoutes = require('../Routes/kategoriakRoutes');
 
 //Session
 app.use(session({
-    secret: "mysecret", // Erős titkos kulcs
+    secret: process.env.SESSION_SECRET, // Erős titkos kulcs
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 1 nap
@@ -38,6 +38,6 @@ app.use('/', JatekokRoutes);
 app.use('/kategoriak', kategoriakRoutes);
 
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`); // Szerver elindítása
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running at http://localhost:${process.env.PORT}`); // Szerver elindítása
 });
