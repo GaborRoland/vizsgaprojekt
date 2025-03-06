@@ -166,6 +166,17 @@ h2{
     color: white;
     box-shadow: -3px -3px 15px #d9fdff;
   }
+  a {
+    text-decoration: none;
+    color:#d9fdff;
+    width: 40px;
+    
+}
+p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
   
 }
 
@@ -306,6 +317,16 @@ h2{
     color: white;
     box-shadow: -3px -3px 15px #d9fdff;
   }
+  a {
+    text-decoration: none;
+    color:#d9fdff;
+    width: 20px;   
+}
+p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
   
 }
 
@@ -441,6 +462,16 @@ h2{
     background-color: #00f0ff;
     color: white;
     box-shadow: -3px -3px 15px #d9fdff;
+  }
+  a {
+    text-decoration: none;
+    color:#d9fdff;
+    width: 20px;
+}
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
   }
   
 }
