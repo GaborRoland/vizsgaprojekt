@@ -1,22 +1,12 @@
 //Segédváltozók
 const toTopButton = document.getElementById("to-top-button");
-const keresesDiv = document.getElementById("kereses");
-const keresesCim = document.getElementById("keresescim");
-const keresomezo = document.getElementById("keresomezo");
-const usermenu = document.getElementById("usermenu");
 let log = document.getElementById("log");
 let loggedin = false;
 const jatekaink = document.getElementById("section-title");
-const footer = document.getElementById("footer");
 const hirek = document.getElementById("hirek");
 const aboutus = document.getElementById("about-us");
-const keresoinput = document.querySelector('search-input');
 const cart = document.getElementById("cart");
-const AllTitle = document.querySelectorAll(".title");
-const AllPrice = document.querySelectorAll(".price2");
-const AllProducts = document.querySelectorAll(".product-card");
 const ossztermek = document.getElementById("ossztermek");
-const ures = document.getElementById("ures");
 let user = window.usernameFromBackend;
 let osszegar = 0;
 
@@ -60,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
         log.innerHTML = "Kijelentkezés";
         loggedin = true;
         document.getElementById("reg").innerHTML = "Beállítások";
+        document.getElementById("reg").href = "";
+        document.getElementById("reg").addEventListener("click", function() {
+          alert("Fejlesztés alatt áll!"); // Akció, ami kattintásra történik
+      });
         cart.style.display = "block";
         ossztermek.style.visibility = "visible";
       }

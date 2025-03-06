@@ -12,7 +12,7 @@ body{
     background-position: center left;
     animation: backgroundslide_right 40s infinite;
     animation-direction: alternate;
-    
+    color: white;
 }
 
 .back-to-main{
@@ -37,8 +37,6 @@ body{
     height: 56px;
     background: linear-gradient(to bottom right, #facc15, #ea580c, #db2777);
     color: white;
-    /* border-radius: 50%; */
-    /* display: none; */
     align-items: center;
     justify-content: center;
   }
@@ -72,9 +70,16 @@ h2{
 }
 
 .info{
-    position: relative;
-}
+    /* position: relative; */
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
 
+}
+.info label {
+  white-space: nowrap;
+
+}
 
 .input{
     border: 1px solid #bababa;
@@ -105,50 +110,19 @@ h2{
 
   
   input[type="date"] { 
-      background: transparent;
-      color: white;
+    background: transparent;
+    color: white;
+    width: 100%; /* Ensure input takes up remaining space */
+    max-width: 110px;
       
   }
-
+  
     ::-webkit-datetime-edit {
        padding: 1em;
   }
     
       input[type="date"]::-webkit-calendar-picker-indicator {
         filter: invert(100%);
-  }
-
-  .felhivas{
-    position: absolute;
-    background-color: #777777d1;
-    height: 200px;
-    width: 380px;
-    padding: 4px;
-    border-radius: 5px;
-    z-index: 1;
-  }
-
-  .felhivas-content-balra{
-    max-width: 45%;
-    text-align: left;
-    float: left;
-    /* background-color: #00f0ff; */
-    height: 190px;
-    color: #fff;
-  }
-
-  .felhivas-content-jobbra{
-    max-width: 55%;
-    text-align: left;
-    float: right;
-    /* background-color: #3300ff; */
-    height: 190px;
-    padding: 0;
-  }
-
-  #felhivas-img{
-    height: 100%;
-    width:100%
   }
 
   #register{
@@ -177,6 +151,10 @@ p {
   padding: 0;
   text-align: center;
 }
+
+button{
+  margin-bottom: 20px;
+}
   
 }
 
@@ -201,7 +179,8 @@ p {
 }
 
 .panel {
-    width: 38vw;
+    width: 90%;
+    max-width: 500px;
     height: auto;
     padding: 7vw;
     color: #fff;
@@ -233,7 +212,7 @@ h2{
     height: 7vh;
     color: #ffffff;
     font-size: 16px;
-    width: 100%;
+    width: 90%;
     margin-bottom: 20px;
     padding: 15px;
     border-radius: 20px;
@@ -267,39 +246,6 @@ h2{
     
       input[type="date"]::-webkit-calendar-picker-indicator {
         filter: invert(100%);
-  }
-
-  .felhivas{
-    position: absolute;
-    background-color: #777777d1;
-    height: 200px;
-    width: 380px;
-    padding: 4px;
-    border-radius: 5px;
-    z-index: 1;
-  }
-
-  .felhivas-content-balra{
-    max-width: 45%;
-    text-align: left;
-    float: left;
-    /* background-color: #00f0ff; */
-    height: 190px;
-    color: #fff;
-  }
-
-  .felhivas-content-jobbra{
-    max-width: 55%;
-    text-align: left;
-    float: right;
-    /* background-color: #3300ff; */
-    height: 190px;
-    padding: 0;
-  }
-
-  #felhivas-img{
-    height: 100%;
-    width:100%
   }
 
   #register{
@@ -327,6 +273,9 @@ p {
   padding: 0;
   text-align: center;
 }
+button{
+  margin-bottom: 20px;
+}
   
 }
 
@@ -347,7 +296,8 @@ p {
 }
 
 .panel {
-    width: 60vw;
+    width: 90%;
+    max-width: 500px;
     height: auto;
     padding: 7vw;
     color: #fff;
@@ -379,7 +329,7 @@ h2{
     height: 7vh;
     color: #ffffff;
     font-size: 16px;
-    width: 100%;
+    width: 90%;
     margin-bottom: 20px;
     padding: 15px;
     border-radius: 20px;
@@ -415,39 +365,6 @@ h2{
         filter: invert(100%);
   }
 
-  .felhivas{
-    position: absolute;
-    background-color: #777777d1;
-    height: 200px;
-    width: 380px;
-    padding: 4px;
-    border-radius: 5px;
-    z-index: 1;
-  }
-
-  .felhivas-content-balra{
-    max-width: 45%;
-    text-align: left;
-    float: left;
-    /* background-color: #00f0ff; */
-    height: 190px;
-    color: #fff;
-  }
-
-  .felhivas-content-jobbra{
-    max-width: 55%;
-    text-align: left;
-    float: right;
-    /* background-color: #3300ff; */
-    height: 190px;
-    padding: 0;
-  }
-
-  #felhivas-img{
-    height: 100%;
-    width:100%
-  }
-
   #register{
     padding: 15px;
     border: none;
@@ -472,6 +389,9 @@ h2{
     margin: 0;
     padding: 0;
     text-align: center;
+  }
+  button{
+    margin-bottom: 20px;
   }
   
 }
