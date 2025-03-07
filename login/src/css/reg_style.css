@@ -1,34 +1,36 @@
 * {
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-body{
-    margin: 0;
-	  padding: 0;
-    height: 100vh;
-	  width: 100%;
-    background: rgb(0, 0, 0) url(/login/kepek/playstation-2-collage-video-games-playstation-wallpaper-thumb.jpg);
-    background-position: center left;
-    animation: backgroundslide_right 40s infinite;
-    animation-direction: alternate;
-    color: white;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgb(0, 0, 0) url(/login/kepek/playstation-2-collage-video-games-playstation-wallpaper-thumb.jpg);
+  background-position: center left;
+  animation: backgroundslide_right 40s infinite;
+  animation-direction: alternate;
+  color: white;
 }
 
-.back-to-main{
+.back-to-main {
   border-radius: 20px;
   border: 1px solid white;
 }
+
 /* Animációk */
 @keyframes backgroundslide_right {
-    100%{background-position: center right;}
-    
- }
+  100% {
+    background-position: center right;
+  }
+
+}
 
 
 /*Reszponzív viselkedés*/
-@media only screen and (min-width: 1200px) 
-{
+@media only screen and (min-width: 1200px) {
   .back-to-main {
     position: fixed;
     bottom: 10px;
@@ -41,13 +43,13 @@ body{
     justify-content: center;
   }
 
-.centered {
+  .centered {
     display: grid;
     place-items: center;
     height: 100vh;
-}
+  }
 
-.panel {
+  .panel {
     width: 38vw;
     height: auto;
     padding: 7vw;
@@ -59,29 +61,30 @@ body{
     -webkit-backdrop-filter: blur(5px);
     border: 10px solid rgba(0, 0, 0, 0.35);
     overflow: hidden;
-}
+  }
 
-h2{
+  h2 {
     text-align: center;
     margin-bottom: 4vh;
     color: #d9fdff;
     text-shadow: 0 0 2rem #00f0ff;
-    
-}
 
-.info{
+  }
+
+  .info {
     /* position: relative; */
     display: flex;
-    align-items: center; 
-    gap: 10px; 
+    align-items: center;
+    gap: 10px;
 
-}
-.info label {
-  white-space: nowrap;
+  }
 
-}
+  .info label {
+    white-space: nowrap;
 
-.input{
+  }
+
+  .input {
     border: 1px solid #bababa;
     background: transparent;
     height: 7vh;
@@ -92,8 +95,8 @@ h2{
     padding: 15px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.332);
-}
-  
+  }
+
   .input:focus {
     color: #ffffff;
     background-color: transparent;
@@ -108,58 +111,60 @@ h2{
     opacity: 0.7;
   }
 
-  
-  input[type="date"] { 
+
+  input[type="date"] {
     background: transparent;
     color: white;
-    width: 100%; /* Ensure input takes up remaining space */
+    width: 100%;
+    /* Ensure input takes up remaining space */
     max-width: 110px;
-      
-  }
-  
-    ::-webkit-datetime-edit {
-       padding: 1em;
-  }
-    
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(100%);
+
   }
 
-  #register{
+  ::-webkit-datetime-edit {
+    padding: 1em;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+  }
+
+  #register {
     padding: 15px;
     border: none;
     border-radius: 15px;
     background-color: whitesmoke;
     font-weight: bold;
-    margin-left:32%;
-    margin-top:5%;
+    margin-left: 32%;
+    margin-top: 5%;
   }
 
-  #register:hover{
+  #register:hover {
     background-color: #00f0ff;
     color: white;
     box-shadow: -3px -3px 15px #d9fdff;
   }
+
   a {
     text-decoration: none;
-    color:#d9fdff;
+    color: #d9fdff;
     width: 40px;
-    
-}
-p {
-  margin: 0;
-  padding: 0;
-  text-align: center;
+
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  button {
+    margin-bottom: 20px;
+  }
+
 }
 
-button{
-  margin-bottom: 20px;
-}
-  
-}
-
-@media only screen and (min-width: 600px)
-{
+@media only screen and (min-width: 600px) {
   .back-to-main {
     position: fixed;
     bottom: 10px;
@@ -176,9 +181,9 @@ button{
     display: grid;
     place-items: center;
     height: 100vh;
-}
+  }
 
-.panel {
+  .panel {
     width: 90%;
     max-width: 500px;
     height: auto;
@@ -191,22 +196,22 @@ button{
     -webkit-backdrop-filter: blur(1px);
     border: 1px solid rgba(0, 0, 0, 0.35);
     overflow: hidden;
-}
+  }
 
-h2{
+  h2 {
     text-align: center;
     margin-bottom: 4vh;
     color: #d9fdff;
     text-shadow: 0 0 2rem #00f0ff;
-    
-}
 
-.info{
+  }
+
+  .info {
     position: relative;
-}
+  }
 
 
-.input{
+  .input {
     border: 1px solid #bababa;
     background: transparent;
     height: 7vh;
@@ -217,8 +222,8 @@ h2{
     padding: 15px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.332);
-}
-  
+  }
+
   .input:focus {
     color: #ffffff;
     background-color: transparent;
@@ -233,54 +238,56 @@ h2{
     opacity: 0.7;
   }
 
-  
-  input[type="date"] { 
-      background: transparent;
-      color: white;
-      
+
+  input[type="date"] {
+    background: transparent;
+    color: white;
+
   }
 
-    ::-webkit-datetime-edit {
-       padding: 1em;
-  }
-    
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(100%);
+  ::-webkit-datetime-edit {
+    padding: 1em;
   }
 
-  #register{
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+  }
+
+  #register {
     padding: 15px;
     border: none;
     border-radius: 15px;
     background-color: whitesmoke;
     font-weight: bold;
-    margin-left:32%;
-    margin-top:5%;
+    margin-left: 32%;
+    margin-top: 5%;
   }
 
-  #register:hover{
+  #register:hover {
     background-color: #00f0ff;
     color: white;
     box-shadow: -3px -3px 15px #d9fdff;
   }
+
   a {
     text-decoration: none;
-    color:#d9fdff;
-    width: 20px;   
-}
-p {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-button{
-  margin-bottom: 20px;
-}
-  
+    color: #d9fdff;
+    width: 20px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  button {
+    margin-bottom: 20px;
+  }
+
 }
 
-@media only screen and (max-width: 600px) 
-{
+@media only screen and (max-width: 600px) {
 
   .back-to-main {
     position: fixed;
@@ -293,9 +300,9 @@ button{
     display: grid;
     place-items: center;
     height: 100vh;
-}
+  }
 
-.panel {
+  .panel {
     width: 90%;
     max-width: 500px;
     height: auto;
@@ -308,22 +315,22 @@ button{
     -webkit-backdrop-filter: blur(1px);
     border: 1px solid rgba(0, 0, 0, 0.35);
     overflow: hidden;
-}
+  }
 
-h2{
+  h2 {
     text-align: center;
     margin-bottom: 4vh;
     color: #d9fdff;
     text-shadow: 0 0 2rem #00f0ff;
-    
-}
 
-.info{
+  }
+
+  .info {
     position: relative;
-}
+  }
 
 
-.input{
+  .input {
     border: 1px solid #bababa;
     background: transparent;
     height: 7vh;
@@ -334,8 +341,8 @@ h2{
     padding: 15px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.332);
-}
-  
+  }
+
   .input:focus {
     color: #ffffff;
     background-color: transparent;
@@ -350,48 +357,51 @@ h2{
     opacity: 0.7;
   }
 
-  
-  input[type="date"] { 
-      background: transparent;
-      color: white;
-      
+
+  input[type="date"] {
+    background: transparent;
+    color: white;
+
   }
 
-    ::-webkit-datetime-edit {
-       padding: 1em;
-  }
-    
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(100%);
+  ::-webkit-datetime-edit {
+    padding: 1em;
   }
 
-  #register{
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+  }
+
+  #register {
     padding: 15px;
     border: none;
     border-radius: 15px;
     background-color: whitesmoke;
     font-weight: bold;
-    margin-left:32%;
-    margin-top:5%;
+    margin-left: 32%;
+    margin-top: 5%;
   }
 
-  #register:hover{
+  #register:hover {
     background-color: #00f0ff;
     color: white;
     box-shadow: -3px -3px 15px #d9fdff;
   }
+
   a {
     text-decoration: none;
-    color:#d9fdff;
+    color: #d9fdff;
     width: 20px;
-}
+  }
+
   p {
     margin: 0;
     padding: 0;
     text-align: center;
   }
-  button{
+
+  button {
     margin-bottom: 20px;
   }
-  
+
 }

@@ -1,3 +1,3 @@
-function NincsFelhasz(){
+function NincsFelhasz() {
     sessionStorage.clear();
 }

@@ -25,10 +25,10 @@ const Felhasznalok = sequelize.define('felhasznalok', {
     allowNull: false,
   }
 },
-{
-  // Opciók
-  freezeTableName: true,// Ez biztosítja, hogy a tábla neve 'felhasznalok' maradjon, és ne változzon többes számúvá
-  timestamps: false // createdAt és updatedAt oszlopok automatikus kezelése
-});
+  {
+    // Opciók
+    freezeTableName: true,// Ez biztosítja, hogy a tábla neve 'felhasznalok' maradjon, és ne változzon többes számúvá
+    timestamps: false // createdAt és updatedAt oszlopok automatikus kezelése
+  });
 
 module.exports = Felhasznalok;

@@ -1,50 +1,58 @@
 <!-- Bejelentkezés  -->
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="kepek/fooldal_logo_2-removebg-preview.png" type="image/x-icon">
-    <link href="/src/css/log_style.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="kepek/fooldal_logo_2-removebg-preview.png"
+            type="image/x-icon">
+        <link href="/src/css/log_style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Bejelentkezés</title>
-</head>
-<body>
-    <div class="centered">
-        <div class="image"></div>
-        <div class="panel">
-            
-            
-            <h2>
-                <span class="letter letter-1">L</span>
-                <span class="letter letter-2">O</span>
-                <span class="letter letter-3">G</span>
-                <span class="letter letter-4">I</span>
-                <span class="letter letter-5">N</span>
-            </h2>
-            <form action="/users/belepes" method="POST">
-                
-                <div class="info">
-                    <input type="text" name="nev" placeholder="Felhasználónév" id="felhasznalonev">
-                </div>
-                
-                <div class="info">
-                    <input type="password" name="jelszo1" placeholder="Jelszó" id="jelszo">
-                </div>
-                
-                <div class="jelszo">
-                    <input type="checkbox" onclick="Megjelenites()" style="color: white;">Jelszó megjelenítés <!-- Javascript függvény ide! -->
-                    <a href="#">Elfelejtette jelszavát?</a>
-                </div>
-                
-                <button type="submit" id="bejelentkez" >Bejelentkezés</button>
-            </form>
-            
-            <p>Nincs még fiókod? <a href="register.html">Regisztrálok</a></p>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Bejelentkezés</title>
+    </head>
+    <body>
+        <div class="centered">
+            <div class="image"></div>
+            <div class="panel">
+
+                <h2>
+                    <span class="letter letter-1">L</span>
+                    <span class="letter letter-2">O</span>
+                    <span class="letter letter-3">G</span>
+                    <span class="letter letter-4">I</span>
+                    <span class="letter letter-5">N</span>
+                </h2>
+                <form action="/users/belepes" method="POST">
+
+                    <div class="info">
+                        <input type="text" name="nev"
+                            placeholder="Felhasználónév" id="felhasznalonev">
+                    </div>
+
+                    <div class="info">
+                        <input type="password" name="jelszo1"
+                            placeholder="Jelszó" id="jelszo">
+                    </div>
+
+                    <div class="jelszo">
+                        <input type="checkbox" onclick="Megjelenites()"
+                            style="color: white;">Jelszó megjelenítés
+                        <!-- Javascript függvény ide! -->
+                        <a href="#">Elfelejtette jelszavát?</a>
+                    </div>
+
+                    <button type="submit"
+                        id="bejelentkez">Bejelentkezés</button>
+                </form>
+
+                <p>Nincs még fiókod? <a
+                        href="register.html">Regisztrálok</a></p>
+            </div>
+            <button type="button" class="back-to-main"
+                onclick="NincsFelhasz()">Vissza a főoldalra </button>
         </div>
-        <button type="button" class="back-to-main" onclick="NincsFelhasz()">Vissza a főoldalra </button>
-    </div>
         <script src="../login/src/js/login.js"></script>
-</body>
+    </body>
 </html>

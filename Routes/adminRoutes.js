@@ -1,7 +1,7 @@
 const express = require('express');
-const {JatekLetrehozasAdmin, OsszesJatekokAdmin, JatekTorlesAdmin, JatekFrissites} = require('../Controllers/jatekokController');
-const {OsszesKategoriak, KategoriaLetrehozas, KategoriaTorles, KategoriaFrissites} = require('../Controllers/kategoriakController');
-const {AdminfelhasznaloLetrehozas, Felhasznalok, FelhasznaloTorles,  FelhasznaloFrissites } = require('../Controllers/felhasznalokController');
+const { JatekLetrehozasAdmin, OsszesJatekokAdmin, JatekTorlesAdmin, JatekFrissites } = require('../Controllers/jatekokController');
+const { OsszesKategoriak, KategoriaLetrehozas, KategoriaTorles, KategoriaFrissites } = require('../Controllers/kategoriakController');
+const { AdminfelhasznaloLetrehozas, Felhasznalok, FelhasznaloTorles, FelhasznaloFrissites } = require('../Controllers/felhasznalokController');
 const router = express.Router();
 
 //Játékok útvonalai

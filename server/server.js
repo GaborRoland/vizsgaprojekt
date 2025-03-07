@@ -13,11 +13,11 @@ const kategoriakRoutes = require('../Routes/kategoriakRoutes');
 
 //Session
 app.use(session({
-    secret: process.env.SESSION_SECRET, // Erős titkos kulcs
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 1 nap
-  }));
+  secret: process.env.SESSION_SECRET, // Erős titkos kulcs
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 1 nap
+}));
 
 app.use(express.json()); // JSON adatokat tud fogadni
 app.use('/login', express.static(path.join(__dirname, '../login')));
@@ -39,5 +39,5 @@ app.use('/kategoriak', kategoriakRoutes);
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running at http://localhost:${process.env.PORT}`); // Szerver elindítása
+  console.log(`Server is running at http://localhost:${process.env.PORT}`); // Szerver elindítása
 });

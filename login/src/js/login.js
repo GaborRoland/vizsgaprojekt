@@ -1,18 +1,17 @@
 //Jelszó láthatósága
-function Megjelenites(){
+function Megjelenites() {
     var password = document.getElementById("jelszo");
 
     //Jelszó típusának ellenőrzése és az alapján a megjelenítés
-    if(password.type === "password")
-    {
+    if (password.type === "password") {
         password.type = "text";
     }
-    else{
+    else {
         password.type = "password"
     }
 }
 
-function NincsFelhasz(){
+function NincsFelhasz() {
     sessionStorage.clear();
     window.location.href = '/users/backtomain';
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 05. 09:08
+-- Létrehozás ideje: 2025. Már 07. 11:21
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -35,8 +35,9 @@ CREATE TABLE IF NOT EXISTS `felhasznalok` (
   `felhasznalo_nev` varchar(30) NOT NULL,
   `jelszo` varchar(1000) NOT NULL,
   `adminisztrator` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `felhasznalo` (`felhasznalo_nev`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalok`

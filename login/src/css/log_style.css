@@ -3,33 +3,33 @@
     font-family: "Montserrat", sans-serif;
 }
 
-body{
+body {
     margin: 0;
-	padding: 0;
+    padding: 0;
     height: 100vh;
-	width: 100%;
+    width: 100%;
     background: rgb(0, 0, 0) url(/login/kepek/playstation-2-collage-video-games-playstation-wallpaper-thumb.jpg);
     background-position: center left;
     animation: backgroundslide_right 40s infinite;
     animation-direction: alternate;
     color: white;
-    
+
 }
-  
-.text{
+
+.text {
     font-weight: 100;
     font-size: 7rem;
     letter-spacing: -0.25em;
     flex-flow: row;
 }
 
-.letter{
+.letter {
     color: #d9fdff;
     text-shadow: 0 0 2rem #00f0ff;
     display: inline-block;
 }
 
-.letter-2{
+.letter-2 {
     transform: translate(-0.2rem, 1rem) rotate(10deg);
     animation: pislakol 2s ease-in-out infinite alternate;
 
@@ -37,56 +37,76 @@ body{
 
 /* Animációk  */
 
-@keyframes pislakol{
-    0%
-        {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    5%
-        {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    5.5%
-        {opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    6%
-        {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    6.5%
-        {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    7%
-        {opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    8%
-       {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
-    50%
-        {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(13deg)}
-    100%
-        {opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg)}
+@keyframes pislakol {
+    0% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    5% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    5.5% {
+        opacity: 0;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    6% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    6.5% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    7% {
+        opacity: 0;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    8% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(13deg)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-0.2rem, 1rem) rotate(10deg)
+    }
 }
 
 @keyframes backgroundslide_right {
-   100%{background-position: center right;}
-   
+    100% {
+        background-position: center right;
+    }
+
 }
 
 
 @keyframes slideIn {
     0% {
-      top: -200px; /* A diven kívül indul */
+        top: -200px;
+        /* A diven kívül indul */
     }
-    100% {
-      top: -10px;
-    }
-  }
 
-  
+    100% {
+        top: -10px;
+    }
+}
+
+
 
 /* PC */
-@media only screen and (min-width: 1200px) 
-{
+@media only screen and (min-width: 1200px) {
     .back-to-main {
         position: fixed;
         bottom: 10px;
@@ -99,28 +119,30 @@ body{
         /* display: none; */
         align-items: center;
         justify-content: center;
-      }
-    
+    }
+
     .image {
         position: absolute;
-        top: -200px; /* A kép diven kívül indul */
+        top: -200px;
+        /* A kép diven kívül indul */
         transform: translateY(-10%);
-        width: 250px; 
+        width: 250px;
         height: 250px;
         background-image: url(/login/kepek/letöltés-removebg-preview.png);
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
-      }
+    }
 
     .centered {
         display: grid;
         place-items: center;
         height: 100vh;
-        margin-bottom: 80px; /* Adj helyet a gombnak */
+        margin-bottom: 80px;
+        /* Adj helyet a gombnak */
 
     }
-    
+
     .panel {
         width: 60%;
         max-width: 600px;
@@ -135,26 +157,27 @@ body{
         border: 1px solid rgba(0, 0, 0, 0.35);
         overflow: hidden;
     }
-    
-    h2{
+
+    h2 {
         text-align: center;
         margin-bottom: 4vh;
-        
+
     }
-    
+
     p {
         margin: 0;
         padding: 0;
         text-align: center;
     }
-    
-    
-    .info{
+
+
+    .info {
         position: relative;
     }
-    
-    
-    input, button{
+
+
+    input,
+    button {
         border: 1px solid #bababa;
         background: transparent;
         height: 7vh;
@@ -166,7 +189,7 @@ body{
         border-radius: 20px;
         outline: none;
     }
-    
+
 
     .jelszo {
         display: flex;
@@ -176,44 +199,46 @@ body{
     }
 
 
-    .panel input[type=checkbox], a {
+    .panel input[type=checkbox],
+    a {
         text-decoration: none;
-        color:#d9fdff;
+        color: #d9fdff;
         width: 40px;
-        
+
     }
-    
+
     .panel button {
         background: #fff;
         color: #262626;
     }
-    
+
 }
 
 /*tablet, laptop*/
-@media only screen and (min-width: 600px)
-{
+@media only screen and (min-width: 600px) {
     .image {
         position: absolute;
-        top: -200px; /* A kép diven kívül indul */
+        top: -200px;
+        /* A kép diven kívül indul */
         transform: translateY(-10%);
-        width: 250px; 
+        width: 250px;
         height: 250px;
         background-image: url(/login/kepek/letöltés-removebg-preview.png);
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
-      }
+    }
 
     .centered {
         display: grid;
         place-items: center;
         height: 100vh;
-        margin-bottom: 80px; /* Adj helyet a gombnak */
+        margin-bottom: 80px;
+        /* Adj helyet a gombnak */
     }
-    
+
     .panel {
-        width: 90%; 
+        width: 90%;
         max-width: 500px;
         height: auto;
         padding: 7vw;
@@ -225,23 +250,24 @@ body{
         border: 1px solid rgba(0, 0, 0, 0.35);
         overflow: hidden;
     }
-    
+
     h2 {
         text-align: center;
         margin-bottom: 4vh;
     }
-    
+
     p {
         margin: 0;
         padding: 0;
         text-align: center;
     }
-    
+
     .info {
         position: relative;
     }
-    
-    input, button{
+
+    input,
+    button {
         border: 1px solid #bababa;
         background: transparent;
         height: 7vh;
@@ -252,22 +278,23 @@ body{
         padding: 15px;
         border-radius: 20px;
     }
-    
+
     .jelszo {
         display: flex;
         justify-content: space-around;
         margin-bottom: 20px;
         max-width: 100%;
     }
-    
-    
-    
-    .panel input[type=checkbox], a {
+
+
+
+    .panel input[type=checkbox],
+    a {
         text-decoration: none;
-        color:#d9fdff;
-        width: 20px;   
+        color: #d9fdff;
+        width: 20px;
     }
-    
+
     .panel button {
         background: #fff;
         color: #262626;
@@ -283,33 +310,34 @@ body{
         color: white;
         align-items: center;
         justify-content: center;
-      }
+    }
 }
 
 /* Telefon */
-@media only screen and (max-width: 600px) 
-{
+@media only screen and (max-width: 600px) {
     .image {
         position: absolute;
-        top: -200px; /* A kép diven kívül indul */
+        top: -200px;
+        /* A kép diven kívül indul */
         transform: translateY(-10%);
-        width: 250px; 
+        width: 250px;
         height: 250px;
         background-image: url(/login/kepek/letöltés-removebg-preview.png);
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
-      }
+    }
 
     .centered {
         display: grid;
         place-items: center;
         height: 100vh;
-        margin-bottom: 80px; /* Adj helyet a gombnak */
+        margin-bottom: 80px;
+        /* Adj helyet a gombnak */
     }
-    
+
     .panel {
-        width: 90%; 
+        width: 90%;
         max-width: 500px;
         height: auto;
         padding: 7vw;
@@ -320,25 +348,26 @@ body{
         backdrop-filter: blur(2.9px);
         -webkit-backdrop-filter: blur(1px);
         border: 1px solid rgba(0, 0, 0, 0.35);
-        overflow:hidden;
+        overflow: hidden;
     }
-    
+
     h2 {
         text-align: center;
         margin-bottom: 4vh;
     }
-    
+
     p {
         margin: 0;
         padding: 0;
         text-align: center;
     }
-    
+
     .info {
         position: relative;
     }
-    
-    input, button{
+
+    input,
+    button {
         border: 1px solid #bababa;
         background: transparent;
         height: 7vh;
@@ -349,21 +378,22 @@ body{
         padding: 15px;
         border-radius: 20px;
     }
-    
+
     .jelszo {
         display: flex;
         justify-content: space-around;
         margin-bottom: 20px;
     }
-    
-    
-    .panel input[type=checkbox], a {
+
+
+    .panel input[type=checkbox],
+    a {
         text-decoration: none;
-        color:#d9fdff;
+        color: #d9fdff;
         width: 20px;
-        
+
     }
-    
+
     .panel button {
         background: #fff;
         color: #262626;
@@ -374,6 +404,5 @@ body{
         bottom: 10px;
         right: 10px;
         visibility: hidden;
-      }
+    }
 }
-

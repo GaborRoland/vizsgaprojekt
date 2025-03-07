@@ -10,23 +10,23 @@
         <th>Játékok száma</th>
     </tr>
     <% kategoriak.forEach(kateg => { %>
-        <tr>
-            <td><%= kateg.id %></td>
-            <td><%= kateg.kategoria %></td>
-            <td><%= kateg.kategoriak_ar %> Ft</td>
-            <td><%= kateg.jatekokSzama %> db</td>
-        </tr>
+    <tr>
+        <td><%= kateg.id %></td>
+        <td><%= kateg.kategoria %></td>
+        <td><%= kateg.kategoriak_ar %> Ft</td>
+        <td><%= kateg.jatekokSzama %> db</td>
+    </tr>
     <% }) %>
 </table>
-
 
 <form action="/dashboard-xyz123/kategtorles" method="POST">
     <div>
         <label>Kategória törlése:</label>
         <select name="torolni">
-            <option selected  disabled>-- Válaszd ki, amit törölni szeretnél --</option>
+            <option selected disabled>-- Válaszd ki, amit törölni szeretnél
+                --</option>
             <% kategoriak.forEach(kateg => { %>
-                <option value="<%= kateg.id %>" ><%= kateg.kategoria %></option>
+            <option value="<%= kateg.id %>"><%= kateg.kategoria %></option>
             <% }) %>
         </select>
         <button type="submit">Kategória törlése</button>
@@ -35,28 +35,31 @@
 
 <h2>Új kategória hozzáadása</h2>
 <form action="/dashboard-xyz123/kateghozzaadas" method="POST">
-<input type="text" name="kateg_nev" placeholder="Név" required>
-<input type="number" name="ar" placeholder="Ár" required min="200" value="200"> <label>Ft</label>
-<button type="submit">Hozzáadás</button>
+    <input type="text" name="kateg_nev" placeholder="Név" required>
+    <input type="number" name="ar" placeholder="Ár" required min="200"
+        value="200"> <label>Ft</label>
+    <button type="submit">Hozzáadás</button>
 </form>
 
 <h2>Kategória frissítése</h2>
 <form action="/dashboard-xyz123/kategfrissites" method="POST">
     <select id="kategoriaSelect" name="frissiteni">
-        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél --</option>
+        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél
+            --</option>
         <% kategoriak.forEach(kateg => { %>
-            <option value="<%= kateg.id %>" 
-                data-katnev="<%= kateg.kategoria %>" 
-                data-ar="<%= kateg.kategoriak_ar %>">
-                <%= kateg.id %> <%= kateg.kategoria %> <%= kateg.kategoriak_ar %> Ft 
-            </option>
-            <% }) %>
-        </select>
+        <option value="<%= kateg.id %>"
+            data-katnev="<%= kateg.kategoria %>"
+            data-ar="<%= kateg.kategoriak_ar %>">
+            <%= kateg.id %> <%= kateg.kategoria %> <%= kateg.kategoriak_ar %> Ft
+        </option>
+        <% }) %>
+    </select>
 
-        <input type="text" id="kateg_nev2" name="kateg_nev2" placeholder="Név" required>
-        <input type="number" id="ar2" name="ar2" placeholder="Ár" required min="200"> <label>Ft</label>
+    <input type="text" id="kateg_nev2" name="kateg_nev2" placeholder="Név"
+        required>
+    <input type="number" id="ar2" name="ar2" placeholder="Ár" required
+        min="200"> <label>Ft</label>
     <button type="submit">Kategória törlése</button>
 </form>
 
 <script src="../login/src/js/kategoria.js"></script>
-

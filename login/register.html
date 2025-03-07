@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="kepek/fooldal_logo_2-removebg-preview.png" type="image/x-icon">
-    <link href="/src/css/reg_style.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="kepek/fooldal_logo_2-removebg-preview.png"
+            type="image/x-icon">
+        <link href="/src/css/reg_style.css" rel="stylesheet">
 
-    <title>Regisztráció</title>
-</head>
-<body>
-    <div class="centered">
-        <div class="panel">
-            <h2>Regisztráció</h2>
-            
-                <form action="/users" method="POST" >
-                    
+        <title>Regisztráció</title>
+    </head>
+    <body>
+        <div class="centered">
+            <div class="panel">
+                <h2>Regisztráció</h2>
+
+                <form action="/users" method="POST">
+
                     <div class="info">
-                    <input placeholder="Felhasználónév" name="nev" class="input" id="felhasznalonev" type="text" required>
-                </div>
+                        <input placeholder="Felhasználónév" name="nev"
+                            class="input" id="felhasznalonev" type="text"
+                            required>
+                    </div>
 
-                <div class="info">
-                    <input type="password" name="jelszo1" placeholder="Jelszó" id="jelszo" class="input" required>
-                </div>
+                    <div class="info">
+                        <input type="password" name="jelszo1"
+                            placeholder="Jelszó" id="jelszo" class="input"
+                            required>
+                    </div>
 
-                <div class="info">
-                    <input type="password" name="jelszo2" placeholder="Jelszó újra" id="jelszoujra" class="input" required> <!-- Itt egy JavaScript függvénnyel leellnőrizni, hogy a két inputban ugyanaz a karakterlánc szerepel-e (Tavalyi Facebookos) -->
-                </div>
+                    <div class="info">
+                        <input type="password" name="jelszo2"
+                            placeholder="Jelszó újra" id="jelszoujra"
+                            class="input" required>
+                        <!-- Itt egy JavaScript függvénnyel leellnőrizni, hogy a két inputban ugyanaz a karakterlánc szerepel-e (Tavalyi Facebookos) -->
+                    </div>
 
-                <div class="info">
-                    <label for="" style="padding: 0.1em;">Születési dátumod:</label><input type="date" required>
-                </div>
+                    <div class="info">
+                        <label for style="padding: 0.1em;">Születési
+                            dátumod:</label><input type="date" required>
+                    </div>
 
-                <button type="submit" id="register">Regisztrálok!</button> <!-- Gombnyomáskor visszadob bejelentkezve az oldalra! -->
+                    <button type="submit" id="register">Regisztrálok!</button>
+                    <!-- Gombnyomáskor visszadob bejelentkezve az oldalra! -->
                 </form>
-            
-            <p>Van már fiókod? <a href="login.html">Bejelentkezek</a></p>
-        </div>
-        <a href="/"> <button type="button" class="back-to-main" onclick="NincsFelhasz()">Vissza a főoldalra </button> </a> 
-    </div>
 
-    <script src="../login/src/js/register.js"></script>
-</body>
+                <p>Van már fiókod? <a href="login.html">Bejelentkezek</a></p>
+            </div>
+            <a href="/"> <button type="button" class="back-to-main"
+                    onclick="NincsFelhasz()">Vissza a főoldalra </button> </a>
+        </div>
+
+        <script src="../login/src/js/register.js"></script>
+    </body>
 </html>

@@ -1,73 +1,81 @@
 <%- include('admin') %>
 
 <h2>Játékok</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Cím</th>
-            <th>Leírás</th>
-            <th>Kategória - Ár</th>
-        </tr>
-        
-            <% jatekok.forEach(game => { %>
-                <tr>
-                <td><%= game.id %></td>
-                <td><%= game.jatek_nev %></td>
-                <td><%= game.leiras %></td>
-                <td><%= game.kategoria.kategoria %> - <%= game.kategoria.kategoriak_ar %> Ft</td>
-                </tr>
-                <% }) %>
-            </table>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Cím</th>
+        <th>Leírás</th>
+        <th>Kategória - Ár</th>
+    </tr>
 
-        <form action="/dashboard-xyz123/torles" method="POST">
-            <div id="keszites2">
-                <label id="ummm">Játék törlése:</label>
-                <select id="torolnivalo" name="torolni">
-                    <option value="semmi" selected disabled>-- Válaszd ki, amit törölni szeretnél --</option>
-                    <% jatekok.forEach(jatek => { %>
-                        <option value="<%= jatek.id %>" ><%= jatek.jatek_nev %></option>
-                    <% }) %>
-                </select>
-                <button type="submit">Játék törlése</button>
-            </div>
-        </form>
+    <% jatekok.forEach(game => { %>
+    <tr>
+        <td><%= game.id %></td>
+        <td><%= game.jatek_nev %></td>
+        <td><%= game.leiras %></td>
+        <td><%= game.kategoria.kategoria %> - <%= game.kategoria.kategoriak_ar
+            %> Ft</td>
+    </tr>
+    <% }) %>
+</table>
 
-    <h2>Új játék hozzáadása</h2>
-    <form action="/dashboard-xyz123/hozzaadas" method="POST">
-        <input type="text" name="jatek_nev" placeholder="Név" required>
-        <textarea type="text" name="leiras" placeholder="Leírás" required></textarea>
-        <select name="kategoria">
-            <option selected  disabled>-- Válaszd ki a kategóriát --</option>
-            <% kategoriak.forEach(kateg => {%>
-                <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%= kateg.kategoriak_ar %> Ft) </option>
-                <% }) %>
-        </select>
-        <button type="submit">Hozzáadás</button>
-    </form>
-
-    <h2>Játék Módosítása</h2>
-<form action="/dashboard-xyz123/jatekfrissites" method="POST">
-    <select id="jatekSelect" name="frissiteni">
-        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél --</option>
-        <% jatekok.forEach(jatek => { %>
-            <option value="<%= jatek.id %>" 
-                data-jateknev="<%= jatek.jatek_nev %>" 
-                data-leiras="<%= jatek.leiras %>"
-                data-kategoria="<%= jatek.kategoria_id %>">
-                
-                <%= jatek.id %> <%= jatek.jatek_nev %>
-            </option>
+<form action="/dashboard-xyz123/torles" method="POST">
+    <div id="keszites2">
+        <label id="ummm">Játék törlése:</label>
+        <select id="torolnivalo" name="torolni">
+            <option value="semmi" selected disabled>-- Válaszd ki, amit törölni
+                szeretnél --</option>
+            <% jatekok.forEach(jatek => { %>
+            <option value="<%= jatek.id %>"><%= jatek.jatek_nev %></option>
             <% }) %>
         </select>
+        <button type="submit">Játék törlése</button>
+    </div>
+</form>
 
-        <input type="text" id="jatek_nev2" name="jatek_nev2" placeholder="Név" required>
-        <textarea type="text" id="leiras2" name="leiras2" placeholder="Leírás" required></textarea>
-        <select name="kategoria2">
-            <option selected  disabled>-- Válaszd ki a kategóriát --</option>
-            <% kategoriak.forEach(kateg => {%>
-                <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%= kateg.kategoriak_ar %> Ft) </option>
-                <% }) %>
-        </select>
+<h2>Új játék hozzáadása</h2>
+<form action="/dashboard-xyz123/hozzaadas" method="POST">
+    <input type="text" name="jatek_nev" placeholder="Név" required>
+    <textarea type="text" name="leiras" placeholder="Leírás"
+        required></textarea>
+    <select name="kategoria">
+        <option selected disabled>-- Válaszd ki a kategóriát --</option>
+        <% kategoriak.forEach(kateg => {%>
+        <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%=
+            kateg.kategoriak_ar %> Ft) </option>
+        <% }) %>
+    </select>
+    <button type="submit">Hozzáadás</button>
+</form>
+
+<h2>Játék Módosítása</h2>
+<form action="/dashboard-xyz123/jatekfrissites" method="POST">
+    <select id="jatekSelect" name="frissiteni">
+        <option selected disabled>-- Válaszd ki, amit módosítani szeretnél
+            --</option>
+        <% jatekok.forEach(jatek => { %>
+        <option value="<%= jatek.id %>"
+            data-jateknev="<%= jatek.jatek_nev %>"
+            data-leiras="<%= jatek.leiras %>"
+            data-kategoria="<%= jatek.kategoria_id %>">
+
+            <%= jatek.id %> <%= jatek.jatek_nev %>
+        </option>
+        <% }) %>
+    </select>
+
+    <input type="text" id="jatek_nev2" name="jatek_nev2" placeholder="Név"
+        required>
+    <textarea type="text" id="leiras2" name="leiras2" placeholder="Leírás"
+        required></textarea>
+    <select name="kategoria2">
+        <option selected disabled>-- Válaszd ki a kategóriát --</option>
+        <% kategoriak.forEach(kateg => {%>
+        <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%=
+            kateg.kategoriak_ar %> Ft) </option>
+        <% }) %>
+    </select>
     <button type="submit">Módosítás végrehajtása</button>
 </form>
 
