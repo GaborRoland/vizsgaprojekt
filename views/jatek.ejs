@@ -58,8 +58,7 @@
         <option value="<%= jatek.id %>"
             data-jateknev="<%= jatek.jatek_nev %>"
             data-leiras="<%= jatek.leiras %>"
-            data-kategoria="<%= jatek.kategoria_id %>">
-
+            data-kategoriaid="<%= jatek.kategoria_id %>">
             <%= jatek.id %> <%= jatek.jatek_nev %>
         </option>
         <% }) %>
@@ -69,7 +68,7 @@
         required>
     <textarea type="text" id="leiras2" name="leiras2" placeholder="Leírás"
         required></textarea>
-    <select name="kategoria2">
+    <select id="kategoria2" name="kategoria2">
         <option selected disabled>-- Válaszd ki a kategóriát --</option>
         <% kategoriak.forEach(kateg => {%>
         <option value="<%= kateg.id %>"> <%= kateg.kategoria %> (<%=

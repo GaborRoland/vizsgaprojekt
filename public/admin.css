@@ -93,6 +93,19 @@ input, select, textarea {
     color: #fff;
 }
 
+.kategoria-ar-container {
+    display: flex;
+    align-items: center;
+}
+
+.kategoria-ar-container input {
+    margin-right: 5px; 
+}
+
+.kategoria-ar-container label {
+    margin-left: 5px;
+}
+
 button {
     width: 100%;
     padding: 12px;

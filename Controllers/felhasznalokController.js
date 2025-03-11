@@ -92,6 +92,21 @@ exports.FelhasznaloTorles = async (req, res) => {
     const { torolni } = req.body;
     console.log(req.body,torolni);
     try {
+        
+        const felhasznalo = await Felhasznalok.findOne({
+            where: { id: torolni }
+        });
+
+        if (felhasznalo.adminisztrator === 1) {
+            const adminCount = await Felhasznalok.count({
+                where: { adminisztrator: 1 }
+            });
+
+            
+            if (adminCount <= 1) {
+                return res.status(400).send('<script>alert("Legalább egy adminnak maradnia kell a rendszerben!"); window.location.href="/dashboard-xyz123/felhasznalo";</script>');
+            }
+        }
       await Felhasznalok.destroy({ where: { id: torolni } });
       res.redirect('/dashboard-xyz123/felhasznalo');
       
@@ -105,14 +120,27 @@ exports.FelhasznaloTorles = async (req, res) => {
 exports.FelhasznaloFrissites = async (req, res) => {
     const { felhasz_nev2, jelszomeg, admin2, frissiteni } = req.body;
     try {
+        let megtalalt = await Felhasznalok.findOne({ where: { id: frissiteni } });
+
+        if (!megtalalt) {
+            return res.status(404).send("Felhasználó nem található!");
+        }
+
+        // Ha a felhasználó admin és az admin státuszt vásárlóra váltanák, ellenőrzés
+        if (megtalalt.adminisztrator === 1 && admin2 === "0") {
+            const adminCount = await Felhasznalok.count({ where: { adminisztrator: 1 } });
+
+            if (adminCount <= 1) {
+                return res.status(400).send('<script>alert("Legalább egy adminnak maradnia kell a rendszerben!"); window.location.href="/dashboard-xyz123/felhasznalo";</script>');
+            }
+        }
+
         if(jelszomeg)
         {
             const hashedPassword2 = await bcrypt.hash(jelszomeg, 10); 
-            let megtalalt = await Felhasznalok.findOne({ where: { id: frissiteni } });
             await megtalalt.update({felhasznalo_nev: felhasz_nev2, jelszo: hashedPassword2, adminisztrator: admin2 });
         }
         else{ 
-            let megtalalt = await Felhasznalok.findOne({ where: { id: frissiteni } });
             await megtalalt.update({felhasznalo_nev: felhasz_nev2, adminisztrator: admin2 });
         }
       res.redirect('/dashboard-xyz123/felhasznalo');
