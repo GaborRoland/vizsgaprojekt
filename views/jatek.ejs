@@ -7,6 +7,7 @@
         <th>Cím</th>
         <th>Leírás</th>
         <th>Kategória - Ár</th>
+        <th>Kép</th>
     </tr>
 
     <% jatekok.forEach(game => { %>
@@ -16,6 +17,7 @@
         <td><%= game.leiras %></td>
         <td><%= game.kategoria.kategoria %> - <%= game.kategoria.kategoriak_ar
             %> Ft</td>
+        <td><%= game.kep %></td>
     </tr>
     <% }) %>
 </table>
@@ -46,6 +48,7 @@
             kateg.kategoriak_ar %> Ft) </option>
         <% }) %>
     </select>
+    <input type="text" name="kep" placeholder="Kép" required>
     <button type="submit">Hozzáadás</button>
 </form>
 
@@ -58,7 +61,8 @@
         <option value="<%= jatek.id %>"
             data-jateknev="<%= jatek.jatek_nev %>"
             data-leiras="<%= jatek.leiras %>"
-            data-kategoriaid="<%= jatek.kategoria_id %>">
+            data-kategoriaid="<%= jatek.kategoria_id %>"
+            data-kep="<%= jatek.kep %>">
             <%= jatek.id %> <%= jatek.jatek_nev %>
         </option>
         <% }) %>
@@ -75,6 +79,8 @@
             kateg.kategoriak_ar %> Ft) </option>
         <% }) %>
     </select>
+    <input type="text" id="kep" name="kep" placeholder="Kép"
+        required>
     <button type="submit">Módosítás végrehajtása</button>
 </form>
 

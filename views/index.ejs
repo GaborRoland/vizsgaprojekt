@@ -110,7 +110,7 @@
           <% jatekok.forEach(game=> { %>
 
           <div class="product-card">
-            <img class="cover" src="<%= game.kep%>">
+            <img class="cover" src="<%= game.kep%>" onerror="this.onerror=null; this.src='kepek/game-49-new.png';">
             <h3 class="title">
               <%= game.jatek_nev %>
             </h3>
@@ -137,7 +137,7 @@
         <div class="product-list" id="kereses">
           <% keresett.forEach(talalat=> { %>
           <div class="product-card">
-            <img class="cover" src="<%= talalat.kep%>">
+            <img class="cover" src="<%= talalat.kep%>" onerror="this.onerror=null; this.src='kepek/game-49-new.png';">
             <h3 class="title">
               <%= talalat.jatek_nev %>
             </h3>
