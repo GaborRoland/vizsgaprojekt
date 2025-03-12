@@ -1,11 +1,13 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family:'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #1e293b;
   color: white;
   overflow-x: hidden;
 }
+
+
 
 .db {
   border: 0.1em solid #1e293b;
@@ -228,8 +230,15 @@ body {
 }
 
 .hero-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   font-size: 36px;
   font-weight: bold;
+}
+
+.hero-content{
+  width:50vw;
+  margin: auto auto;
 }
 
 .highlight {
@@ -239,6 +248,8 @@ body {
 }
 
 .hero-description {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   font-size: 18px;
   margin: 20px 0;
 }
@@ -289,7 +300,10 @@ body {
 }
 
 .section-title {
-  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 0.2rem;
   margin-bottom: 20px;
   text-align: center;
   scroll-behavior: smooth;
