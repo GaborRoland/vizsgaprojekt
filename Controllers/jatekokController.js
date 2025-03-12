@@ -6,7 +6,7 @@ const Kategoria = require('../Models/kategoriakModel');
 exports.OsszesJatekok = async function JatekKereses(req, res) {
     try {
         let jatekok = await Jatekok.findAll({
-            attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id'],
+            attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id', 'kep'],
             include: [{
                 model: Kategoria,
                 as: 'kategoria',
@@ -86,7 +86,8 @@ exports.KeresoMezo = async function (req, res) {
                     model: Kategoria,
                     as: 'kategoria',
                     attributes: ['kategoriak_ar']
-                }]
+                }],
+                attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id', 'kep'],
             });
             res.render('index', {jatekok: jatekok, keresett: keresett, username: req.session.username || 'Felhasználó'}) 
         } catch (error) {

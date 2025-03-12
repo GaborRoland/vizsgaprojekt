@@ -21,7 +21,11 @@ const Jatekok = sequelize.define('jatekok', {
   kategoria_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  }
+  },
+  kep: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 }, {
   freezeTableName: true,
   timestamps: false // createdAt és updatedAt oszlopok automatikus kezelése
