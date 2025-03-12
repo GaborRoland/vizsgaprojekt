@@ -23,7 +23,7 @@ exports.OsszesJatekok = async function JatekKereses(req, res) {
 exports.OsszesJatekokAdmin = async function JatekKereses2(req, res) {
     try {
         let jatekok = await Jatekok.findAll({
-            attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id'],
+            attributes: ['id', 'jatek_nev', 'leiras', 'kategoria_id', 'kep'],
             include: [{
                 model: Kategoria,
                 as: 'kategoria',
@@ -41,12 +41,13 @@ exports.OsszesJatekokAdmin = async function JatekKereses2(req, res) {
 
 //Admin felületen játék létrehozása
 exports.JatekLetrehozasAdmin = async function JatekKereses(req, res) {
-    const { jatek_nev, leiras, kategoria } = req.body;
+    const { jatek_nev, leiras, kategoria, kep } = req.body;
         try {
             await Jatekok.create({
                 jatek_nev: jatek_nev,
                 leiras: leiras,
-                kategoria_id: kategoria
+                kategoria_id: kategoria,
+                kep: kep
             });
             res.redirect('/dashboard-xyz123'); 
         } catch (error) {
@@ -80,7 +81,6 @@ exports.KeresoMezo = async function (req, res) {
                     jatek_nev:{
                         [Op.like]: `%${search}%`
                     }
-
                 },
                 include: [{
                     model: Kategoria,
@@ -99,11 +99,11 @@ exports.KeresoMezo = async function (req, res) {
 
 //Játékok frissítése
 exports.JatekFrissites = async (req, res) => {
-    const { jatek_nev2, leiras2, kategoria2, frissiteni } = req.body;
+    const { jatek_nev2, leiras2, kategoria2, frissiteni, kep } = req.body;
     console.log(req.body,frissiteni);
     try {
       let megtalalt = await Jatekok.findOne({ where: { id: frissiteni } });
-      await megtalalt.update({jatek_nev: jatek_nev2, leiras: leiras2, kategoria_id: kategoria2});
+      await megtalalt.update({jatek_nev: jatek_nev2, leiras: leiras2, kategoria_id: kategoria2, kep: kep});
       res.redirect('/dashboard-xyz123');
       
     } catch (err) {
