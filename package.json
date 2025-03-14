@@ -7,6 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js"
   },
+  "bin": {
+    "node-app": "server/server.js"
+  },
+  "pkg": {
+    "scripts": "server/server.js",
+    "assets": ["public/**/*","views/**/*", "login/**/*"],
+    "targets": ["node18-win-x64"]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

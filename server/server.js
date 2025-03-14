@@ -34,6 +34,7 @@ app.use('/users', FelhasznalokRoutes);
 app.use('/', JatekokRoutes);
 app.use('/kategoriak', kategoriakRoutes);
 
+console.log("Üdvözlünk a Node.js EXE alkalmazásban!");
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running at http://localhost:${process.env.PORT}`)});
