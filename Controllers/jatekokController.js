@@ -1,8 +1,8 @@
-//jatekokController.js
 const { Op } = require('sequelize');
 const Jatekok = require('../Models/jatekokModel'); 
 const Kategoria = require('../Models/kategoriakModel');
 
+//Összes játék megjelenítése a főoldalon
 exports.OsszesJatekok = async function JatekKereses(req, res) {
     try {
         let jatekok = await Jatekok.findAll({

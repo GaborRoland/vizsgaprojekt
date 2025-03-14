@@ -1,4 +1,3 @@
-//Játék frissítéséhez szükséges
 document.getElementById("jatekSelect").addEventListener("change", function () {
     let selectedOption2 = this.options[this.selectedIndex];
 

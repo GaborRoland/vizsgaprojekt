@@ -14,7 +14,6 @@
   </head>
 
   <body>
-    <!-- Oldal tetejére gomb -->
     <button id="to-top-button" onclick="goToTop()" title="Go To Top"
       class="to-top-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -26,13 +25,11 @@
     <nav class="navbar">
       <div class="navbar-container">
 
-        <!-- Logo -->
         <a href="/" class="navbar-logo">
           <img src="kepek/fooldal_logo_2-removebg-preview.png" alt="Logo" />
           <span>ByteShop</span>
         </a>
 
-        <!-- Kereső menü -->
         <div class="search-menu">
           <form action="/" method="POST">
             <div class="search-input-container">
@@ -44,7 +41,6 @@
 
         </div>
 
-        <!-- Bevásárlókosár gomb -->
         <div class="dropdown cart-button">
           <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke="currentColor"
@@ -59,7 +55,6 @@
           </div>
         </div>
 
-        <!-- Menüpontok -->
         <div class="navbar-menu">
           <ul class="menu-list">
             <li><a onclick="goToAboutUs()">Rólunk</a></li>
@@ -79,7 +74,6 @@
     </nav>
 
     <main>
-      <!-- Hero szekció -->
       <section class="hero">
         <div class="hero-container">
           <div class="hero-content">
@@ -100,10 +94,10 @@
         </div>
       </section>
 
-      <!-- Termékek szekció -->
       <section class="products">
         <%if(jatekok && jatekok.length> 0){ %>
-        <h2 class="section-title" id="section-title">Játékaink</h2>
+        <h2 class="section-title" id="section-title-id">Játékaink</h2>
+        <hr width="80%" style="color: white; margin: auto; margin-bottom: 30px;">
         <div class="product-list">
           <% jatekok.forEach(game=> { %>
 
@@ -127,11 +121,11 @@
         </div>
       </section>
 
-      <!-- Keresett játékok megjelenítése -->
       <section class="products">
         <a href="#products"></a>
         <%if(keresett && keresett.length> 0){ %>
-        <h2 class="section-title" id="keresescim">Kiböngészett játékok</h2>
+        <h2 class="section-title" id="section-title-id">Kiböngészett játékok</h2>
+        <hr width="80%" style="color: white; margin: auto; margin-bottom: 30px;">
         <div class="product-list" id="kereses">
           <% keresett.forEach(talalat=> { %>
           <div class="product-card">
@@ -156,12 +150,10 @@
         </div>
       </section>
 
-      <!-- Hírek slideshow -->
       <section id="hirek">
         <h2 class="section-title" id="section-title">Hírek</h2>
         <hr width="80%" style="color: white; margin-bottom: 30px;">
         <div class="slideshow-container">
-          <!-- Full-width images with number and caption text -->
           <div class="mySlides ">
             <img
               src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/03/assassins-creed-shadows-how-long-to-beat-confirmation.jpg?q=49&fit=crop&w=360&h=240&dpr=2"
@@ -245,7 +237,6 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer" id="footer">
       <a onclick="goToTop()" class="footer-logo">
         <img src="kepek/fooldal_logo_2-removebg-preview.png" alt="logo">
@@ -256,19 +247,16 @@
     </footer>
 
     <script>
-    // Az EJS-ben lévő változót átadjuk a frontend JavaScript fájlnak
     window.usernameFromBackend = "<%= username %>";
 
     document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".db").forEach(input => {
-      // Megakadályozza a "-" és az "e" beírását (e az e-notáció miatt kell)
       input.addEventListener("keydown", function (event) {
         if (event.key === "-" || event.key === "e") {
           event.preventDefault();
         }
       });
 
-      // Ha valaki valahogy mégis negatív számot írt be, azt javítja
       input.addEventListener("input", function () {
         if (this.value < 1) {
           this.value = 1;

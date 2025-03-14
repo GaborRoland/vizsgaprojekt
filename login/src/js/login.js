@@ -2,7 +2,6 @@
 function Megjelenites() {
     var password = document.getElementById("jelszo");
 
-    //Jelszó típusának ellenőrzése és az alapján a megjelenítés
     if (password.type === "password") {
         password.type = "text";
     }
@@ -16,3 +15,10 @@ function NincsFelhasz() {
     window.location.href = '/users/backtomain';
 }
 
+function Husveti_Tojas() {
+    alert("Womp womp.")
+}
+
+function Felhivas() {
+    alert("Ez a funkció fejlesztés alatt áll.")
+}

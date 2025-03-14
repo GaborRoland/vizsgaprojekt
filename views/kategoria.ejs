@@ -1,7 +1,7 @@
 
 <%- include('admin') %>
 
-<h1>Kategória</h1>
+<h2>Kategóriák</h2>
 <table>
     <tr>
         <th>ID</th>
@@ -19,9 +19,9 @@
     <% }) %>
 </table>
 
+<h2>Kategória törlése</h2>
 <form action="/dashboard-xyz123/kategtorles" method="POST">
     <div>
-        <label>Kategória törlése:</label>
         <select name="torolni">
             <option selected disabled>-- Válaszd ki, amit törölni szeretnél
                 --</option>
@@ -40,7 +40,7 @@
         <input type="number" name="ar" placeholder="Ár" required min="200"
         value="200"> <label>Ft</label>
     </div>
-    <button type="submit">Hozzáadás</button>
+    <button type="submit">Kategória hozzáadása</button>
 </form>
 
 <h2>Kategória frissítése</h2>
@@ -63,7 +63,7 @@
             <input type="number" id="ar2" name="ar2" placeholder="Ár" required
             min="200"> <label>Ft</label>
         </div>
-    <button type="submit">Kategória törlése</button>
+    <button type="submit">Kategória frissítése</button>
 </form>
 
 <script src="../login/src/js/kategoria.js"></script>

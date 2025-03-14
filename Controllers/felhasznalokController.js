@@ -69,15 +69,13 @@ exports.felhasznaloBejelentkezes = async function bejelentkezes(req, res) {
             return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
         }
         
-         // Ha a jelszó helyes, és nem adminisztrátor, akkor a főoldalra irányítjuk
          if (felhasznalo.adminisztrator === 0) {
-            req.session.username = felhasznalo.felhasznalo_nev;  // Session tárolása
+            req.session.username = felhasznalo.felhasznalo_nev;
             return res.redirect('/');
         }
 
-        // Ha adminisztrátor, akkor az admin dashboardra irányítjuk
         if (felhasznalo.adminisztrator === 1) {
-            req.session.username = felhasznalo.felhasznalo_nev;  // Session tárolása
+            req.session.username = felhasznalo.felhasznalo_nev;
             return res.redirect('/dashboard-xyz123');
         }
         return res.status(401).send('<script>alert("Helytelen felhasználónév vagy jelszó!"); window.location.href="../login/login.html";</script>');
@@ -126,7 +124,6 @@ exports.FelhasznaloFrissites = async (req, res) => {
             return res.status(404).send("Felhasználó nem található!");
         }
 
-        // Ha a felhasználó admin és az admin státuszt vásárlóra váltanák, ellenőrzés
         if (megtalalt.adminisztrator === 1 && admin2 === "0") {
             const adminCount = await Felhasznalok.count({ where: { adminisztrator: 1 } });
 
@@ -150,6 +147,7 @@ exports.FelhasznaloFrissites = async (req, res) => {
     }
   };
 
+//Kijelentkezés
 exports.Logout = async (req, res) =>{
     req.session.destroy((err) => {
         if (err) {
@@ -159,6 +157,7 @@ exports.Logout = async (req, res) =>{
       });
 }
 
+//Vissza a főoldalra
 exports.BackToMain = async (req, res) =>{
     req.session.destroy((err) => {
         if (err) {

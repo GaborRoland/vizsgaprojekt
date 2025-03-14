@@ -1,7 +1,7 @@
-//kategoriakController.js
 const Kategoriak = require('../Models/kategoriakModel');
 const Jatekok = require('../Models/jatekokModel');
 
+//Összes kategória
 exports.OsszesKategoriak = async (req, res) => {
   try {
       const kategoriak = await Kategoriak.findAll({
@@ -11,16 +11,14 @@ exports.OsszesKategoriak = async (req, res) => {
       for (let i = 0; i < kategoriak.length; i++) {
           const kategoria = kategoriak[i];
           
-          // Megszámoljuk a játékok számát az adott kategóriához
           const jatekokSzama = await Jatekok.count({
               where: {
                 kategoria_id: kategoria.id
               }
           });
 
-          // Hozzáadjuk a jatekokSzama mezőt az aktuális kategóriához
-          kategoriak[i] = kategoria.toJSON(); // JSON-re alakítjuk, hogy az adatokat módosíthassuk
-          kategoriak[i].jatekokSzama = jatekokSzama; // Játékok száma hozzáadása
+          kategoriak[i] = kategoria.toJSON();
+          kategoriak[i].jatekokSzama = jatekokSzama;
       }
       res.render('kategoria', { kategoriak });
   } catch (error) {
@@ -30,7 +28,7 @@ exports.OsszesKategoriak = async (req, res) => {
 };
 
 
-// Új kategória hozzáadása
+//Új kategória hozzáadása
 exports.KategoriaLetrehozas = async (req, res) => {
     const { kateg_nev, ar } = req.body;
     console.log(req.body)
@@ -53,13 +51,11 @@ exports.KategoriaTorles = async (req, res) => {
     console.log(req.body,torolni);
     try {
 
-      // Ellenőrizzük, hogy van-e olyan játék, amelyhez a törölni kívánt kategória tartozik
     const jatekok = await Jatekok.findAll({
-      where: { kategoria_id: torolni } // Feltételezve, hogy a 'kategoriak_id' a kapcsolódó mező a Jatekok táblában
+      where: { kategoria_id: torolni }
     });
 
     if (jatekok.length > 0) {
-      // Ha találunk ilyen játékokat, nem törölhetjük a kategóriát
       return res.status(400).send('<script>alert("A kategória törléséhez először el kell távolítani a hozzá tartozó játékokat!"); window.location.href = "/dashboard-xyz123/kategoria";</script>');
     }
 

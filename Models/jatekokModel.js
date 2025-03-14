@@ -28,7 +28,7 @@ const Jatekok = sequelize.define('jatekok', {
   },
 }, {
   freezeTableName: true,
-  timestamps: false // createdAt és updatedAt oszlopok automatikus kezelése
+  timestamps: false
 });
 
 module.exports = Jatekok;

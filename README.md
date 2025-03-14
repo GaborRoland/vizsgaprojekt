@@ -1,6 +1,6 @@
 # vizsgaprojekt
  
-# Jonapot :)
+# Jonapot
 Szili Nóra - Frontend és dokumentáció
 Jelen pillanatban a regisztrációs, belejentkezési és főoldal dizájnja kész, teljesen reszponzív, dinamikus elemekkel, működő gombokkal és űrlapokkal.
 A jövőben egy admin felület létrehozása a cél, amely szintén teljesen reszponzív, illetve a dokumentáció befejetése és finomítása.

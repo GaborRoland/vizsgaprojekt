@@ -2,7 +2,7 @@
 const toTopButton = document.getElementById("to-top-button");
 let log = document.getElementById("log");
 let loggedin = false;
-const jatekaink = document.getElementById("section-title");
+const jatekaink = document.getElementById("section-title-id");
 const hirek = document.getElementById("hirek");
 const aboutus = document.getElementById("about-us");
 const cart = document.getElementById("cart");
@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ossztermek.style.visibility = "visible";
   }
 });
+
 //Kijelentkeztetés
 log.addEventListener("click", function () {
   if (loggedin) {
@@ -135,8 +136,7 @@ function Torles(event) {
   let clickedItem = clickedButton.closest(".termek");
 
   if (clickedItem) {
-    let priceText = clickedItem.innerHTML.match(/(\d+)\s*Ft/); // A \d egy vagy több számot keres. \s az a szóközöket figyeli. A *Ft pedig azt figyeli, hogy Ft-ra végződjön
-    if (priceText) {
+    let priceText = clickedItem.innerHTML.match(/(\d+)\s*Ft/);
       let price = parseInt(priceText[1]);
 
       osszegar -= price;
@@ -153,7 +153,6 @@ function Torles(event) {
       rendelesGomb.remove();
     }
   }
-}
 
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("torles")) {
@@ -182,12 +181,10 @@ rendelesGomb.setAttribute("onclick", "Megrendeles()");
 let slideIndex = 1;
 showSlides(slideIndex);
 
-// Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-// Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }

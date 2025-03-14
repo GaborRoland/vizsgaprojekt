@@ -1,4 +1,3 @@
-<!-- Bejelentkezés  -->
 <!DOCTYPE html>
 <html lang="hu">
     <head>
@@ -14,7 +13,7 @@
     </head>
     <body>
         <div class="centered">
-            <div class="image"></div>
+            <div class="image" onclick="Husveti_Tojas()"></div>
             <div class="panel">
 
                 <h2>
@@ -28,25 +27,24 @@
 
                     <div class="info">
                         <input type="text" name="nev"
-                            placeholder="Felhasználónév" id="felhasznalonev">
+                            placeholder="Felhasználónév" id="felhasznalonev" class="input">
                     </div>
 
                     <div class="info">
                         <input type="password" name="jelszo1"
-                            placeholder="Jelszó" id="jelszo">
+                            placeholder="Jelszó" id="jelszo" class="input">
                     </div>
 
                     <div class="jelszo">
                         <input type="checkbox" onclick="Megjelenites()"
-                            style="color: white;">Jelszó megjelenítés
-                        <!-- Javascript függvény ide! -->
-                        <a href="#">Elfelejtette jelszavát?</a>
+                        style="color: white; cursor: pointer;">Jelszó megjelenítés
+                        <a href="#" style="cursor: pointer;" onclick="Felhivas()">Elfelejtette jelszavát?</a>
                     </div>
 
                     <button type="submit"
                         id="bejelentkez">Bejelentkezés</button>
                 </form>
-
+                
                 <p>Nincs még fiókod? <a
                         href="register.html">Regisztrálok</a></p>
             </div>

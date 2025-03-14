@@ -18,6 +18,7 @@ body {
 .back-to-main {
   border-radius: 20px;
   border: 1px solid white;
+  cursor: pointer;
 }
 
 /* Animációk */
@@ -41,6 +42,7 @@ body {
     color: white;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   .centered {
@@ -72,7 +74,6 @@ body {
   }
 
   .info {
-    /* position: relative; */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -116,7 +117,6 @@ body {
     background: transparent;
     color: white;
     width: 100%;
-    /* Ensure input takes up remaining space */
     max-width: 110px;
 
   }
@@ -137,6 +137,7 @@ body {
     font-weight: bold;
     margin-left: 32%;
     margin-top: 5%;
+    cursor: pointer;
   }
 
   #register:hover {
@@ -175,6 +176,7 @@ body {
     color: white;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   .centered {

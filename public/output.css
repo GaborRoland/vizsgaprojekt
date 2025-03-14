@@ -64,6 +64,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 50;
+  cursor: pointer;
 }
 
 .to-top-button.visible {
@@ -223,7 +224,6 @@ body {
   }
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
   padding: 40px;
@@ -294,7 +294,6 @@ body {
   }
 }
 
-/* Products Section */
 .products {
   padding: 40px;
 }
@@ -371,6 +370,7 @@ body {
   text-decoration: none;
   color: white;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .footer-logo img {

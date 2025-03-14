@@ -1,6 +1,6 @@
 <%- include('admin') %>
 
-<h1>Felhasználók</h1>
+<h2>Felhasználók</h2>
 <table>
     <tr>
         <th>ID</th>
@@ -20,9 +20,9 @@
     <% }) %>
 </table>
 
+<h2>Felhasználó törlése</h2>
 <form action="/dashboard-xyz123/felhasztorles" method="POST">
     <div>
-        <label>Felhasználó törlése:</label>
         <select name="torolni">
             <option selected disabled>-- Válaszd ki, amit törölni szeretnél
                 --</option>
@@ -44,7 +44,7 @@
         <option value="0">Vásárló</option>
         <option value="1">Adminisztrátor</option>
     </select>
-    <button type="submit">Hozzáadás</button>
+    <button type="submit">Felhasználó hozzáadása</button>
 </form>
 
 <h2>Felhasználó adatainak módosítása</h2>

@@ -1,4 +1,3 @@
-// database.js
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
@@ -12,14 +11,12 @@ const sequelize = new Sequelize(
   }
 );
 
-// Adatbázis és tábla szinkronizálása
 async function syncDatabase() {
   try {
     await sequelize.authenticate();
     console.log('Kapcsolódás sikeres az adatbázishoz.');
 
-    // A modellek szinkronizálása (táblák létrehozása, ha nem léteznek)
-    await sequelize.sync({ force: false }); // alter: true biztosítja a táblák frissítését a modellek alapján
+    await sequelize.sync({ force: false });
     console.log('Adatbázis szinkronizálva.');
   }
   catch (error) {

@@ -36,7 +36,6 @@ body {
 }
 
 /* Animációk  */
-
 @keyframes pislakol {
     0% {
         opacity: 1;
@@ -95,7 +94,6 @@ body {
 @keyframes slideIn {
     0% {
         top: -200px;
-        /* A diven kívül indul */
     }
 
     100% {
@@ -115,16 +113,14 @@ body {
         height: 56px;
         background: linear-gradient(to bottom right, #facc15, #ea580c, #db2777);
         color: white;
-        /* border-radius: 50%; */
-        /* display: none; */
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 
     .image {
         position: absolute;
         top: -200px;
-        /* A kép diven kívül indul */
         transform: translateY(-10%);
         width: 250px;
         height: 250px;
@@ -132,6 +128,7 @@ body {
         background-size: cover;
         animation: slideIn 3s ease-in-out forwards;
         z-index: 1;
+        cursor: pointer;
     }
 
     .centered {
@@ -139,8 +136,6 @@ body {
         place-items: center;
         height: 100vh;
         margin-bottom: 80px;
-        /* Adj helyet a gombnak */
-
     }
 
     .panel {
@@ -190,6 +185,11 @@ body {
         outline: none;
     }
 
+    #bejelentkez:hover {
+        background-color: #00f0ff;
+        color: white;
+        box-shadow: -3px -3px 15px #d9fdff;
+    }
 
     .jelszo {
         display: flex;
@@ -210,7 +210,24 @@ body {
     .panel button {
         background: #fff;
         color: #262626;
+        cursor: pointer;
     }
+
+    .input:focus {
+        color: #ffffff;
+        background-color: transparent;
+        border: 3px solid white;
+        outline-color: #d9fdff;
+        box-shadow: -3px -3px 15px #00f0ff;
+        transition: .1s;
+        transition-property: box-shadow;
+      }
+    
+    .input:focus::placeholder {
+        color: white;
+        opacity: 0.7;
+      }
+    
 
 }
 
@@ -219,7 +236,6 @@ body {
     .image {
         position: absolute;
         top: -200px;
-        /* A kép diven kívül indul */
         transform: translateY(-10%);
         width: 250px;
         height: 250px;
@@ -234,7 +250,6 @@ body {
         place-items: center;
         height: 100vh;
         margin-bottom: 80px;
-        /* Adj helyet a gombnak */
     }
 
     .panel {
@@ -279,13 +294,31 @@ body {
         border-radius: 20px;
     }
 
+    #bejelentkez:hover {
+        background-color: #00f0ff;
+        color: white;
+        box-shadow: -3px -3px 15px #d9fdff;
+    }
+
+    .input:focus {
+        color: #ffffff;
+        background-color: transparent;
+        outline-color: #d9fdff;
+        box-shadow: -3px -3px 15px #00f0ff;
+        transition: .1s;
+        transition-property: box-shadow;
+      }
+    
+    .input:focus::placeholder {
+        color: white;
+        opacity: 0.7;
+      }
     .jelszo {
         display: flex;
         justify-content: space-around;
         margin-bottom: 20px;
         max-width: 100%;
     }
-
 
 
     .panel input[type=checkbox],
@@ -298,6 +331,7 @@ body {
     .panel button {
         background: #fff;
         color: #262626;
+        cursor: pointer;
     }
 
     .back-to-main {
@@ -310,6 +344,7 @@ body {
         color: white;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 }
 
@@ -318,7 +353,6 @@ body {
     .image {
         position: absolute;
         top: -200px;
-        /* A kép diven kívül indul */
         transform: translateY(-10%);
         width: 250px;
         height: 250px;
@@ -333,7 +367,6 @@ body {
         place-items: center;
         height: 100vh;
         margin-bottom: 80px;
-        /* Adj helyet a gombnak */
     }
 
     .panel {
@@ -351,6 +384,20 @@ body {
         overflow: hidden;
     }
 
+    .input:focus {
+        color: #ffffff;
+        background-color: transparent;
+        outline-color: #d9fdff;
+        box-shadow: -3px -3px 15px #00f0ff;
+        transition: .1s;
+        transition-property: box-shadow;
+      }
+    
+    .input:focus::placeholder {
+        color: white;
+        opacity: 0.7;
+      }
+
     h2 {
         text-align: center;
         margin-bottom: 4vh;
@@ -379,6 +426,12 @@ body {
         border-radius: 20px;
     }
 
+    #bejelentkez:hover {
+        background-color: #00f0ff;
+        color: white;
+        box-shadow: -3px -3px 15px #d9fdff;
+    }
+
     .jelszo {
         display: flex;
         justify-content: space-around;
@@ -397,6 +450,7 @@ body {
     .panel button {
         background: #fff;
         color: #262626;
+        cursor: pointer;
     }
 
     .back-to-main {
